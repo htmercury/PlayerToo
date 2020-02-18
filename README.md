@@ -3,6 +3,11 @@ A marketplace for lending and borrowing boardgames
 
 ## Available Scripts
 
+In the src directory, you can run:
+### `node -r esm api-scrape.js`
+
+Scrapes a new batch of board games data from board game atlas API and dumps the data into public/board_games.json.
+
 In the project directory, you can run:
 
 ### `npm start`
