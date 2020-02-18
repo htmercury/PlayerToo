@@ -1,5 +1,5 @@
 # Player, Too
-## A marketplace for lending and borrowing boardgames
+A marketplace for lending and borrowing boardgames
 
 ## Available Scripts
 
