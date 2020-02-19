@@ -88,7 +88,7 @@ const ListingPage = () => {
       margin: 'auto',
       left: '50%',
       marginTop: '20%',
-      width: '50%',
+      width: '80%',
       verticalAlign: 'middle',
       zIndex: '69'
     }
