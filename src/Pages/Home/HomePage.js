@@ -1,4 +1,4 @@
-import React, { useContext, createRef } from 'react';
+import React, { useState, useContext, createRef } from 'react';
 import { AppState } from '../../context';
 import Games from './Games';
 import { Button, Header, Container, Segment, Sticky, Grid, Input } from 'semantic-ui-react';
@@ -6,9 +6,26 @@ import { Button, Header, Container, Segment, Sticky, Grid, Input } from 'semanti
 const HomePage = () => {
   const state = useContext(AppState);
   const { data } = state;
-  console.log(data)
+  const [relevantGames, setRelevantGames]= useState(data);
   const contextRef = createRef();
+  const [searched, setSearched]=useState("");
 
+  function handleMessage(input) {
+    setSearched(input.target.value); 
+    console.log("this is searched")
+    console.log(searched); 
+    updateData(input.target.value);
+  }
+  function updateData(searched){
+    console.log("reached updateData")
+    const temp=data;
+    const temp2=data.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
+    
+    setRelevantGames(searched !== "" ? temp2 : temp);
+    console.log("new relevant games");
+    console.log(relevantGames);
+  }
+  
   return (
     <div ref={contextRef}>
       <Sticky context={contextRef}>
@@ -17,11 +34,11 @@ const HomePage = () => {
       <Container>
         <Grid padded textAlign="center">
           <Grid.Row>
-            <Input icon='search' iconPosition='left' placeholder="Search..." />
-            <Button style={{ marginLeft: "20px"}} basic content="Filter" />
+            <Input onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search..." />
+            <Button style={{ marginLeft: "20px"}}  basic content="Filter" /> 
           </Grid.Row>
           <Grid.Row>
-            <Games data={data} />
+            <Games data={relevantGames} />
           </Grid.Row>
         </Grid>
       </Container>
