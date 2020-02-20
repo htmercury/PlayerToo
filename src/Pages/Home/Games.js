@@ -9,7 +9,7 @@ const Games = ({ data }) => {
     
     <Card.Group itemsPerRow={1}>
       {data.map(game => 
-        <Card style={{ width: '30rem' }} key={game.id} as={Link} to={`/${game.id}`}>
+        <Card key={game.id} as={Link} to={`/${game.id}`}>
           <Card.Content>
             <Header style={{fontWeight: "lighter", fontSize: "12px"}} floated='right' content={game.distance} />
             <Card.Header content={game.game} />
