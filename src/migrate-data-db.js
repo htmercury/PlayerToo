@@ -1,26 +1,43 @@
 import { fireDb } from './firebase';
-import * as data from '../public/board_games.json';
-
-const games = Object.values(data);
-
-console.log(games.length);
-
-let count = 1;
+const gameData = require('../public/board_games.json');
+const userData = require('../public/users.json');
 
 const uploadGames = async () => {
-    for (let boardGame of games) {
-        if (boardGame.id !== undefined) {
-            await fireDb
-                .collection('BoardGames')
-                .doc(boardGame.id)
-                .set(boardGame);
-            console.log('Entered new data into the collection ' + count);
-            
-            count++;
-        }
+    let count = 1;
+
+    for (const gid in gameData) {
+        await fireDb
+            .collection('BoardGames')
+            .doc(gid)
+            .set(gameData[gid]);
+        console.log('Entered new gameData into the collection ' + count);
+
+        count++;
     }
 };
 
-console.log('migration complete');
+const uploadUsers = async () => {
+    let count = 1;
 
-uploadGames();
+    for (const uid in userData) {
+        await fireDb
+            .collection('Users')
+            .doc(uid)
+            .set(userData[uid]);
+        console.log('Entered new userData into the collection ' + count);
+
+        count++;
+    }
+};
+
+// uncomment only one at a time for migrating
+
+uploadGames().then(() => {
+    console.log('migration complete');
+    process.exit();
+});
+
+// uploadUsers().then(() => {
+//     console.log('migration complete');
+//     process.exit();
+// });
