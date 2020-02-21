@@ -1,6 +1,7 @@
 const NUM_USERS = 25;
 
 const fetch = require('node-fetch');
+const fs = require('fs');
 
 const createUsers = async () => {
     const resp = await fetch(
@@ -16,7 +17,7 @@ const createUsers = async () => {
 
         users[ud.password] = {
             id: ud.password,
-            name: ud.name,
+            name: ud.name + ' ' + ud.surname,
             gender: ud.gender,
             age: ud.age,
             phone: ud.phone,
@@ -31,6 +32,13 @@ const createUsers = async () => {
         console.log(users[ud.password]);
 
         return 1;
+    });
+
+
+    // scraping is done, write to file
+    fs.writeFile('../public/users.json', JSON.stringify(users), function(err) {
+        if (err) throw err;
+        console.log('complete');
     });
 };
 
