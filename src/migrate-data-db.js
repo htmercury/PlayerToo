@@ -1,6 +1,7 @@
 import { fireDb } from './firebase';
 const gameData = require('../public/board_games.json');
 const userData = require('../public/users.json');
+const listingData = require('../public/listings.json');
 
 const uploadGames = async () => {
     let count = 1;
@@ -30,6 +31,20 @@ const uploadUsers = async () => {
     }
 };
 
+const uploadListings = async () => {
+    let count = 1;
+
+    for (const lid in listingData) {
+        await fireDb
+            .collection('Users')
+            .doc(lid)
+            .set(listingData[lid]);
+        console.log('Entered new listingData into the collection ' + count);
+
+        count++;
+    }
+}
+
 // uncomment only one at a time for migrating
 
 // uploadGames().then(() => {
@@ -37,7 +52,12 @@ const uploadUsers = async () => {
 //     process.exit();
 // });
 
-uploadUsers().then(() => {
+// uploadUsers().then(() => {
+//     console.log('migration complete');
+//     process.exit();
+// });
+
+uploadListings().then(() => {
     console.log('migration complete');
     process.exit();
 });
