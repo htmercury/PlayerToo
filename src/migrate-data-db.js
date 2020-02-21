@@ -32,12 +32,12 @@ const uploadUsers = async () => {
 
 // uncomment only one at a time for migrating
 
-uploadGames().then(() => {
-    console.log('migration complete');
-    process.exit();
-});
-
-// uploadUsers().then(() => {
+// uploadGames().then(() => {
 //     console.log('migration complete');
 //     process.exit();
 // });
+
+uploadUsers().then(() => {
+    console.log('migration complete');
+    process.exit();
+});
