@@ -1,4 +1,4 @@
-const NUM_USERS = 25;
+const NUM_USERS = 36;
 
 const fetch = require('node-fetch');
 const fs = require('fs');

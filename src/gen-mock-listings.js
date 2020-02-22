@@ -3,7 +3,7 @@ const userData = require('../public/users.json');
 
 const fs = require('fs');
 
-const NUM_LISTINGS = 12;
+const NUM_LISTINGS = 25;
 
 const gameIds = Object.keys(gameData);
 const userIds = Object.keys(userData);

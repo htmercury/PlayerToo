@@ -11,7 +11,7 @@ const UserTableExample = () => {
             setUsers(results);
             console.log(results);
         })
-    });
+    }, []);
 
 
     return (
