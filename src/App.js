@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import HomePage from './Pages/Home/HomePage';
 import ListingPage from './Pages/Listing/ListingPage';
-import FireStoreExamplesPage from './Pages/FireStoreExamples/FireStoreExamplesPage';
+import FireStoreExamplesPage from './Pages/FireStoreExamples/FireStoreUsersPage';
 import { AppState } from './context';
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Route exact path="/" render={() => <HomePage />} />
       <Route exact path="/:id" render={() => <ListingPage /> } />
-      <Route exact path="/firestore/examples" render={() => <FireStoreExamplesPage /> } />
+      <Route exact path="/firestore/users" render={() => <FireStoreExamplesPage /> } />
     </BrowserRouter>
     : null
   );
