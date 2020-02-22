@@ -36,7 +36,7 @@ const uploadListings = async () => {
 
     for (const lid in listingData) {
         await fireDb
-            .collection('Users')
+            .collection('Listings')
             .doc(lid)
             .set(listingData[lid]);
         console.log('Entered new listingData into the collection ' + count);
