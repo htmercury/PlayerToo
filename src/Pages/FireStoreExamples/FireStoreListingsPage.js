@@ -14,36 +14,34 @@ const ListingsTableExample = () => {
             .get()
             .then(docSnaps => {
                 const listingsData = [];
-                const listingsNum = docSnaps.size;
+                docSnaps.forEach(doc => listingsData.push(doc.data()));
 
-                docSnaps.forEach(doc => {
-                    const listing = doc.data();
+                // do joins on the ids
+                const joinAndPushData = async () => {
+                    await Promise.all(
+                        listingsData.map(async (listing, i) => {
+                            const gameDoc = await fireDb
+                                .collection('BoardGames')
+                                .doc(listing.game_id)
+                                .get();
+                            listing.game = gameDoc.data();
 
-                    // join in ids
-                    const joinAndPushData = async () => {
-                        const gameDoc = await fireDb
-                            .collection('BoardGames')
-                            .doc(listing.game_id)
-                            .get();
-                        listing.game = gameDoc.data();
+                            const lenderDoc = await fireDb
+                                .collection('Users')
+                                .doc(listing.lender_id)
+                                .get();
+                            listing.lender = lenderDoc.data();
 
-                        const lenderDoc = await fireDb
-                            .collection('Users')
-                            .doc(listing.lender_id)
-                            .get();
-                        listing.lender = lenderDoc.data();
+                            console.log(listing);
 
-                        console.log(listing);
+                            listingsData[i] = listing;
+                        })
+                    );
 
-                        listingsData.push(listing);
+                    setListings(listingsData);
+                };
 
-                        if (listingsData.length === listingsNum) {
-                            setListings(listingsData);
-                        }
-                    };
-
-                    joinAndPushData();
-                });
+                joinAndPushData();
             });
     }, []);
 
