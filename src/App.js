@@ -3,6 +3,7 @@ import HomePage from './Pages/Home/HomePage';
 import ListingPage from './Pages/Listing/ListingPage';
 import FireStoreUsersPage from './Pages/FireStoreExamples/FireStoreUsersPage';
 import FireStoreGamesPage from './Pages/FireStoreExamples/FireStoreGamesPage';
+import FireStoreListingsPage from './Pages/FireStoreExamples/FireStoreListingsPage';
 import { AppState } from './context';
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/:id" render={() => <ListingPage /> } />
       <Route exact path="/firestore/users" render={() => <FireStoreUsersPage /> } />
       <Route exact path="/firestore/games" render={() => <FireStoreGamesPage /> } />
+      <Route exact path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
     </BrowserRouter>
     : null
   );
