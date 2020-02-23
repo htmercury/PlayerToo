@@ -3,7 +3,7 @@ import { fireDb } from '../../firebase';
 
 import { Header, Image, Table } from 'semantic-ui-react';
 
-const UserTableExample = () => {
+const GameTableExample = () => {
     const [games, setGames] = useState([]);
 
     // Querying example for Games
@@ -73,4 +73,4 @@ const UserTableExample = () => {
     );
 };
 
-export default UserTableExample;
+export default GameTableExample;
