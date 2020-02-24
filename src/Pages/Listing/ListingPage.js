@@ -69,7 +69,7 @@ const ListingPage = () => {
             justifyContent: "center",
             alignItems: "center",
           }}>
-            <Button fluid color='yellow' onClick={() => setIsModalOpen(true)}>Request Rental</Button>
+            <Button fluid color='yellow' onClick={() => setIsModalOpen(true)}>Borrow Now</Button>
           </Grid.Row>
         </Grid>
       </Container>
