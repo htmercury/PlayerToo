@@ -6,7 +6,7 @@
       "game": "Monopoly",
       "id":0,
       "rating": "5",
-      "lender": "johnsmith34",
+      "lender": { "username": "johnsmith34", "firstname": "John", "lastname": "Smith", "email": "johnsmith34@gmail.com" },
       "minPlayers": "3",
       "maxPlayers": "5",
       "tags": ["Money", "Thriller"],
@@ -14,7 +14,7 @@
     },
 	"1": 
     {
-      "lender": "alicejones52",
+      "lender": { "username": "alicejones52", "firstname": "Alice", "lastname": "Jones", "email": "alicejones52@gmail.com" },
       "distance": "2.3 mi",
       "images": ["./assets/cards_against_humanity/1.png","./assets/cards_against_humanity/2.png", "./assets/cards_against_humanity/3.png"],
       "game": "Cards Against Humanity",
@@ -27,7 +27,7 @@
     },
 	"2":
     {
-      "lender": "bobmiller86",
+      "lender": { "username": "bobmiller86", "firstname": "Bob", "lastname": "Miller", "email": "bobmiller86@gmail.com" },
       "distance": "0.8 mi",
       "images": ["./assets/exploding_kittens/1.png", "./assets/exploding_kittens/2.png", "./assets/exploding_kittens/3.png"],
       "game": "Exploding Kittens",
@@ -36,11 +36,11 @@
       "minPlayers": "2",
       "maxPlayers": "5",
       "description": "Exploding Kittens is a highly strategic kitty-powered version of Russian Roulette.",
-      "genre": ["Humor", "Casual"]
+      "tags": ["Humor", "Casual"]
     },
 	"3":
     {
-      "lender": "katemartin37",
+      "lender": { "username": "katemartin37", "firstname": "Kate", "lastname": "Martin", "email": "katemartin37@gmail.com" },
       "distance": "0.3 mi",
       "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
       "game": "Catan",
@@ -48,91 +48,7 @@
       "rating": "3",
       "minPlayers": "3",
       "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
-      "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    }, 
-    "4": {
-      "lender": "katemartin37",
-      "distance": "0.3 mi",
-      "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
-      "game": "Catan",
-      "id":3,
-      "rating": "3",
-      "minPlayers": "3",
-      "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
-      "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    }, 
-    "5": {
-      "lender": "katemartin37",
-      "distance": "0.3 mi",
-      "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
-      "game": "Catan",
-      "id":3,
-      "rating": "3",
-      "minPlayers": "3",
-      "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
-      "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    },
-    "6": {
-      "lender": "katemartin37",
-      "distance": "0.3 mi",
-      "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
-      "game": "Catan",
-      "id":3,
-      "rating": "3",
-      "minPlayers": "3",
-      "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
-      "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    },
-    "7": {
-      "lender": "katemartin37",
-      "distance": "0.3 mi",
-      "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
-      "game": "Catan",
-      "id":3,
-      "rating": "3",
-      "minPlayers": "3",
-      "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
-      "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    },
-    "8": {
-      "lender": "katemartin37",
-      "distance": "0.3 mi",
-      "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
-      "game": "Catan",
-      "id":3,
-      "rating": "3",
-      "minPlayers": "3",
-      "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
-      "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    }, 
-    "9": {
-      "lender": "katemartin37",
-      "distance": "0.3 mi",
-      "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
-      "game": "Catan",
-      "id":3,
-      "rating": "3",
-      "minPlayers": "3",
-      "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
-      "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    }, 
-    "10": {
-      "lender": "katemartin37",
-      "distance": "0.3 mi",
-      "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
-      "game": "Catan",
-      "id":3,
-      "rating": "3",
-      "minPlayers": "3",
-      "maxPlayers": "5",
-      "genre": ["Strategy", "Casual"],
+      "tags": ["Strategy", "Casual"],
       "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
     }
 }

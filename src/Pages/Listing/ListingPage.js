@@ -22,8 +22,7 @@ const ListingPage = () => {
         <RequestModal 
           open={isModalOpen} 
           setIsModalOpen={setIsModalOpen}
-          id={id}
-          data={data} 
+          game={listing} 
         />
         <Grid>
           <Grid.Row style={{ textAlign: "center"}}>
@@ -46,7 +45,7 @@ const ListingPage = () => {
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
             <Header size="small">
               Tags:
-              {listing.genre.map(g => <Label content={g} />)}
+              {listing.tags.map(g => <Label content={g} />)}
             </Header>
           </Grid.Row>
           <Feed>
@@ -57,10 +56,10 @@ const ListingPage = () => {
               <Feed.Label image='./assets/images/default.jpg' />
               <Feed.Content>
                 <Feed.Summary>
-                  John Smith<br />
-                  <Feed.Date content='johnsmith335' />
+                  {listing.lender.firstname} {listing.lender.lastname}<br />
+                  <Feed.Date content={listing.lender.username} />
                   <br />
-                  <Rating defaultRating={3} maxRating={5} disabled />
+                  <Rating defaultRating={listing.rating} maxRating={5} disabled />
                 </Feed.Summary>
               </Feed.Content>
             </Feed.Event>

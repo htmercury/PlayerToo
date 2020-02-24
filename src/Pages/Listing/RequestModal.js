@@ -1,7 +1,8 @@
 import React from 'react';
-import { Modal, Grid, Button, Image, Icon, Dropdown } from 'semantic-ui-react';
+import { Modal, Grid, Button, Image, Icon, Dropdown, Header } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
-const RequestModal = ({ open, setIsModalOpen, data, id }) => {
+const RequestModal = ({ open, setIsModalOpen, game }) => {
   
   return (
     <Modal 
@@ -9,7 +10,12 @@ const RequestModal = ({ open, setIsModalOpen, data, id }) => {
       open={open} 
       onClose={() => setIsModalOpen(false)}
     >
-      <Modal.Header content="Request Boardgame" />
+      <Modal.Header>
+        <Header as="h3">
+          Request Boardgame 
+          <Header.Subheader content={game.game} />
+        </Header>
+      </Modal.Header>
       <Modal.Content>
         <Grid>
           <Grid.Row>
@@ -18,13 +24,13 @@ const RequestModal = ({ open, setIsModalOpen, data, id }) => {
             </Grid.Column>
             <Grid.Column width={12}>
             <Grid.Row style={{fontWeight: 'bold'}}>
-                  John Doe
+                {game.lender.firstname} {game.lender.lastname}
               </Grid.Row>
               <Grid.Row style={{color:'grey'}}>
-                  {data[id]['lender']}
+                  {game.lender.username}
               </Grid.Row>
               <Grid.Row>
-                <Icon name="star" />{data[id].rating}
+                <Icon name="star" />{game.rating}
               </Grid.Row>
             </Grid.Column>
           </Grid.Row>
@@ -35,7 +41,7 @@ const RequestModal = ({ open, setIsModalOpen, data, id }) => {
           </Grid.Row>
           <Grid.Row style={{paddingTop:"10", paddingBottom:"10"}}>
             <Grid.Column>
-              <Icon name="envelope"/> {data[id]['lender']+'@u.northwestern.edu' /* TODO: GET FROM DATABASE */}
+              <Icon name="envelope"/> {game.lender.email}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -62,7 +68,8 @@ const RequestModal = ({ open, setIsModalOpen, data, id }) => {
       </Modal.Content>
       <Modal.Actions>
         <Button 
-          onClick={() => setIsModalOpen(false)}
+          as={Link}
+          to={`/confirm/${game.id}`}
           color="yellow" 
           content="Submit Request" 
           fluid
