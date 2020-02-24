@@ -54,7 +54,7 @@ const PageHeader = () => {
       style={{ backgroundColor: "orange", textAlign: "center" }}
       fluid="true"
     >
-      <Header content="Marketplace" size="large" />
+      <Header content="Player, Too" size="large" />
     </Segment>
   );
 };
