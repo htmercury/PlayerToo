@@ -30,7 +30,7 @@ const Games = ({ data }) => {
               onClick={() => setIsModalOpen(game.id)} 
               basic
               color="yellow" 
-              content="Rent Now" 
+              content="Borrow Now" 
               fluid 
             />
           </Card.Content>
