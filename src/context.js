@@ -14,7 +14,7 @@ const StateProvider = ({ children }) => {
     db.on('value', handleData, error => alert(error));
     return () => { db.off('value', handleData); };
   }, []);
-
+  console.log(data)
   const api = { data };
   return <Provider value={api}>{children}</Provider>;
 };

@@ -32,13 +32,16 @@ const HomePage = () => {
         <PageHeader />
       </Sticky>
       <Container>
-        <Grid padded textAlign="center">
+        <Grid columns={1} padded>
           <Grid.Row>
-            <Input onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search..." />
-            <Button style={{ marginLeft: "20px"}}  basic content="Filter" /> 
+            <Grid.Column>
+              <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search..." />
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Games data={relevantGames} />
+            <Grid.Column>
+              <Games data={relevantGames} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>
@@ -54,7 +57,7 @@ const PageHeader = () => {
       style={{ backgroundColor: "orange", textAlign: "center" }}
       fluid="true"
     >
-      <Header content="Marketplace" size="large" />
+      <Header inverted content="Player, Too" size="large" />
     </Segment>
   );
 };
