@@ -4,7 +4,7 @@
       "distance": "1.1 mi",
       "images": ["./assets/monopoly/1.png", "./assets/monopoly/2.png", "./assets/monopoly/3.png"],
       "game": "Monopoly",
-      "id":0,
+      "id": 0,
       "rating": "5",
       "lender": { "username": "johnsmith34", "firstname": "John", "lastname": "Smith", "email": "johnsmith34@gmail.com" },
       "minPlayers": "3",
@@ -18,7 +18,7 @@
       "distance": "2.3 mi",
       "images": ["./assets/cards_against_humanity/1.png","./assets/cards_against_humanity/2.png", "./assets/cards_against_humanity/3.png"],
       "game": "Cards Against Humanity",
-      "id":1,
+      "id": 1,
       "rating": "5",
       "minPlayers": "5",
       "maxPlayers": "10",
@@ -31,7 +31,7 @@
       "distance": "0.8 mi",
       "images": ["./assets/exploding_kittens/1.png", "./assets/exploding_kittens/2.png", "./assets/exploding_kittens/3.png"],
       "game": "Exploding Kittens",
-      "id":2,
+      "id": 2,
       "rating": "4",
       "minPlayers": "2",
       "maxPlayers": "5",
@@ -44,11 +44,63 @@
       "distance": "0.3 mi",
       "images": ["./assets/catan/1.png", "./assets/catan/2.png", "./assets/catan/3.png"],
       "game": "Catan",
-      "id":3,
+      "id": 3,
       "rating": "3",
       "minPlayers": "3",
       "maxPlayers": "5",
       "tags": ["Strategy", "Casual"],
       "description":"In Catan, players are recent immigrants to the newly populated island of Catan."
-    }
+    }, 
+    "4":
+      {
+        "lender": { "username": "karanbhasin37", "firstname": "Karan", "lastname": "Bhasin", "email": "karanbhasin37@gmail.com" },
+        "distance": "0.3 mi",
+        "images": ["./assets/ticket_to_ride/1.png", "./assets/ticket_to_ride/2.png", "./assets/ticket_to_ride/3.png"],
+        "game": "Ticket to Ride",
+        "id": 4,
+        "rating": "3",
+        "minPlayers": "3",
+        "maxPlayers": "5",
+        "tags": ["Strategy", "Casual"],
+        "description":"Ticket to Ride is a cross-country train adventure in which players collect and play matching train cards to claim railway routes connecting cities throughout North America. The longer the routes, the more points they earn."
+      },
+    "5":
+      {
+        "lender": { "username": "demitradelf37", "firstname": "Demitra", "lastname": "Del Fiacco", "email": "demitradelf37@gmail.com" },
+        "distance": "0.2 mi",
+        "images": ["./assets/scrabble/1.png", "./assets/scrabble/2.png", "./assets/scrabble/3.png"],
+        "game": "Scrabble",
+        "id": 5,
+        "rating": "3",
+        "minPlayers": "3",
+        "maxPlayers": "5",
+        "tags": ["Strategy", "Casual"],
+        "description": "Scrabble is a word game in which two to four players score points by placing tiles, each bearing a single letter, onto a game board divided into a 15×15 grid of squares."
+      },
+    "6":
+      {
+        "lender": { "username": "derrickrose1", "firstname": "Derrick", "lastname": "Rose", "email": "derrickrose1@gmail.com" },
+        "distance": "1.3 mi",
+        "images": ["./assets/clue/1.png", "./assets/clue/2.png", "./assets/clue/3.png"],
+        "game": "Clue",
+        "id": 6,
+        "rating": "3",
+        "minPlayers": "3",
+        "maxPlayers": "5",
+        "tags": ["Strategy", "Casual"],
+        "description": "The classic detective game! In Clue, players move from room to room in a mansion to solve the mystery of: who done it, with what, and where?"
+      },
+    "7":
+      {
+        "lender": { "username": "kirajohnson24", "firstname": "Kira", "lastname": "Johnson", "email": "kirajohnson24@gmail.com" },
+        "distance": "0.8 mi",
+        "images": ["./assets/yahtzee/1.png", "./assets/yahtzee/2.png", "./assets/yahtzee/3.png"],
+        "game": "Yahtzee",
+        "id": 7,
+        "rating": "3",
+        "minPlayers": "3",
+        "maxPlayers": "5",
+        "tags": ["Strategy", "Casual"],
+        "description": "The classic dice game gets a sharp, high-roller look with casino-cool dice and a sleek shaker that doubles as a storage case. So, how will you roll? Will you stick with a straight, hustle for a full house, or risk it all for a 5-of-a kind Yahtzee score? Go ahead, roll with it!"
+      }
 }
