@@ -8,6 +8,18 @@ In the src directory, you can run:
 
 Scrapes a new batch of board games data from board game atlas API and dumps the data into public/board_games.json.
 
+### `node -r esm gen-mock-users.js`
+
+Generates a new set of users using mock data and dumps the data into public/users.json.
+
+### `node -r esm gen-mock-listings.js`
+
+Generates a new bunch of listings by matching current game_ids and user_ids found in users.json and board_games.json and dumps data into public/listings.json
+
+### `node -r esm migrate-data-db.js`
+
+Migrate generated json files to the fire-store database.
+
 In the project directory, you can run:
 
 ### `npm start`
