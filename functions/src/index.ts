@@ -38,7 +38,7 @@ app.get('/users/:userId', (req, res) => {
 app.get('/users', (req, res) => {
     firebaseHelper.firestore
         .backup(db, usersCollection)
-        .then((data : any) => res.status(200).send(data['Users']))
+        .then((data : any) => res.status(200).send(Object.values(data['Users'])))
         .catch(error => res.status(400).send(`Cannot get users: ${error}`));
 });
 

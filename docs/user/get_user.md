@@ -4,7 +4,7 @@ Used to retrieve a specific user from the database.
 
 **URL** : `/api/v1/users/:userId`
 
-**URL Parameters**: `userId=[string]` where `userId` is the ID of the board user on the server.
+**URL Parameters**: `userId=[string]` where `userId` is the ID of the user on the server.
 
 **Method** : `GET`
 
