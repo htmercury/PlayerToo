@@ -123,3 +123,32 @@ app.get('/games/:gameId', (req, res) => {
         .then(doc => res.status(200).send(doc))
         .catch(error => res.status(400).send(`Cannot get game: ${error}`));
 });
+
+// View up to 100 games
+app.get('/games', async (req, res) => {
+    try {
+        const queryName = req.query.limit;
+        let queryLimit = req.query.limit;
+
+        if (queryLimit === undefined) {
+            queryLimit = 100; // default value
+        }
+
+        let query = db
+            .collection(gamesCollection)
+            .orderBy('id', 'asc')
+            .limit(queryLimit);
+
+        if (queryName !== undefined) {
+            query = query.where('name', '>=', queryName);
+        }
+
+        const docSnaps = await query.get();
+        const gamesData: any[] = [];
+        docSnaps.forEach(doc => gamesData.push(doc.data()));
+
+        res.status(200).send(gamesData);
+    } catch (error) {
+        res.status(400).send(`Cannot get listings: ${error}`);
+    }
+});
