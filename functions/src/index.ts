@@ -143,7 +143,6 @@ app.get('/games', async (req, res) => {
             query = db
                 .collection(gamesCollection)
                 .where('name', '>=', queryName)
-                .orderBy('id', 'asc')
                 .limit(queryLimit);
         } else {
             query = db
@@ -158,6 +157,6 @@ app.get('/games', async (req, res) => {
 
         res.status(200).send(gamesData);
     } catch (error) {
-        res.status(400).send(`Cannot get listings: ${error}`);
+        res.status(400).send(`Cannot get games: ${error}`);
     }
 });
