@@ -131,10 +131,15 @@ app.get('/games', async (req, res) => {
         let queryLimit = req.query.limit;
 
         if (queryLimit === undefined) {
-            queryLimit = 100; // default value
+            queryLimit = 20; // default value
         } else {
             // parse string to int
             queryLimit = parseInt(queryLimit);
+
+            // limit is 100
+            if (queryLimit > 100) {
+                queryLimit = 100;
+            }
         }
 
         let query;
