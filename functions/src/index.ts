@@ -45,46 +45,44 @@ app.get('/users', (req, res) => {
 // LISTING ROUTES
 
 // View a listing
-app.get('/listings/:listingId', (req, res) => {
-    (async () => {
-        try {
-            const listingDoc = await db
-                .collection(listingsCollection)
-                .doc(req.params.listingId)
+app.get('/listings/:listingId', async (req, res) => {
+    try {
+        const listingDoc = await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .get();
+        const listing = listingDoc.data();
+
+        if (listing !== undefined) {
+            // joins
+            const gameDoc = await db
+                .collection('BoardGames')
+                .doc(listing.game_id)
                 .get();
-            const listing = listingDoc.data();
+            listing.game = gameDoc.data();
 
-            if (listing !== undefined) {
-                // joins
-                const gameDoc = await db
-                    .collection('BoardGames')
-                    .doc(listing.game_id)
-                    .get();
-                listing.game = gameDoc.data();
-    
-                const lenderDoc = await db
-                    .collection('Users')
-                    .doc(listing.lender_id)
-                    .get();
-                listing.lender = lenderDoc.data();
-            }
-
-            res.status(200).send(listing);
-        } catch (error) {
-            res.status(400).send(`Cannot get user: ${error}`);
+            const lenderDoc = await db
+                .collection('Users')
+                .doc(listing.lender_id)
+                .get();
+            listing.lender = lenderDoc.data();
         }
-    })();
+
+        res.status(200).send(listing);
+    } catch (error) {
+        res.status(400).send(`Cannot get user: ${error}`);
+    }
 });
 
-// View all listings
-app.get('/listings', (req, res) => {
-    (async () => {
-        try {
-        } catch (error) {
-            res.status(400).send(`Cannot get users: ${error}`);
-        }
-    })();
-});
+// // View all listings
+// app.get('/listings', (req, res) => {
+//     (async () => {
+//         try {
+//         } catch (error) {
+//             res.status(400).send(`Cannot get users: ${error}`);
+//         }
+//     })();
+// });
 
 // BOARD GAME ROUTES
 
