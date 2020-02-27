@@ -132,15 +132,24 @@ app.get('/games', async (req, res) => {
 
         if (queryLimit === undefined) {
             queryLimit = 100; // default value
+        } else {
+            // parse string to int
+            queryLimit = parseInt(queryLimit);
         }
 
-        let query = db
-            .collection(gamesCollection)
-            .orderBy('id', 'asc')
-            .limit(queryLimit);
+        let query;
 
         if (queryName !== undefined) {
-            query = query.where('name', '>=', queryName);
+            query = db
+                .collection(gamesCollection)
+                .where('name', '>=', queryName)
+                .orderBy('id', 'asc')
+                .limit(queryLimit);
+        } else {
+            query = db
+                .collection(gamesCollection)
+                .orderBy('id', 'asc')
+                .limit(queryLimit);
         }
 
         const docSnaps = await query.get();
