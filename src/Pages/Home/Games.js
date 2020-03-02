@@ -20,7 +20,7 @@ const Games = ({ data }) => {
               {game.lender.username} {<Icon style={{marginRight: "0px", marginLeft: "10px"}} name="star" />}{game.rating}
             </Card.Description>
           </Card.Content>
-          <Image.Group size="tiny">
+          <Image.Group size="tiny" style={{marginLeft:"10px"}}>
             <Image src={game.images[0]} />
             <Image src={game.images[1]} />
             <Image src={game.images[2]} />
