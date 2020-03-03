@@ -1,7 +1,7 @@
 import React, { useState, useContext, createRef } from 'react';
 import { AppState } from '../../context';
 import Listings from './Listings';
-import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon } from 'semantic-ui-react';
+import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon, IconGroup } from 'semantic-ui-react';
 
 
 
@@ -30,9 +30,7 @@ function handleMessage(input) {
 
   return(
       <div>
-      <Sticky> 
-          <PageHeader />
-      </Sticky>
+      
       <Container>
       <Grid columns={1} padded>
         <Grid.Row>
@@ -47,6 +45,9 @@ function handleMessage(input) {
         </Grid.Row>
       </Grid>
     </Container>
+    <Sticky> 
+          <PageFooter />
+    </Sticky>
     </div>
 
       );
@@ -54,20 +55,18 @@ function handleMessage(input) {
 
 };
 
-const PageHeader = () => {
+const PageFooter = () => {
     return (
-      <Segment
-        basic
-        attached='top'
-        style={{ backgroundColor: "orange", textAlign: "center" }}
-        fluid="true"
+      <div 
+      basic
+      attached='bottom'
+      style={{ textAlign: "center" }}
+      fluid="true"
       >
-        <Header inverted content="My Listings
-        " icon="list" size="large" >
-        </Header>
 
-
-      </Segment>
+        <Icon name="add" bordered circular outline size="huge" style={{ color: "orange", outline:"true" }} >
+        </Icon>
+       </div>
     );
   };
   export default HomePageLender;
