@@ -26,101 +26,74 @@ const AddListing = () => {
   }
 
   return (
-    <div ref={contextRef}>
-      <Sticky context={contextRef}>
-        <PageHeader />
-      </Sticky>
-      <br />
-      <Container>
-        <Grid>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }} centered >
-            <Header
-              as="h2"
-              content="Please select your boardgame from the list below" />
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={10}>
-              <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search" />
-            </Grid.Column>
-            <Grid.Column width={6}>
-              <Button
-                style={{ backgroundColor: "orange" }}
-                onClick={() => setIsModalOpen(true)}
-                content="Filter"
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Game_List data={relevantGames} />
-          <Grid.Row>
+    <Container>
+      <Grid>
+        <Grid.Row style={{ margin: "0px 10px 0px 10px " }} centered >
+          <Header
+            as="h2"
+            content="Please select your boardgame from the list below" />
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={10}>
+            <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search" />
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <Button
+              style={{ backgroundColor: "orange" }}
+              onClick={() => setIsModalOpen(true)}
+              content="Filter"
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Game_List data={relevantGames} />
+        <Grid.Row>
 
-          </Grid.Row>
-        </Grid>
-        <Modal
-          closeIcon
-          open={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        >
-          <Modal.Header>
-            <Header as="h3">
-              Filter search:
-              </Header>
-          </Modal.Header><Modal.Content centered>
-            <Grid padded="horizontally">
-              <Grid.Row>
-                <Button.Group>
-                  <Button>A</Button>
-                  <Button.Or />
-                  <Button>B</Button>
-                  <Button.Or />
-                  <Button>C</Button>
-                </Button.Group>
-              </Grid.Row>
-              <Grid.Row>
-                <Button.Group>
-                  <Button>A</Button>
-                  <Button.Or />
-                  <Button>B</Button>
-                  <Button.Or />
-                  <Button>C</Button>
-                </Button.Group>
-              </Grid.Row>
-              <Grid.Row>
-                <Button.Group>
-                  <Button>A</Button>
-                  <Button.Or />
-                  <Button>B</Button>
-                  <Button.Or />
-                  <Button>C</Button>
-                </Button.Group>
-              </Grid.Row>
-            </Grid>
-          </Modal.Content>
-        </Modal>
-      </Container>
-    </div>
+        </Grid.Row>
+      </Grid>
+      <Modal
+        closeIcon
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <Modal.Header>
+          <Header as="h3">
+            Filter search:
+            </Header>
+        </Modal.Header><Modal.Content centered>
+          <Grid padded="horizontally">
+            <Grid.Row>
+              <Button.Group>
+                <Button>A</Button>
+                <Button.Or />
+                <Button>B</Button>
+                <Button.Or />
+                <Button>C</Button>
+              </Button.Group>
+            </Grid.Row>
+            <Grid.Row>
+              <Button.Group>
+                <Button>A</Button>
+                <Button.Or />
+                <Button>B</Button>
+                <Button.Or />
+                <Button>C</Button>
+              </Button.Group>
+            </Grid.Row>
+            <Grid.Row>
+              <Button.Group>
+                <Button>A</Button>
+                <Button.Or />
+                <Button>B</Button>
+                <Button.Or />
+                <Button>C</Button>
+              </Button.Group>
+            </Grid.Row>
+          </Grid>
+        </Modal.Content>
+      </Modal>
+    </Container>
   );
 };
 
-const PageHeader = () => (
-  <Segment
-    basic
-    attached='top'
-    style={{ backgroundColor: "orange" }}
-    fluid="true"
-    centered
-    textAlign="center"
-  >
-    <Header inverted size="large" color="black">
-      <Button
-        style={{ backgroundColor: "orange" }}
-        icon="arrow left"
-        as={Link}
-        to='/'
-        floated="left"
-      />
-      Add New Listing
-    </Header>
-  </Segment>
-);
 
 export default AddListing;
