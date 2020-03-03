@@ -8,7 +8,7 @@ const Games = ({ data }) => {
 
   return (
     <Card.Group itemsPerRow={1}>
-      {data.map(game => 
+      {data.slice(0,4).map(game => 
         <Card key={game.id}>
           <Card.Content as={Link} to={`/listings/${game.id}`}>
             <Header style={{fontWeight: "lighter", fontSize: "12px"}} floated='right' content={
@@ -16,7 +16,7 @@ const Games = ({ data }) => {
             } />
             <Card.Header content={game.game} />
             <Card.Description style={{ color: "grey", fontWeight: "bold", fontSize: "12px" }}>
-              New Loan Requests { <Icon style={{marginRight: "0px", marginLeft: "10px", color:"orange"}} name="circle" />}{game.lender.requests}
+            {game.lender.requests}  New Loan Requests { <Icon style={{marginRight: "0px", marginLeft: "10px", color:"orange"}} name="circle" />}{game.lender.requests}
             </Card.Description>
           </Card.Content>
           <Image.Group size="tiny" style={{marginLeft:"10px"}}>
@@ -29,7 +29,7 @@ const Games = ({ data }) => {
               onClick={() => setIsModalOpen(game.id)} 
               basic
               color="yellow" 
-              content="Borrow Now" 
+              content= {game.onLoan ? "See Status" : "See Requests"} 
               fluid 
             />
           </Card.Content>
