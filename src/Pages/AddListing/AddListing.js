@@ -4,16 +4,15 @@ import Game_List from './GameOptions'
 import { useParams, Link } from 'react-router-dom';
 import { Grid, Feed, Rating, Segment, Image, Input, Button, Header, Label, Container, Sticky, GridRow, Modal } from 'semantic-ui-react';
 
-const example_data = ["Aztecs", "Bang", "Cards Against Humanity", "Catan", "Risk", "Explaoding Kittens", "Soma", "Undercover"]
-
 const AddListing = () => {
-  const appState = useContext(AppState);
-  const { data } = appState;
+  const state = useContext(AppState);
+  const { data } = state;
   const contextRef = createRef();
-  const { id } = useParams();
-  const listing = data[id];
   const [isModalOpen, setIsModalOpen] = useState(null);
-  const [relevantGames, setRelevantGames]= useState(example_data);
+
+  // Using the same data as listings for now
+  const [relevantGames, setRelevantGames]= useState(data);
+  console.log(relevantGames)
   const [searched, setSearched] = useState("");
 
   function handleMessage(input) {

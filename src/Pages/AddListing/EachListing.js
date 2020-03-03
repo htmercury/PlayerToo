@@ -5,9 +5,14 @@ import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, S
 
 const EachListing = () => {
   const appState = useContext(AppState);
+
+  // Just using the each listing database. Need to change when integrating backend.
+
   const { data } = appState;
+  console.log(data)
   const contextRef = createRef();
   const { id } = useParams();
+  console.log(id)
   const listing = data[id];
   console.log(data[id])
 

@@ -8,7 +8,8 @@ const ListingPage = () => {
   const appState = useContext(AppState);
   const { data } = appState;
   const contextRef = createRef();
-  const { id } = useParams(); 
+  const { id } = useParams();
+  console.log(id);
   const listing = data[id];
 
   const [isModalOpen, setIsModalOpen] = useState(false);

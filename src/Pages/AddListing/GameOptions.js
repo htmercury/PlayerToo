@@ -7,14 +7,14 @@ import AddListing from './AddListing';
 const Game_List = ({ data }) => {
 
     function Add_Listing (game){
-        console.log("Added the listing to the databse " + game);
+        console.log("Added the listing to the databse " + game.id);
     //Code to add listing to the databse
     }
 
     return (
-        <Card.Group itemsPerRow={1} as={Link} to={'../firestore/addlisting/eachlisting'}>
+        <Card.Group itemsPerRow={1}>
             {data.map(game =>
-                <Card fluid header={game} onClick={() => Add_Listing(game)}>
+                <Card key={game.id} fluid header={game.game} onClick={() => Add_Listing(game)} as={Link} to={`../firestore/addlisting/${game.id}`}>
                 </Card>
             )}
         </Card.Group>
