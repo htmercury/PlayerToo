@@ -4,7 +4,7 @@ import Game_List from './GameOptions'
 import { useParams, Link } from 'react-router-dom';
 import { Grid, Feed, Rating, Segment, Image, Input, Button, Header, Label, Container, Sticky, GridRow, Modal } from 'semantic-ui-react';
 
-const example_data=["Aztecs", "Bang", "Cards Against Humanity", "Catan", "Risk"]
+const example_data = ["Aztecs", "Bang", "Cards Against Humanity", "Catan", "Risk", "Explaoding Kittens", "Soma", "Undercover"]
 
 const AddListing = () => {
   const appState = useContext(AppState);
@@ -13,19 +13,16 @@ const AddListing = () => {
   const { id } = useParams();
   const listing = data[id];
   const [isModalOpen, setIsModalOpen] = useState(null);
-
+  const [relevantGames, setRelevantGames]= useState(example_data);
   const [searched, setSearched] = useState("");
 
   function handleMessage(input) {
     setSearched(input.target.value);
-    console.log("this is searched")
-    console.log(searched);
     updateData(input.target.value);
   }
   function updateData(searched) {
-    console.log("reached updateData")
-    const temp = data;
-    // Do something with the data here
+    // Filter data here
+    console.log("Updated search.")
   }
 
   return (
@@ -33,7 +30,7 @@ const AddListing = () => {
       <Sticky context={contextRef}>
         <PageHeader />
       </Sticky>
-      <br/>
+      <br />
       <Container>
         <Grid>
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }} centered >
@@ -53,16 +50,52 @@ const AddListing = () => {
               />
             </Grid.Column>
           </Grid.Row>
-          <Game_List data={example_data}/>
+          <Game_List data={relevantGames} />
           <Grid.Row>
-            
+
           </Grid.Row>
         </Grid>
-        <Modal 
-      closeIcon
-      open={isModalOpen} 
-      onClose={() => setIsModalOpen(false)}
-    ></Modal>
+        <Modal
+          closeIcon
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
+          <Modal.Header>
+            <Header as="h3">
+              Filter search:
+              </Header>
+          </Modal.Header><Modal.Content centered>
+            <Grid padded="horizontally">
+              <Grid.Row>
+                <Button.Group>
+                  <Button>A</Button>
+                  <Button.Or />
+                  <Button>B</Button>
+                  <Button.Or />
+                  <Button>C</Button>
+                </Button.Group>
+              </Grid.Row>
+              <Grid.Row>
+                <Button.Group>
+                  <Button>A</Button>
+                  <Button.Or />
+                  <Button>B</Button>
+                  <Button.Or />
+                  <Button>C</Button>
+                </Button.Group>
+              </Grid.Row>
+              <Grid.Row>
+                <Button.Group>
+                  <Button>A</Button>
+                  <Button.Or />
+                  <Button>B</Button>
+                  <Button.Or />
+                  <Button>C</Button>
+                </Button.Group>
+              </Grid.Row>
+            </Grid>
+          </Modal.Content>
+        </Modal>
       </Container>
     </div>
   );
@@ -72,7 +105,7 @@ const PageHeader = () => (
   <Segment
     basic
     attached='top'
-    style={{ backgroundColor: "orange"}}
+    style={{ backgroundColor: "orange" }}
     fluid="true"
     centered
     textAlign="center"
