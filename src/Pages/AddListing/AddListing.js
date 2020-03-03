@@ -1,54 +1,53 @@
 import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
-import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
+import { Grid, Feed, Rating, Segment, Image, Input, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
 
 const AddListing = () => {
   const appState = useContext(AppState);
   const { data } = appState;
   const contextRef = createRef();
-  const { id } = useParams(); 
+  const { id } = useParams();
   const listing = data[id];
 
-  
+  const [searched, setSearched] = useState("");
+
+  function handleMessage(input) {
+    setSearched(input.target.value);
+    console.log("this is searched")
+    console.log(searched);
+    updateData(input.target.value);
+  }
+  function updateData(searched) {
+    console.log("reached updateData")
+    const temp = data;
+    // Do something with the data here
+  }
+
   return (
     <div ref={contextRef}>
       <Sticky context={contextRef}>
         <PageHeader />
       </Sticky>
       <Container>
-
         <Grid>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
-            <Header>
- 
-              <Header.Subheader
+          <br />
+          <Grid.Row style={{ margin: "0px 10px 0px 10px " }} centered >
+            <Header
+              as="h2"
+              content="Please select your boardgame from the list below" />
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={10}>
+              <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search..." />
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <Button
+                style={{ backgroundColor: "orange" }}
 
-                style={{ fontStyle: "italic", color: "black" }}
+                content="Filter"
               />
-              </Header>
-          </Grid.Row>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
-            <Header size="small">
-              Tags:
-
-            </Header>
-          </Grid.Row>
-          <Feed>
-            <Header size="small">
-              Owner
-            </Header>
-            <Feed.Event>
-              <Feed.Label image='./assets/images/default.jpg' />
-              <Feed.Content>
-              </Feed.Content>
-            </Feed.Event>
-          </Feed>
-          <Grid.Row style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>
@@ -60,16 +59,17 @@ const PageHeader = () => (
   <Segment
     basic
     attached='top'
-    style={{ backgroundColor: "orange"}}
+    style={{ backgroundColor: "orange" }}
     fluid="true"
   >
-    <Header content="" size="large">
-      <Button 
-        style={{ backgroundColor: "orange"}}
-        icon="arrow left" 
+    <Header size="large">
+      <Button
+        style={{ backgroundColor: "orange" }}
+        icon="arrow left"
         as={Link}
         to='/'
       />
+      Add New Listing
     </Header>
   </Segment>
 );
