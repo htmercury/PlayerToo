@@ -1,7 +1,10 @@
 import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
+import Game_List from './GameOptions'
 import { useParams, Link } from 'react-router-dom';
-import { Grid, Feed, Rating, Segment, Image, Input, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
+import { Grid, Feed, Rating, Segment, Image, Input, Button, Header, Label, Container, Sticky, GridRow, Modal } from 'semantic-ui-react';
+
+const example_data=["Aztecs", "Bang", "Cards Against Humanity", "Catan", "Risk"]
 
 const AddListing = () => {
   const appState = useContext(AppState);
@@ -9,6 +12,7 @@ const AddListing = () => {
   const contextRef = createRef();
   const { id } = useParams();
   const listing = data[id];
+  const [isModalOpen, setIsModalOpen] = useState(null);
 
   const [searched, setSearched] = useState("");
 
@@ -29,9 +33,9 @@ const AddListing = () => {
       <Sticky context={contextRef}>
         <PageHeader />
       </Sticky>
+      <br/>
       <Container>
         <Grid>
-          <br />
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }} centered >
             <Header
               as="h2"
@@ -39,17 +43,26 @@ const AddListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={10}>
-              <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search..." />
+              <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search" />
             </Grid.Column>
             <Grid.Column width={6}>
               <Button
                 style={{ backgroundColor: "orange" }}
-
+                onClick={() => setIsModalOpen(true)}
                 content="Filter"
               />
             </Grid.Column>
           </Grid.Row>
+          <Game_List data={example_data}/>
+          <Grid.Row>
+            
+          </Grid.Row>
         </Grid>
+        <Modal 
+      closeIcon
+      open={isModalOpen} 
+      onClose={() => setIsModalOpen(false)}
+    ></Modal>
       </Container>
     </div>
   );
@@ -59,15 +72,18 @@ const PageHeader = () => (
   <Segment
     basic
     attached='top'
-    style={{ backgroundColor: "orange" }}
+    style={{ backgroundColor: "orange"}}
     fluid="true"
+    centered
+    textAlign="center"
   >
-    <Header size="large">
+    <Header inverted size="large" color="black">
       <Button
         style={{ backgroundColor: "orange" }}
         icon="arrow left"
         as={Link}
         to='/'
+        floated="left"
       />
       Add New Listing
     </Header>
