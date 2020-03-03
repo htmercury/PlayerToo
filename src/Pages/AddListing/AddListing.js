@@ -94,6 +94,7 @@ const AddListing = () => {
         </Modal.Content>
       </Modal>
     </Container>
+    </div>
   );
 };
 
