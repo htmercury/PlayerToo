@@ -26,11 +26,9 @@ const AddListing = () => {
 
   return (
     <div ref={contextRef}>
-      <Sticky context={contextRef}>
-        <PageHeader />
-      </Sticky>
-      <br />
+
       <Container>
+        <br />
         <Grid>
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }} centered >
             <Header
@@ -99,27 +97,5 @@ const AddListing = () => {
     </div>
   );
 };
-
-const PageHeader = () => (
-  <Segment
-    basic
-    attached='top'
-    style={{ backgroundColor: "orange" }}
-    fluid="true"
-    centered
-    textAlign="center"
-  >
-    <Header inverted size="large" color="black">
-      <Button
-        style={{ backgroundColor: "orange" }}
-        icon="arrow left"
-        as={Link}
-        to='/'
-        floated="left"
-      />
-      Add New Listing
-    </Header>
-  </Segment>
-);
 
 export default AddListing;

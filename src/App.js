@@ -23,8 +23,6 @@ function App() {
       <Route exact path="/firestore/users" render={() => <FireStoreUsersPage /> } />
       <Route exact path="/firestore/games" render={() => <FireStoreGamesPage /> } />
       <Route exact path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
-      <Route exact path="/firestore/addlisting" render={() => <AddListing/>} />
-      <Route exact path="/firestore/addlisting/:id" render={() => <EachListing/>} />
     </BrowserRouter>
     : null
   );
