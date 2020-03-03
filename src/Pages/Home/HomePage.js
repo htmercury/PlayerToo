@@ -57,7 +57,7 @@ const PageHeader = () => {
       style={{ backgroundColor: "orange", textAlign: "center" }}
       fluid="true"
     >
-      <Header inverted content="Player, Too" size="large" />
+      <Header inverted content="Player, Too" size="large" color="black"/>
     </Segment>
   );
 };
