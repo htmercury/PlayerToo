@@ -15,66 +15,70 @@ const ListingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   return (
-    <div ref={contextRef}>
-      <Sticky context={contextRef}>
-        <PageHeader />
-      </Sticky>
-      <Container>
-        <RequestModal 
-          open={isModalOpen} 
-          setIsModalOpen={setIsModalOpen}
-          game={listing} 
-        />
-        <Grid>
-          <Grid.Row style={{ textAlign: "center"}}>
-            <Image.Group size="small">
-              <Image src={listing.images[0]} />
-              <Image src={listing.images[1]} />
-              <Image src={listing.images[2]} />
-            </Image.Group>
-          </Grid.Row>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
-            <Header>
-              {listing.game}
-              <Header.Subheader
-                content={`${listing.minPlayers}-${listing.maxPlayers} Players`}
-                style={{ fontStyle: "italic", color: "black" }}
-              />
-              <Header.Subheader content={listing.description} />
-            </Header>
-          </Grid.Row>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
-            <Header size="small">
-              Tags:
-              {listing.tags.map(g => <Label content={g} />)}
-            </Header>
-          </Grid.Row>
-          <Feed>
-            <Header size="small">
-              Owner
-            </Header>
-            <Feed.Event>
-              <Feed.Label image='./assets/images/default.jpg' />
-              <Feed.Content>
-                <Feed.Summary>
-                  {listing.lender.firstname} {listing.lender.lastname}<br />
-                  <Feed.Date content={listing.lender.username} />
-                  <br />
-                  <Rating defaultRating={listing.rating} maxRating={5} disabled />
-                </Feed.Summary>
-              </Feed.Content>
-            </Feed.Event>
-          </Feed>
-          <Grid.Row style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-            <Button fluid color='yellow' onClick={() => setIsModalOpen(true)}>Borrow Now</Button>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </div>
+    <Container>
+      <RequestModal 
+        open={isModalOpen} 
+        setIsModalOpen={setIsModalOpen}
+        game={listing} 
+      />
+      <Grid columns={1} style={{ margin: "5px 10px 0px 10px " }}>
+        <Grid.Row>
+          <Button 
+            fluid 
+            color="yellow" 
+            content="Back to Listings" 
+            as={Link} to="/" 
+            icon='arrow left'
+          />
+        </Grid.Row>
+        <Grid.Row style={{ textAlign: "center"}}>
+          <Image.Group size="small">
+            <Image src={listing.images[0]} />
+            <Image src={listing.images[1]} />
+            <Image src={listing.images[2]} />
+          </Image.Group>
+        </Grid.Row>
+        <Grid.Row>
+          <Header>
+            {listing.game}
+            <Header.Subheader
+              content={`${listing.minPlayers}-${listing.maxPlayers} Players`}
+              style={{ fontStyle: "italic", color: "black" }}
+            />
+            <Header.Subheader content={listing.description} />
+          </Header>
+        </Grid.Row>
+        <Grid.Row>
+          <Header size="small">
+            Tags:
+            {listing.tags.map(g => <Label content={g} />)}
+          </Header>
+        </Grid.Row>
+        <Feed>
+          <Header size="small">
+            Owner
+          </Header>
+          <Feed.Event>
+            <Feed.Label image='./assets/images/default.jpg' />
+            <Feed.Content>
+              <Feed.Summary>
+                {listing.lender.firstname} {listing.lender.lastname}<br />
+                <Feed.Date content={listing.lender.username} />
+                <br />
+                <Rating defaultRating={listing.rating} maxRating={5} disabled />
+              </Feed.Summary>
+            </Feed.Content>
+          </Feed.Event>
+        </Feed>
+        <Grid.Row style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+          <Button fluid color='yellow' onClick={() => setIsModalOpen(true)}>Borrow Now</Button>
+        </Grid.Row>
+      </Grid>
+    </Container>
   );
 };
 
@@ -82,7 +86,7 @@ const PageHeader = () => (
   <Segment
     basic
     attached='top'
-    style={{ backgroundColor: "orange"}}
+    style={{ backgroundColor: "orange" }}
     fluid="true"
   >
     <Header content="" size="large">

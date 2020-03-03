@@ -6,6 +6,7 @@ const { Provider } = AppState;
 
 const StateProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
     const handleData = snap => {
@@ -15,7 +16,9 @@ const StateProvider = ({ children }) => {
     return () => { db.off('value', handleData); };
   }, []);
   console.log(data)
-  const api = { data };
+
+  const api = { data, setMenuVisible, menuVisible };
+
   return <Provider value={api}>{children}</Provider>;
 };
 

@@ -50,51 +50,50 @@ const AddListing = () => {
           <Game_List data={relevantGames} />
           <Grid.Row>
 
-          </Grid.Row>
-        </Grid>
-        <Modal
-          closeIcon
-          open={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        >
-          <Modal.Header>
-            <Header as="h3">
-              Filter search:
-              </Header>
-          </Modal.Header><Modal.Content centered>
-            <Grid padded="horizontally">
-              <Grid.Row>
-                <Button.Group>
-                  <Button>A</Button>
-                  <Button.Or />
-                  <Button>B</Button>
-                  <Button.Or />
-                  <Button>C</Button>
-                </Button.Group>
-              </Grid.Row>
-              <Grid.Row>
-                <Button.Group>
-                  <Button>A</Button>
-                  <Button.Or />
-                  <Button>B</Button>
-                  <Button.Or />
-                  <Button>C</Button>
-                </Button.Group>
-              </Grid.Row>
-              <Grid.Row>
-                <Button.Group>
-                  <Button>A</Button>
-                  <Button.Or />
-                  <Button>B</Button>
-                  <Button.Or />
-                  <Button>C</Button>
-                </Button.Group>
-              </Grid.Row>
-            </Grid>
-          </Modal.Content>
-        </Modal>
-      </Container>
-    </div>
+        </Grid.Row>
+      </Grid>
+      <Modal
+        closeIcon
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <Modal.Header>
+          <Header as="h3">
+            Filter search:
+            </Header>
+        </Modal.Header><Modal.Content centered>
+          <Grid padded="horizontally">
+            <Grid.Row>
+              <Button.Group>
+                <Button>A</Button>
+                <Button.Or />
+                <Button>B</Button>
+                <Button.Or />
+                <Button>C</Button>
+              </Button.Group>
+            </Grid.Row>
+            <Grid.Row>
+              <Button.Group>
+                <Button>A</Button>
+                <Button.Or />
+                <Button>B</Button>
+                <Button.Or />
+                <Button>C</Button>
+              </Button.Group>
+            </Grid.Row>
+            <Grid.Row>
+              <Button.Group>
+                <Button>A</Button>
+                <Button.Or />
+                <Button>B</Button>
+                <Button.Or />
+                <Button>C</Button>
+              </Button.Group>
+            </Grid.Row>
+          </Grid>
+        </Modal.Content>
+      </Modal>
+    </Container>
   );
 };
 
