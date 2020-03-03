@@ -8,6 +8,7 @@ import FireStoreListingsPage from './Pages/FireStoreExamples/FireStoreListingsPa
 import AddListing from './Pages/AddListing/AddListing';
 import { AppState } from './context';
 import { BrowserRouter, Route } from 'react-router-dom';
+import EachListing from './Pages/AddListing/EachListing';
 
 function App() {
   const appState = useContext(AppState);
@@ -23,6 +24,7 @@ function App() {
       <Route exact path="/firestore/games" render={() => <FireStoreGamesPage /> } />
       <Route exact path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
       <Route exact path="/firestore/addlisting" render={() => <AddListing/>} />
+      <Route exact path="/firestore/addlisting/eachlisting" render={() => <EachListing/>} />
     </BrowserRouter>
     : null
   );
