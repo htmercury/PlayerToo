@@ -1,7 +1,7 @@
 import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
-import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
+import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, Sticky, Input, GridRow, GridColumn } from 'semantic-ui-react';
 
 const EachListing = () => {
   const appState = useContext(AppState);
@@ -18,75 +18,59 @@ const EachListing = () => {
 
   return (
     <div ref={contextRef}>
-      <Sticky context={contextRef}>
-        <PageHeader />
-      </Sticky>
+
       <Container>
-        <Grid>
-          <Grid.Row style={{ textAlign: "center"}}>
-            <Image.Group size="small">
-            </Image.Group>
+        <Grid columns={1}>
+          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
+            <Image src={"./assets/monopoly/1.png"} />
           </Grid.Row>
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
             <Header>
-                gmae
-              <Header.Subheader
-                content={"3 Players"}
-                style={{ fontStyle: "italic", color: "black" }}
-              />
-              <Header.Subheader content="No Desciption" />
+              {listing.game}
+              
             </Header>
           </Grid.Row>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
-            <Header size="small">
-              Tags:
-            </Header>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <Header>
+              <Header.Subheader content="Players:" />
+              <Header.Subheader content={`${listing.minPlayers}-${listing.maxPlayers} Players`} style={{ fontStyle: "italic", color: "black" }}/>
+                </Header>
+                
+              </Grid.Column>
+              <Grid.Column width={8}>
+              <Header>
+              <Header.Subheader content="Game Time:" />
+              <Header.Subheader content="15 minutes" style={{ fontStyle: "italic", color: "black" }} />
+                </Header>
+              </Grid.Column>
           </Grid.Row>
-          <Feed>
-            <Header size="small">
-              Owner
+          <Grid.Row>
+          <Grid.Column>
+            <Header content="About"/>
+          <Header.Subheader content={listing.description} />
+          </Grid.Column>
+            </Grid.Row>
+
+          <Header size="medium">
+            What do borrowers need to know about your game?
             </Header>
-            <Feed.Event>
-              <Feed.Label image='./assets/images/default.jpg' />
-              <Feed.Content>
-                <Feed.Summary>
-                  Utkarsh Mishra<br />
-                  <Feed.Date content={"ut2k"} />
-                  <br />
-                  <Rating defaultRating={2} maxRating={5} disabled />
-                </Feed.Summary>
-              </Feed.Content>
-            </Feed.Event>
-          </Feed>
+          <Grid.Column>
+            <Input fluid placeholder="My game set is missing 3 cards etc." />
+          </Grid.Column>
           <Grid.Row style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}>
-            <Button fluid color='yellow'>Borrow Now</Button>
+            <Grid.Column>
+              <Button fluid color='yellow'>Add listing</Button>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>
     </div>
   );
 };
-
-const PageHeader = () => (
-  <Segment
-    basic
-    attached='top'
-    style={{ backgroundColor: "orange"}}
-    fluid="true"
-  >
-    <Header content="" size="large">
-      <Button 
-        style={{ backgroundColor: "orange"}}
-        icon="arrow left" 
-        as={Link}
-        to='/'
-      />
-    </Header>
-  </Segment>
-);
 
 export default EachListing;
