@@ -22,7 +22,7 @@ const EachListing = () => {
       <Container>
         <Grid columns={1}>
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
-            <Image src={"./assets/monopoly/1.png"} />
+            <Image src={"./assets/monoploy/1.png"} />
           </Grid.Row>
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
             <Header>
@@ -46,11 +46,21 @@ const EachListing = () => {
               </Grid.Column>
           </Grid.Row>
           <Grid.Row>
+            <Grid.Column>
+            <Header>
+              <Header.Subheader content="Ages:" />
+              <Header.Subheader content="7+" style={{ fontStyle: "italic", color: "black" }} />
+                </Header>
+                </Grid.Column>
+              </Grid.Row>
+          <Grid.Row>
           <Grid.Column>
             <Header content="About"/>
           <Header.Subheader content={listing.description} />
           </Grid.Column>
             </Grid.Row>
+            
+            
 
           <Header size="medium">
             What do borrowers need to know about your game?
