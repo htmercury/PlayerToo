@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import HomePage from './Pages/Home/HomePage';
+import HomePageLender from './Pages/Home/HomePageLender';
 import ListingPage from './Pages/Listing/ListingPage';
 import ConfirmationPage from './Pages/Confirm/ConfirmationPage';
 import FireStoreUsersPage from './Pages/FireStoreExamples/FireStoreUsersPage';
@@ -16,6 +17,7 @@ function App() {
     data.length !== 0 ? 
     <BrowserRouter>
       <Route exact path="/" render={() => <HomePage />} />
+      <Route exact path ="/lender/lenders" exact render={()=> <HomePageLender />} />
       <Route exact path="/:id" render={() => <ListingPage /> } />
       <Route exact path="/confirm/:id" render={() => <ConfirmationPage />} />
       <Route exact path="/firestore/users" render={() => <FireStoreUsersPage /> } />

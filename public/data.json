@@ -81,7 +81,7 @@
       {
         "lender": { "username": "derrickrose1", "firstname": "Derrick", "lastname": "Rose", "email": "derrickrose1@gmail.com" },
         "distance": "1.3 mi",
-        "images": ["./assets/clue/1.png", "./assets/clue/2.png", "./assets/clue/3.png"],
+        "images": [".assets/clue/1.png", "./assets/clue/2.png", "./assets/clue/3.png"],
         "game": "Clue",
         "id": 6,
         "rating": "3",
