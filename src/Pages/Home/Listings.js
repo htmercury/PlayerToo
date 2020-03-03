@@ -11,8 +11,8 @@ const Games = ({ data }) => {
       {data.slice(0,4).map(game => 
         <Card key={game.id}>
           <Card.Content as={Link} to={`/listings/${game.id}`}>
-            <Header style={{fontWeight: "lighter", fontSize: "12px"}} floated='right' content={
-              <Icon style={{marginRight: "0px", marginLeft: "10px", color:"orange"}} name="remove" />
+            <Header style={{fontWeight: "lighter", fontSize: "12px"}} floated='right' content={ !game.onLoan ? 
+              <Icon style={{marginRight: "0px", marginLeft: "10px", color:"orange"}} name="remove" /> : ""
             } />
             <Card.Header content={game.game} />
             <Card.Description style={{ color: "grey", fontWeight: "bold", fontSize: "12px" }}>
@@ -32,6 +32,18 @@ const Games = ({ data }) => {
               content= {game.onLoan ? "See Status of Loan" : "See Requests"} 
               fluid 
             />
+           
+            {game.onLoan ? 
+            <span> 
+             
+            <Button
+              onClick={() => setIsModalOpen(game.id)} 
+              basic
+              color="yellow" 
+              content= "See Requests"
+              fluid 
+            /> </span> : ""
+          }
           </Card.Content>
           <RequestModal open={isModalOpen===game.id} setIsModalOpen={() => setIsModalOpen(false)} game={game} />
         </Card>
