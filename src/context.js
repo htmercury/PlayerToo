@@ -61,9 +61,11 @@ const StateProvider = ({ children }) => {
   console.log("this is mylistings for Silva91_^")
   console.log(myListings);
 
+  const [usersListings, setUsersListings] = useState(myListings);
+
   console.log(marketplaceListings);
 
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings, myListings, games, options };
+  const api = { data, setMenuVisible, menuVisible, marketplaceListings, usersListings, setUsersListings, games, options };
   return <Provider value={api}>{children}</Provider>;
 };
 

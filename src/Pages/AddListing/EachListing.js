@@ -2,6 +2,7 @@ import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
 import { Grid, Image, Button, Header, Container, Input } from 'semantic-ui-react';
+import AddListing from './AddListing';
 
 const EachListing = () => {
   const appState = useContext(AppState);
@@ -14,6 +15,7 @@ const EachListing = () => {
   console.log(id)
   const listing = games[games.findIndex(g => g.id === id)];
 
+  function Add(){}
   return (
     <div ref={contextRef}>
 
@@ -79,7 +81,6 @@ const EachListing = () => {
           </Grid.Column>
           </Grid.Row>
             
-            
 
           <Header size="medium">
             What do borrowers need to know about your game?
@@ -93,7 +94,7 @@ const EachListing = () => {
             alignItems: "center",
           }}>
             <Grid.Column>
-              <Button fluid color='yellow'>Add listing</Button>
+              <Button fluid color='yellow' onClick={() => Add()}>Add listing</Button>
               <br />
             </Grid.Column>
           </Grid.Row>
