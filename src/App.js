@@ -1,6 +1,6 @@
 import React, { useContext, createRef, useRef } from 'react';
 import HomePage from './Pages/Home/HomePage';
-import HomePageLender from './Pages/Home/HomePageLender';
+import HomePageLender from './Pages/Lender/HomePageLender';
 import ListingPage from './Pages/Listing/ListingPage';
 import ConfirmationPage from './Pages/Confirm/ConfirmationPage';
 import FireStoreUsersPage from './Pages/FireStoreExamples/FireStoreUsersPage';
