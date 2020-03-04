@@ -15,7 +15,7 @@ const Listings = () => {
     <Card.Group itemsPerRow={1}>
       {myListings.map(listing => 
         <Card key={listing.id}>
-          <Card.Content>
+          <Card.Content as={Link} to={`/lender/myListing/${listing.game_id}`}>
             <Card.Header content={games[games.findIndex(g => g.id === listing.game_id)].name} />
             <Card.Description style={{ color: "grey", fontWeight: "bold", fontSize: "12px" }}>
             4 New Loan Requests { listing.borrowed ? <span><Icon style={{marginRight: "0px", marginLeft: "10px", color:"orange"}} name="circle" />  Currently on Loan</span> : ""}
