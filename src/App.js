@@ -13,8 +13,11 @@ import { Sticky, Ref } from 'semantic-ui-react';
 import SideMenuWrapper from './Components/SideMenu';
 
 const user = {
+  userName: "johnsmith53",
   firstName: "John",
   lastName: "Smith",
+  rating: "3.6",
+  profilePic: "https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png",
 }
 
 function App() {
