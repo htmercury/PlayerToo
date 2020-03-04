@@ -6,14 +6,14 @@ import { AppState } from '../../context';
 
 const Listings = () => {
   const state = useContext(AppState);
-  const { myListings } = state;
+  const { Listitems } = state;
   const {games}= state;
   console.log("this is in Listings.js file");
-  console.log(myListings);
+  console.log(Listitems);
 
     return (
     <Card.Group itemsPerRow={1}>
-      {myListings.map(listing => 
+      {Listitems.map(listing => 
         <Card key={listing.id}>
           <Card.Content>
             <Card.Header content={games[games.findIndex(g => g.id === listing.game_id)].name} />
