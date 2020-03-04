@@ -1,24 +1,24 @@
-import React from 'react';
-import { Header, Segment, Grid, Icon, Ref } from 'semantic-ui-react';
+import React, { useContext } from 'react';
+import { Header, Segment, Grid, Icon, Menu } from 'semantic-ui-react';
+import { AppState } from '../context';
 
-const PageHeader = ({ setMenuVisible, menuVisible }) => {
+const PageHeader = () => {
+  const appState = useContext(AppState);
+  const { menuVisible, setMenuVisible } = appState;
   return (
     <Segment
       basic
-      attached='top'
-      style={{ backgroundColor: "orange", textAlign: "center" }}
+      style={{ backgroundColor: "orange", textAlign: "center", marginBottom: "0px" }}
       fluid="true"
     >
       <Grid columns={2}>
         <Grid.Column width='3'> 
-        
           <Icon 
             inverted 
             size='large' 
             name='list' 
             onClick={() => setMenuVisible(!menuVisible) }
           />
-
         </Grid.Column>
         <Grid.Column width='10'>
           <Header 

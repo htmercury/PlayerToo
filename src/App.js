@@ -14,26 +14,22 @@ import { Sticky, Ref } from 'semantic-ui-react';
 import SideMenuWrapper from './Components/SideMenu';
 
 const user = {
+  userName: "johnsmith53",
   firstName: "John",
   lastName: "Smith",
+  rating: "3.6",
+  profilePic: "https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png",
 }
 
 function App() {
   const appState = useContext(AppState);
   const { data, setMenuVisible, menuVisible } = appState;
-  const contextRef = createRef();
+  
 
   const withHeader = (page) => {
     return (
       <SideMenuWrapper
-        content={
-          <div ref={contextRef}>
-            <Sticky context={contextRef}>
-              <PageHeader setMenuVisible={setMenuVisible} />
-            </Sticky>
-            {page}
-          </div>
-        }
+        content={page}
         user={user}
       />
     );
@@ -45,13 +41,14 @@ function App() {
     <BrowserRouter>
       <Route exact path="/" render={() => withHeader(<HomePage />)} />
       <Route exact path="/:id" render={() => withHeader(<ListingPage />) } />
-      <Route exact path="/confirm/:id" render={() => withHeader(<ConfirmationPage />)} />
-      <Route exact path="/firestore/users" render={() => <FireStoreUsersPage /> } />
-      <Route exact path="/firestore/games" render={() => <FireStoreGamesPage /> } />
-      <Route exact path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
+      <Route path="/confirm/:id" render={() => withHeader(<ConfirmationPage />)} />
+      <Route path="/lender/addListing" render={() => withHeader(<AddListing/>)} />
+      <Route path="/firestore/users" render={() => <FireStoreUsersPage /> } />
+      <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } />
+      <Route path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
     </BrowserRouter>
     : null
   );
-}
+};
 
 export default App;
