@@ -54,19 +54,14 @@ const StateProvider = ({ children }) => {
       }
     ) : [];
 
-    const myListings = 
+    const Listitems = 
     listings.length > 0 && users.length > 0 && games.length > 0 ? 
     listings.filter(
       listing => { return listing.lender_id=="Silva91_^" }) : [];
   console.log("this is mylistings for Silva91_^")
-  console.log(myListings);
-  console.log(games[0]);
+console.log(Listitems)
 
-  const [usersListings, setUsersListings] = useState(myListings);
-
-  console.log(marketplaceListings);
-
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings,myListings, usersListings, setUsersListings, games, options };
+  const api = { data, setMenuVisible, menuVisible, marketplaceListings, Listitems, games, options };
   return <Provider value={api}>{children}</Provider>;
 };
 
