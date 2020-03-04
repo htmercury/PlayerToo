@@ -1,7 +1,15 @@
 import React, { useContext, useRef, createRef } from 'react';
 import { AppState } from '../context';
 import { Link } from 'react-router-dom';
-import { Menu, Sidebar, Grid, Image, Header, Rating } from 'semantic-ui-react';
+import {
+    Menu,
+    Sidebar,
+    Grid,
+    Image,
+    Header,
+    Rating,
+    Divider,
+} from 'semantic-ui-react';
 import PageHeader from './PageHeader';
 
 const SideMenuWrapper = ({ user, content }) => {
@@ -20,13 +28,13 @@ const SideMenuWrapper = ({ user, content }) => {
                 size="huge"
                 onHide={closeMenu}
             >
-                <Menu.Header style={{marginBottom:50}}>
+                <Menu.Header style={{ marginBottom: 50 }}>
                     <Grid centered>
                         <Grid.Row style={{ marginTop: 50 }}>
                             <Image circular size="tiny" src={user.profilePic} />
                         </Grid.Row>
                         <Grid.Row>
-                            <Header as={"h1"}>
+                            <Header as={'h1'}>
                                 {user.firstName + ' ' + user.lastName}
                                 <Header.Subheader content={user.userName} />
                             </Header>
@@ -36,7 +44,7 @@ const SideMenuWrapper = ({ user, content }) => {
                                 defaultRating={user.rating}
                                 maxRating="5"
                                 disabled
-                                style={{marginTop:-20}}
+                                style={{ marginTop: -20 }}
                             />
                         </Grid.Row>
                     </Grid>
