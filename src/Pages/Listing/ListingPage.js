@@ -6,11 +6,11 @@ import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, S
 
 const ListingPage = () => {
   const appState = useContext(AppState);
-  const { data } = appState;
+  const { data, marketplaceListings } = appState;
   const contextRef = createRef();
   const { id } = useParams();
   console.log(id);
-  const listing = data[id];
+  const listing = marketplaceListings[id];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   

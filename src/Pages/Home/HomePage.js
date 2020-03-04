@@ -5,7 +5,7 @@ import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon } from 's
 
 const HomePage = () => {
   const state = useContext(AppState);
-  const { data } = state;
+  const { data, marketplaceListings } = state;
   const [relevantGames, setRelevantGames]= useState(data);
   const contextRef = createRef();
   const [searched, setSearched]=useState("");
@@ -36,7 +36,7 @@ const HomePage = () => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <Games data={relevantGames} />
+            <Games data={marketplaceListings} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
