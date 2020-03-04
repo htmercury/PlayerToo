@@ -53,11 +53,15 @@ const StateProvider = ({ children }) => {
         }
       }
     ) : [];
-  console.log(marketplaceListings);
 
+    const Listitems = 
+    listings.length > 0 && users.length > 0 && games.length > 0 ? 
+    listings.filter(
+      listing => { return listing.lender_id=="Silva91_^" }) : [];
+  console.log("this is mylistings for Silva91_^")
+console.log(Listitems)
 
-
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings, games, options };
+  const api = { data, setMenuVisible, menuVisible, marketplaceListings, Listitems, games, options };
   return <Provider value={api}>{children}</Provider>;
 };
 
