@@ -45,8 +45,8 @@ const StateProvider = ({ children }) => {
           distance: user.distance, 
           lender: {
             username: user.id.slice(0, -2),
-            firstName: user.name.split(" ")[0],
-            lastName: user.name.split(" ")[1],
+            firstname: user.name.split(" ")[0],
+            lastname: user.name.split(" ")[1],
             email: user.email,
           }
         }

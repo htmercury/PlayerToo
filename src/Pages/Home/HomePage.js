@@ -5,8 +5,8 @@ import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon } from 's
 
 const HomePage = () => {
   const state = useContext(AppState);
-  const { data, marketplaceListings } = state;
-  const [relevantGames, setRelevantGames]= useState(data);
+  const { marketplaceListings } = state;
+  const [relevantGames, setRelevantGames]= useState(marketplaceListings);
   const contextRef = createRef();
   const [searched, setSearched]=useState("");
 
@@ -18,8 +18,8 @@ const HomePage = () => {
   }
   function updateData(searched){
     console.log("reached updateData")
-    const temp=data;
-    const temp2=data.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
+    const temp=marketplaceListings;
+    const temp2=marketplaceListings.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
     
     setRelevantGames(searched !== "" ? temp2 : temp);
     console.log("new relevant games");
@@ -36,7 +36,7 @@ const HomePage = () => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <Games data={marketplaceListings} />
+            <Games data={relevantGames} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

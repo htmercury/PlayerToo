@@ -32,11 +32,11 @@ const ListingPage = () => {
           />
         </Grid.Row>
         <Grid.Row style={{ textAlign: "center"}}>
-          <Image.Group size="small">
-            <Image src={listing.images[0]} />
-            <Image src={listing.images[1]} />
-            <Image src={listing.images[2]} />
-          </Image.Group>
+          <Image 
+            size="large"
+            src={listing.images[3]}
+          >
+          </Image>
         </Grid.Row>
         <Grid.Row>
           <Header>
@@ -81,23 +81,5 @@ const ListingPage = () => {
     </Container>
   );
 };
-
-const PageHeader = () => (
-  <Segment
-    basic
-    attached='top'
-    style={{ backgroundColor: "orange" }}
-    fluid="true"
-  >
-    <Header content="" size="large">
-      <Button 
-        style={{ backgroundColor: "orange"}}
-        icon="arrow left" 
-        as={Link}
-        to='/'
-      />
-    </Header>
-  </Segment>
-);
 
 export default ListingPage;
