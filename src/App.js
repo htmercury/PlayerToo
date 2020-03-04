@@ -44,10 +44,10 @@ function App() {
       <Route exact path="/:id" render={() => withHeader(<ListingPage />) } />
       <Route path="/confirm/:id" render={() => withHeader(<ConfirmationPage />)} />
       <Route path="/lender/addListing1" render={() => withHeader(<AddListing/>)} />
-      {/* <Route path="/lender/myListings" render={() => withHeader(<HomePageLender />)} />
+      {/* <Route path="/lender/myListings" render={() => withHeader(<HomePageLender />)} /> */}
       <Route path="/addListing/:id" render={() => withHeader(<EachListing />)} />
       <Route path="/firestore/users" render={() => <FireStoreUsersPage /> } />
-      <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } /> */}
+      <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } />
       <Route path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
     </BrowserRouter>
     : null

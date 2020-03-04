@@ -23,7 +23,7 @@ const StateProvider = ({ children }) => {
     getAllGames(setGames);
     getAllUsers(setUsers);
     getGameOptions(setOptions);
-    
+    console.log(options)
     return () => { db.off('value', handleData); };
 
   }, []);

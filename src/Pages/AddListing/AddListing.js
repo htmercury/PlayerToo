@@ -21,7 +21,7 @@ const AddListing = () => {
   function updateData(searched){
     console.log("reached updateData")
     const temp=options;
-    const temp2=options.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
+    const temp2=options.filter(item=>(item.name.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
     
     setRelevantGames(searched !== "" ? temp2 : temp);
     console.log("new relevant games");
