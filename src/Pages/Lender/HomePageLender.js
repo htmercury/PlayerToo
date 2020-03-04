@@ -1,6 +1,7 @@
 import React, { useState, useContext, createRef } from 'react';
 import { AppState } from '../../context';
 import Listings from './Listings';
+import { Link } from 'react-router-dom';
 import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon, IconGroup } from 'semantic-ui-react';
 
 
@@ -29,30 +30,29 @@ function handleMessage(input) {
   const [searched, setSearched]=useState("");
 
   return(
-      <div>
-      
-      <Container>
-      <Grid columns={1} padded>
+    <Container>
+      <Grid padded>
         <Grid.Row>
-          <Grid.Column>
-            <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search..." />
+          <Grid.Column width={16}>
+            <Header as="h2" color="yellow"  content="My Listings" dividing />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column width={13}>
+            <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search..." />
+          </Grid.Column>
+          <Grid.Column width={3}>
+            <Button color="yellow" icon="plus" as={Link} to="/lender/addListing1" />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={16}>
             <Listings data={relevantGames} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>
-    <Sticky> 
-          <PageFooter />
-    </Sticky>
-    </div>
-
-      );
-
-
+  );
 };
 
 const PageFooter = () => {

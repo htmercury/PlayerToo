@@ -13,8 +13,14 @@ const Game_List = ({ data }) => {
     return (
         <Card.Group itemsPerRow={1}>
             {data.map(game =>
-                <Card key={game.id} fluid header={game.game} onClick={() => Add_Listing(game)} as={Link} to={`../firestore/addlisting/${game.id}`}>
-                </Card>
+              <Card 
+                key={game.id} 
+                fluid 
+                header={game.game} 
+                onClick={() => Add_Listing(game)} 
+                as={Link} 
+                to={`/addListing/${game.id}`}>
+              </Card>
             )}
         </Card.Group>
     );

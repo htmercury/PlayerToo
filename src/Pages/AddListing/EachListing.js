@@ -20,15 +20,26 @@ const EachListing = () => {
     <div ref={contextRef}>
 
       <Container>
+        <br />
         <Grid columns={1}>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
-            <Image src={"./assets/monoploy/1.png"} />
+          <Grid.Row>
+            <Grid.Column>
+            <Header dividing as="h2" color="yellow" content="Add Listing" />
+            </Grid.Column>
           </Grid.Row>
-          <Grid.Row style={{ margin: "0px 10px 0px 10px " }}>
+          <Grid.Row>
+            <Image.Group size="tiny" style={{marginLeft:"10px"}}>
+              <Image src={"."+listing.images[0]} />
+              <Image src={"."+listing.images[1]} />
+              <Image src={"."+listing.images[2]} />
+            </Image.Group>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
             <Header>
               {listing.game}
-              
             </Header>
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
@@ -58,7 +69,7 @@ const EachListing = () => {
             <Header content="About"/>
           <Header.Subheader content={listing.description} />
           </Grid.Column>
-            </Grid.Row>
+          </Grid.Row>
             
             
 
@@ -75,6 +86,7 @@ const EachListing = () => {
           }}>
             <Grid.Column>
               <Button fluid color='yellow'>Add listing</Button>
+              <br />
             </Grid.Column>
           </Grid.Row>
         </Grid>
