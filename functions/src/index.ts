@@ -81,7 +81,7 @@ app.get('/listings/:listingId', async (req, res) => {
 });
 
 // Add a listing
-app.post('/listings/:listingId', async (req, res) => {
+app.post('/listings', async (req, res) => {
     try {
         const game_id = req.body.game_id;
         const user_id = req.body.user_id;
