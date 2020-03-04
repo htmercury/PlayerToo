@@ -42,6 +42,18 @@ const EachListing = () => {
           <Header.Subheader content={"Added the Listing to your Listings Page"} />
             </Header>
           </Modal.Header>
+          <Modal.Actions centered>
+            <Grid.Column>
+        <Button 
+          as={Link}
+          to={'../lender/myListings'}
+          color="yellow" 
+          content="Go to Listings Page" 
+          fluid
+        />
+        </Grid.Column>
+        <br />
+      </Modal.Actions>
         </Modal>
         <br />
         <Grid columns={1}>
