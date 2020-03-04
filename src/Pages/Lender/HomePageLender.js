@@ -47,7 +47,7 @@ function handleMessage(input) {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={16}>
-            <Listings data={relevantGames} />
+            <Listings />
           </Grid.Column>
         </Grid.Row>
       </Grid>
