@@ -16,12 +16,19 @@ const AddListing = () => {
   const [searched, setSearched] = useState("");
 
   function handleMessage(input) {
-    setSearched(input.target.value);
+    setSearched(input.target.value); 
+    console.log("this is searched")
+    console.log(searched); 
     updateData(input.target.value);
   }
-  function updateData(searched) {
-    // Filter data here
-    console.log("Updated search.")
+  function updateData(searched){
+    console.log("reached updateData")
+    const temp=data;
+    const temp2=data.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
+    
+    setRelevantGames(searched !== "" ? temp2 : temp);
+    console.log("new relevant games");
+    console.log(relevantGames);
   }
 
   return (
@@ -29,70 +36,28 @@ const AddListing = () => {
 
       <Container>
         <br />
-        <Grid>
+        <Grid columns={1}>
+          <Grid.Row>
+            <Grid.Column>
+            <Header dividing as="h2" color="yellow" content="Add Listing" />
+            </Grid.Column>
+          </Grid.Row>
           <Grid.Row style={{ margin: "0px 10px 0px 10px " }} centered >
             <Header
-              as="h2"
+              as="h3"
               content="Please select your boardgame from the list below" />
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={10}>
+            <Grid.Column>
               <Input fluid onChange={handleMessage.bind(this)} icon='search' iconPosition='left' placeholder="Search" />
             </Grid.Column>
-            <Grid.Column width={6}>
-              <Button
-                style={{ backgroundColor: "orange" }}
-                onClick={() => setIsModalOpen(true)}
-                content="Filter"
-              />
-            </Grid.Column>
           </Grid.Row>
-          <Game_List data={relevantGames} />
+          <Grid.Column>
+            <Game_List data={relevantGames} />
+          </Grid.Column>
           <Grid.Row>
-
         </Grid.Row>
       </Grid>
-      <Modal
-        closeIcon
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      >
-        <Modal.Header>
-          <Header as="h3">
-            Filter search:
-            </Header>
-        </Modal.Header><Modal.Content centered>
-          <Grid padded="horizontally">
-            <Grid.Row>
-              <Button.Group>
-                <Button>A</Button>
-                <Button.Or />
-                <Button>B</Button>
-                <Button.Or />
-                <Button>C</Button>
-              </Button.Group>
-            </Grid.Row>
-            <Grid.Row>
-              <Button.Group>
-                <Button>A</Button>
-                <Button.Or />
-                <Button>B</Button>
-                <Button.Or />
-                <Button>C</Button>
-              </Button.Group>
-            </Grid.Row>
-            <Grid.Row>
-              <Button.Group>
-                <Button>A</Button>
-                <Button.Or />
-                <Button>B</Button>
-                <Button.Or />
-                <Button>C</Button>
-              </Button.Group>
-            </Grid.Row>
-          </Grid>
-        </Modal.Content>
-      </Modal>
     </Container>
     </div>
   );

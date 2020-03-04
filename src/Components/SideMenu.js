@@ -35,7 +35,7 @@ const SideMenuWrapper = ({ user, content }) => {
                             <Icon size="huge" name='user circle' />
                         </Grid.Row>
                         <Grid.Row>
-                            <Header as={'h1'}>
+                            <Header as={'h1'} color="yellow">
                                 {user.firstName + ' ' + user.lastName}
                                 <Header.Subheader content={user.userName} />
                             </Header>
@@ -62,9 +62,15 @@ const SideMenuWrapper = ({ user, content }) => {
                     name="Add New Listing"
                     as={Link}
                     onClick={closeMenu}
-                    to="/lender/addListing"
+                    to="/lender/addListing1"
                 />
-                <Menu.Item icon="chess knight" name="My Listings" />
+                <Menu.Item 
+                  icon="chess knight" 
+                  name="My Listings" 
+                  as={Link} 
+                  to="/lender/myListings" 
+                  onClick={closeMenu}
+                />
                 <Menu.Item icon="arrow alternate circle down" name="My Loans" />
                 <Menu.Item icon="setting" name="Settings" />
             </Sidebar>

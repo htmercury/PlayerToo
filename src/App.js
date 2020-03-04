@@ -1,5 +1,6 @@
-import React, { useContext, createRef, useRef } from 'react';
+import React, { useContext } from 'react';
 import HomePage from './Pages/Home/HomePage';
+import EachListing from './Pages/AddListing/EachListing';
 import HomePageLender from './Pages/Lender/HomePageLender';
 import ListingPage from './Pages/Listing/ListingPage';
 import ConfirmationPage from './Pages/Confirm/ConfirmationPage';
@@ -42,7 +43,9 @@ function App() {
       <Route exact path="/" render={() => withHeader(<HomePage />)} />
       <Route exact path="/:id" render={() => withHeader(<ListingPage />) } />
       <Route path="/confirm/:id" render={() => withHeader(<ConfirmationPage />)} />
-      <Route path="/lender/addListing" render={() => withHeader(<AddListing/>)} />
+      <Route path="/lender/addListing1" render={() => withHeader(<AddListing/>)} />
+      <Route path="/lender/myListings" render={() => withHeader(<HomePageLender />)} />
+      <Route path="/addListing/:id" render={() => withHeader(<EachListing />)} />
       <Route path="/firestore/users" render={() => <FireStoreUsersPage /> } />
       <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } />
       <Route path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
