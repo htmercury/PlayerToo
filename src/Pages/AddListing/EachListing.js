@@ -26,6 +26,11 @@ const EachListing = () => {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
+            <Grid.Column>
+              <Button content="Back to Game List" icon='arrow left' color="yellow" fluid />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
             <Image.Group size="small" style={{marginLeft:"90px"}}>
               <Image src={Object.values(listing.images)[3]} />
             </Image.Group>
