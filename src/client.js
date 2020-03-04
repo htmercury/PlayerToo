@@ -1,8 +1,17 @@
 export const getAllGames = async (callback) => {
   const response = await fetch('./board_games.json');
   const data = await response.json();
+  console.log(response)
   const values = Object.values(data);
   return callback(values);
+};
+
+export const getGameOptions = async (callback) => {
+  const response = await fetch('./board_games.json');
+  const data = await response.json();
+  console.log(response)
+  const values = Object.values(data);
+  return callback(values.slice(0,250));
 };
 
 export const getAllListings = async (callback) => {

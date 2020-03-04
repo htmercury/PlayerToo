@@ -1,6 +1,6 @@
 import React, { useEffect, createContext, useState } from 'react';
 import { db } from './firebase';
-import { getAllGames, getAllListings, getAllUsers } from './client';
+import { getAllGames, getAllListings, getAllUsers, getGameOptions } from './client';
 
 const AppState = createContext(null);
 const { Provider } = AppState; 
@@ -11,6 +11,7 @@ const StateProvider = ({ children }) => {
   const [games, setGames] = useState([]);
   const [listings, setListings] = useState([]);
   const [users, setUsers] = useState([]);
+  const [options, setOptions] = useState([]);
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const StateProvider = ({ children }) => {
     getAllListings(setListings);
     getAllGames(setGames);
     getAllUsers(setUsers);
+    getGameOptions(setOptions);
     
     return () => { db.off('value', handleData); };
 
@@ -54,7 +56,8 @@ const StateProvider = ({ children }) => {
   console.log(marketplaceListings);
 
 
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings };
+
+  const api = { data, setMenuVisible, menuVisible, marketplaceListings, games, options };
   return <Provider value={api}>{children}</Provider>;
 };
 
