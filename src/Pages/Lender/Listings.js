@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Card, Icon, Header, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { AppState } from '../../context';
+
 
 const Games = ({ data }) => {
-
   return (
     <Card.Group itemsPerRow={1}>
       {data.slice(0,4).map(game => 
