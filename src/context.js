@@ -11,7 +11,6 @@ const StateProvider = ({ children }) => {
   const [games, setGames] = useState([]);
   const [listings, setListings] = useState([]);
   const [users, setUsers] = useState([]);
-  const [marketplace, setMarketplaceData] = useState([]);
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {

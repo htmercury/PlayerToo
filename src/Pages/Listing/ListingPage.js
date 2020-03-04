@@ -1,13 +1,12 @@
-import React, { useContext, useState, createRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
 import RequestModal from './RequestModal';
-import { Grid, Feed, Rating, Image, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
+import { Grid, Feed, Rating, Image, Button, Header, Label, Container } from 'semantic-ui-react';
 
 const ListingPage = () => {
   const appState = useContext(AppState);
-  const { data, marketplaceListings } = appState;
-  const contextRef = createRef();
+  const { marketplaceListings } = appState;
   const { id } = useParams();
   console.log(id);
   const listing = marketplaceListings[id];

@@ -1,13 +1,12 @@
-import React, { useState, useContext, createRef } from 'react';
+import React, { useState, useContext } from 'react';
 import { AppState } from '../../context';
 import Games from './Games';
-import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon } from 'semantic-ui-react';
+import { Container, Grid, Input } from 'semantic-ui-react';
 
 const HomePage = () => {
   const state = useContext(AppState);
   const { marketplaceListings } = state;
   const [relevantGames, setRelevantGames]= useState(marketplaceListings);
-  const contextRef = createRef();
   const [searched, setSearched]=useState("");
 
   function handleMessage(input) {
