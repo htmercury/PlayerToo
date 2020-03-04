@@ -2,7 +2,7 @@ import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
 import RequestModal from './RequestModal';
-import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
+import { Grid, Feed, Rating, Image, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
 
 const ListingPage = () => {
   const appState = useContext(AppState);
@@ -32,12 +32,13 @@ const ListingPage = () => {
           />
         </Grid.Row>
         <Grid.Row style={{ textAlign: "center"}}>
+          <Image.Group style={{marginLeft: "90px"}}>
           <Image 
             size="small"
-            style={{marginLeft: "80px"}}
             src={listing.images[3]}
           >
           </Image>
+          </Image.Group>
         </Grid.Row>
         <Grid.Row>
           <Header>
