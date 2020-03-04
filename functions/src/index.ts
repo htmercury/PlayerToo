@@ -80,6 +80,41 @@ app.get('/listings/:listingId', async (req, res) => {
     }
 });
 
+// Add a listing
+app.post('/listings', async (req, res) => {
+    try {
+        const game_id = req.body.game_id;
+        const user_id = req.body.user_id;
+        const additional_details = req.body.additional_details;
+
+        if (game_id === undefined || user_id === undefined) {
+            res.status(500).send({message: 'game_id or user_id was undefined.', success: false});
+            return;
+        }
+
+        // check if id exists
+        const userRef = await db.collection(usersCollection).doc(user_id).get();
+        const gameRef = await db.collection(gamesCollection).doc(game_id).get();
+
+        if (!userRef.exists || !gameRef.exists) {
+            res.status(500).send({message: 'game_id or user_id was invalid.', success: false});
+            return;
+        }
+
+        // post to db
+        await db.collection(listingsCollection).doc().set({
+            borrowed: false,
+            game_id: game_id,
+            lender_id: user_id,
+            additional_details: additional_details
+        });
+
+        res.status(200).send({message: 'listing was added.', success: true});
+    } catch (error) {
+        res.status(400).send(`Cannot add listing: ${error}`);
+    }
+});
+
 // View all listings
 app.get('/listings', async (req, res) => {
     try {
