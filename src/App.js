@@ -20,19 +20,12 @@ const user = {
 function App() {
   const appState = useContext(AppState);
   const { data, setMenuVisible, menuVisible } = appState;
-  const contextRef = createRef();
+  
 
   const withHeader = (page) => {
     return (
       <SideMenuWrapper
-        content={
-          <div ref={contextRef}>
-            <Sticky context={contextRef}>
-              <PageHeader setMenuVisible={setMenuVisible} />
-            </Sticky>
-            {page}
-          </div>
-        }
+        content={page}
         user={user}
       />
     );
@@ -44,14 +37,14 @@ function App() {
     <BrowserRouter>
       <Route exact path="/" render={() => withHeader(<HomePage />)} />
       <Route exact path="/:id" render={() => withHeader(<ListingPage />) } />
-      <Route exact path="/confirm/:id" render={() => withHeader(<ConfirmationPage />)} />
-      <Route exact path="/firestore/users" render={() => <FireStoreUsersPage /> } />
-      <Route exact path="/firestore/games" render={() => <FireStoreGamesPage /> } />
-      <Route exact path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
-      <Route exact path="/firestore/addlisting" render={() => withHeader(<AddListing/>)} />
+      <Route path="/confirm/:id" render={() => withHeader(<ConfirmationPage />)} />
+      <Route path="/lender/addListing" render={() => withHeader(<AddListing/>)} />
+      <Route path="/firestore/users" render={() => <FireStoreUsersPage /> } />
+      <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } />
+      <Route path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
     </BrowserRouter>
     : null
   );
-}
+};
 
 export default App;
