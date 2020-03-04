@@ -5,6 +5,8 @@ import * as firebaseHelper from 'firebase-functions-helper';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
+import * as cors from 'cors';
+
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -16,6 +18,10 @@ const main = express();
 const usersCollection = 'Users';
 const listingsCollection = 'Listings';
 const gamesCollection = 'BoardGames';
+
+
+app.use(cors({ origin: true }));
+main.use(cors({ origin: true }));
 main.use('/api/v1', app);
 main.use(bodyParser.json());
 main.use(bodyParser.urlencoded({ extended: false }));

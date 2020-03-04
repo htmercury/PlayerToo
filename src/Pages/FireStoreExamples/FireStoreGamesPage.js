@@ -20,6 +20,9 @@ const GameTableExample = () => {
             });
     }, []);
 
+    const result = fetch('https://playertoo-43706.firebaseapp.com/api/v1/users').then(res => console.log(res.json()));
+
+
     console.log(games);
 
     return (
