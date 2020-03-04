@@ -33,7 +33,8 @@ const ListingPage = () => {
         </Grid.Row>
         <Grid.Row style={{ textAlign: "center"}}>
           <Image 
-            size="large"
+            size="small"
+            style={{marginLeft: "80px"}}
             src={listing.images[3]}
           >
           </Image>
@@ -51,12 +52,15 @@ const ListingPage = () => {
         <Grid.Row>
           <Header size="small">
             Tags:
-            {listing.tags.map(g => <Label content={g} />)}
           </Header>
+          <Label.Group size="small">
+            {listing.tags.map(g => <Label content={g} />)}
+            </Label.Group>
         </Grid.Row>
-        <Feed>
+        <Grid.Row>
+          <Feed>
           <Header size="small">
-            Owner
+            Owner:
           </Header>
           <Feed.Event>
             <Feed.Label image='./assets/images/default.jpg' />
@@ -69,7 +73,8 @@ const ListingPage = () => {
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>
-        </Feed>
+          </Feed>
+        </Grid.Row>
         <Grid.Row style={{
           display: "flex",
           justifyContent: "center",
