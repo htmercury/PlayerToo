@@ -9,6 +9,7 @@ import {
     Header,
     Rating,
     Divider,
+    Icon,
 } from 'semantic-ui-react';
 import PageHeader from './PageHeader';
 
@@ -31,7 +32,7 @@ const SideMenuWrapper = ({ user, content }) => {
                 <Menu.Header style={{ marginBottom: 50 }}>
                     <Grid centered>
                         <Grid.Row style={{ marginTop: 50 }}>
-                            <Image circular size="tiny" src={user.profilePic} />
+                            <Icon size="huge" name='user circle' />
                         </Grid.Row>
                         <Grid.Row>
                             <Header as={'h1'}>

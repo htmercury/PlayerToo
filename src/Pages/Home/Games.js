@@ -10,7 +10,7 @@ const Games = ({ data }) => {
     <Card.Group itemsPerRow={1}>
       {data.map(game => 
         <Card key={game.id}>
-          <Card.Content as={Link} to={`/listings/${game.id}`}>
+          <Card.Content as={Link} to={`/${game.id}`}>
             <Header style={{fontWeight: "lighter", fontSize: "12px"}} floated='right' content={game.distance} />
             <Card.Header content={game.game} />
             <Card.Meta style={{ fontStyle: "italic", fontSize: "13px" }}>
