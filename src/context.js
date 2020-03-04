@@ -60,12 +60,13 @@ const StateProvider = ({ children }) => {
       listing => { return listing.lender_id=="Silva91_^" }) : [];
   console.log("this is mylistings for Silva91_^")
   console.log(myListings);
+  console.log(games[0]);
 
   const [usersListings, setUsersListings] = useState(myListings);
 
   console.log(marketplaceListings);
 
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings, usersListings, setUsersListings, games, options };
+  const api = { data, setMenuVisible, menuVisible, marketplaceListings,myListings, usersListings, setUsersListings, games, options };
   return <Provider value={api}>{children}</Provider>;
 };
 
