@@ -16,7 +16,7 @@ const Game_List = ({ data }) => {
               <Card 
                 key={game.id} 
                 fluid 
-                header={game.game} 
+                header={game.name} 
                 onClick={() => Add_Listing(game)} 
                 as={Link} 
                 to={`/addListing/${game.id}`}>

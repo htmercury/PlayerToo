@@ -36,12 +36,7 @@ const RequestModal = ({ open, setIsModalOpen, game }) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column style={{paddingTop:"10", paddingBottom:"10"}}>
-              <Icon name="home"/> Evanston, IL {/* TODO: GET FROM DATABASE */}
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row style={{paddingTop:"10", paddingBottom:"10"}}>
-            <Grid.Column>
-              <Icon name="envelope"/> {game.lender.email}
+              <Icon name="home"/> {game.distance} {/* TODO: GET FROM DATABASE */}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

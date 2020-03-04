@@ -1,17 +1,14 @@
 import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import Game_List from './GameOptions'
-import { useParams, Link } from 'react-router-dom';
-import { Grid, Feed, Rating, Segment, Image, Input, Button, Header, Label, Container, Sticky, GridRow, Modal } from 'semantic-ui-react';
+import { Grid, Input, Header, Container } from 'semantic-ui-react';
 
 const AddListing = () => {
   const state = useContext(AppState);
-  const { data } = state;
-  const contextRef = createRef();
-  const [isModalOpen, setIsModalOpen] = useState(null);
-
+  const { options } = state;
+  console.log(options)
   // Using the same data as listings for now
-  const [relevantGames, setRelevantGames]= useState(data);
+  const [relevantGames, setRelevantGames]= useState(options);
   console.log(relevantGames)
   const [searched, setSearched] = useState("");
 
@@ -23,8 +20,8 @@ const AddListing = () => {
   }
   function updateData(searched){
     console.log("reached updateData")
-    const temp=data;
-    const temp2=data.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
+    const temp=options;
+    const temp2=options.filter(item=>(item.name.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
     
     setRelevantGames(searched !== "" ? temp2 : temp);
     console.log("new relevant games");
@@ -32,8 +29,6 @@ const AddListing = () => {
   }
 
   return (
-    <div ref={contextRef}>
-
       <Container>
         <br />
         <Grid columns={1}>
@@ -59,7 +54,6 @@ const AddListing = () => {
         </Grid.Row>
       </Grid>
     </Container>
-    </div>
   );
 };
 

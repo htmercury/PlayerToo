@@ -1,20 +1,18 @@
 import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
-import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, Sticky, Input, GridRow, GridColumn } from 'semantic-ui-react';
+import { Grid, Image, Button, Header, Container, Input } from 'semantic-ui-react';
 
 const EachListing = () => {
   const appState = useContext(AppState);
 
   // Just using the each listing database. Need to change when integrating backend.
 
-  const { data } = appState;
-  console.log(data)
+  const { games } = appState;
   const contextRef = createRef();
   const { id } = useParams();
   console.log(id)
-  const listing = data[id];
-  console.log(data[id])
+  const listing = games[games.findIndex(g => g.id === id)];
 
   return (
     <div ref={contextRef}>
@@ -28,10 +26,20 @@ const EachListing = () => {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Image.Group size="tiny" style={{marginLeft:"10px"}}>
-              <Image src={"."+listing.images[0]} />
-              <Image src={"."+listing.images[1]} />
-              <Image src={"."+listing.images[2]} />
+            <Grid.Column>
+              <Button 
+                content="Back to Game List" 
+                icon='arrow left' 
+                color="yellow" 
+                fluid
+                as={Link}
+                to="/lender/addListing1"
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Image.Group size="small" style={{marginLeft:"90px"}}>
+              <Image src={Object.values(listing.images)[3]} />
             </Image.Group>
           </Grid.Row>
           <Grid.Row>
@@ -45,7 +53,7 @@ const EachListing = () => {
             <Grid.Column width={8}>
               <Header>
               <Header.Subheader content="Players:" />
-              <Header.Subheader content={`${listing.minPlayers}-${listing.maxPlayers} Players`} style={{ fontStyle: "italic", color: "black" }}/>
+              <Header.Subheader content={`${listing.min_players}-${listing.min_players} Players`} style={{ fontStyle: "italic", color: "black" }}/>
                 </Header>
                 
               </Grid.Column>

@@ -1,16 +1,15 @@
-import React, { useContext, useState, createRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
 import RequestModal from './RequestModal';
-import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, Sticky } from 'semantic-ui-react';
+import { Grid, Feed, Rating, Image, Button, Header, Label, Container } from 'semantic-ui-react';
 
 const ListingPage = () => {
   const appState = useContext(AppState);
-  const { data } = appState;
-  const contextRef = createRef();
+  const { marketplaceListings } = appState;
   const { id } = useParams();
   console.log(id);
-  const listing = data[id];
+  const listing = marketplaceListings[id];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   
@@ -32,10 +31,12 @@ const ListingPage = () => {
           />
         </Grid.Row>
         <Grid.Row style={{ textAlign: "center"}}>
-          <Image.Group size="small">
-            <Image src={listing.images[0]} />
-            <Image src={listing.images[1]} />
-            <Image src={listing.images[2]} />
+          <Image.Group style={{marginLeft: "90px"}}>
+          <Image 
+            size="small"
+            src={listing.images[3]}
+          >
+          </Image>
           </Image.Group>
         </Grid.Row>
         <Grid.Row>
@@ -51,12 +52,15 @@ const ListingPage = () => {
         <Grid.Row>
           <Header size="small">
             Tags:
-            {listing.tags.map(g => <Label content={g} />)}
           </Header>
+          <Label.Group size="small">
+            {listing.tags.map(g => <Label content={g} />)}
+            </Label.Group>
         </Grid.Row>
-        <Feed>
+        <Grid.Row>
+          <Feed>
           <Header size="small">
-            Owner
+            Owner:
           </Header>
           <Feed.Event>
             <Feed.Label image='./assets/images/default.jpg' />
@@ -69,7 +73,8 @@ const ListingPage = () => {
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>
-        </Feed>
+          </Feed>
+        </Grid.Row>
         <Grid.Row style={{
           display: "flex",
           justifyContent: "center",
@@ -81,23 +86,5 @@ const ListingPage = () => {
     </Container>
   );
 };
-
-const PageHeader = () => (
-  <Segment
-    basic
-    attached='top'
-    style={{ backgroundColor: "orange" }}
-    fluid="true"
-  >
-    <Header content="" size="large">
-      <Button 
-        style={{ backgroundColor: "orange"}}
-        icon="arrow left" 
-        as={Link}
-        to='/'
-      />
-    </Header>
-  </Segment>
-);
 
 export default ListingPage;

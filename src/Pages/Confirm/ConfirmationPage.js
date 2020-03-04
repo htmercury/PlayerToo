@@ -5,9 +5,9 @@ import { Header, Segment, Button, Icon, Container, Sticky, Loader } from 'semant
 
 const ConfirmationPage = () => {
   const state = useContext(AppState);
-  const { data } = state;
+  const { marketplaceListings } = state;
   const { id } = useParams(); 
-  const listing = data[id];
+  const listing = marketplaceListings[id];
 
   return (
     <Container style={{ marginTop: "15px"}}>

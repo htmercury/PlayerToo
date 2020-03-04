@@ -1,13 +1,12 @@
-import React, { useState, useContext, createRef } from 'react';
+import React, { useState, useContext } from 'react';
 import { AppState } from '../../context';
 import Games from './Games';
-import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon } from 'semantic-ui-react';
+import { Container, Grid, Input } from 'semantic-ui-react';
 
 const HomePage = () => {
   const state = useContext(AppState);
-  const { data } = state;
-  const [relevantGames, setRelevantGames]= useState(data);
-  const contextRef = createRef();
+  const { marketplaceListings } = state;
+  const [relevantGames, setRelevantGames]= useState(marketplaceListings);
   const [searched, setSearched]=useState("");
 
   function handleMessage(input) {
@@ -18,8 +17,8 @@ const HomePage = () => {
   }
   function updateData(searched){
     console.log("reached updateData")
-    const temp=data;
-    const temp2=data.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
+    const temp=marketplaceListings;
+    const temp2=marketplaceListings.filter(item=>(item.game.toUpperCase().indexOf(searched.toUpperCase()) !== -1));
     
     setRelevantGames(searched !== "" ? temp2 : temp);
     console.log("new relevant games");
