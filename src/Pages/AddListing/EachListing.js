@@ -26,7 +26,6 @@ const EachListing = () => {
       "borrowed": false
     });
     console.log(Listitems)
-
   }
   return (
     <div ref={contextRef}>
@@ -39,8 +38,8 @@ const EachListing = () => {
         >
           <Modal.Header>
             <Header as="h3">
-              Request Boardgame
-          <Header.Subheader content={"hi"} />
+              Added
+          <Header.Subheader content={"Added the Listing to your Listings Page"} />
             </Header>
           </Modal.Header>
         </Modal>
