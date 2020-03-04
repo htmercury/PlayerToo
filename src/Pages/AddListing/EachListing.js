@@ -1,7 +1,7 @@
 import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
-import { Grid, Feed, Rating, Segment, Image, Button, Header, Label, Container, Sticky, Input, GridRow, GridColumn } from 'semantic-ui-react';
+import { Grid, Image, Button, Header, Container, Input } from 'semantic-ui-react';
 
 const EachListing = () => {
   const appState = useContext(AppState);
@@ -27,7 +27,14 @@ const EachListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Button content="Back to Game List" icon='arrow left' color="yellow" fluid />
+              <Button 
+                content="Back to Game List" 
+                icon='arrow left' 
+                color="yellow" 
+                fluid
+                as={Link}
+                to="/lender/addListing1"
+              />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
