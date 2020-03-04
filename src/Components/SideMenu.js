@@ -13,7 +13,7 @@ const SideMenuWrapper = ({ user, content }) => {
         <Sidebar.Pushable>
             <Sidebar
                 as={Menu}
-                animation="push"
+                animation="overlay"
                 vertical
                 visible={menuVisible}
                 direction="left"
@@ -59,7 +59,7 @@ const SideMenuWrapper = ({ user, content }) => {
                 <Menu.Item icon="arrow alternate circle down" name="My Loans" />
                 <Menu.Item icon="setting" name="Settings" />
             </Sidebar>
-            <Sidebar.Pusher>
+            <Sidebar.Pusher dimmed={menuVisible}>
                 <PageHeader />
                 {content}
             </Sidebar.Pusher>
