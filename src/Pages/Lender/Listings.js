@@ -2,6 +2,7 @@ import React, { useState , useContext} from 'react';
 import { Card, Icon, Button, Header, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { AppState } from '../../context';
+import { LoanStatusLabel } from './LoanStatusLabel';
 
 
 const Listings = () => {
@@ -17,9 +18,9 @@ const Listings = () => {
       {Listitems.map(listing => 
         <Card key={listing.id}>
           <Card.Content as={Link} to={`/lender/myListing/${listing.game_id}`}>
-            <Card.Header content={games[games.findIndex(g => g.id === listing.game_id)].name} />
+            <Card.Header> {games[games.findIndex(g => g.id === listing.game_id)].name} <LoanStatusLabel available={true} /></ Card.Header>
             <Card.Description style={{ color: "grey", fontWeight: "bold", fontSize: "12px" }}>
-            4 New Loan Requests { listing.borrowed ? <span><Icon style={{marginRight: "0px", marginLeft: "10px", color:"orange"}} name="circle" />  Currently on Loan</span> : ""}
+            1 New Loan Request { listing.borrowed ? <span><Icon style={{marginRight: "0px", marginLeft: "10px", color:"orange"}} name="circle" />  Currently on Loan</span> : ""}
             </Card.Description>
           
           <Image.Group size="tiny" style={{marginLeft:"10px"}}>
