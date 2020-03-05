@@ -63,10 +63,15 @@ const StateProvider = ({ children }) => {
   console.log(games[0]);
 
   const [usersListings, setUsersListings] = useState(myListings);
+  const [editingLenderRemarks, setEditingLenderRemarks] = useState(false);
+
+  const toggleEditingLenderRemarks = () => {    
+    setEditingLenderRemarks(!editingLenderRemarks);
+  }
 
   console.log(marketplaceListings);
 
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings,myListings, usersListings, setUsersListings, games, options };
+  const api = { data, setMenuVisible, menuVisible, marketplaceListings,myListings, usersListings, setUsersListings, games, options, editingLenderRemarks, toggleEditingLenderRemarks };
   return <Provider value={api}>{children}</Provider>;
 };
 

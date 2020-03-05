@@ -9,6 +9,7 @@ import {
   Container,
   Label,
   Icon,
+  Input,
 } from 'semantic-ui-react';
 import Bookings from './Borrowers';
 
@@ -32,15 +33,20 @@ const Status = ({ available }) => (
   </Label>
 );
 
+const Remarks= ({isEditing}) => {   
+  return(isEditing ? (<Input></Input>) : (
+    <Header.Subheader content={description} />
+  ))
+}
+
 const EachLenderListing = () => {
   const appState = useContext(AppState);
 
   // Just using the each listing database. Need to change when integrating backend.
 
-  const { games } = appState;
+  const { games, editingLenderRemarks, toggleEditingLenderRemarks } = appState;
   const contextRef = createRef();
   const { id } = useParams();
-  console.log('Open EachLenderListing ', id);
   const listing = games[games.findIndex(g => g.id === id)];
 
   return (
@@ -97,9 +103,14 @@ const EachLenderListing = () => {
             <Grid.Column>
               <Header>
                 My Remarks
-                <Icon style={{float:"right"}} name="edit outline" size="small"/>
+                <Icon
+                  style={{ float: 'right' }}
+                  name={editingLenderRemarks ? 'close' : 'edit outline'}
+                  size="small"
+                  onClick={() => toggleEditingLenderRemarks()}
+                />
               </Header>
-              <Header.Subheader content={description} />
+              <Remarks isEditing={editingLenderRemarks} />
             </Grid.Column>
           </Grid.Row>
 
