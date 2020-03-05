@@ -1,5 +1,4 @@
 import React, { useEffect, createContext, useState } from 'react';
-import { db } from './firebase';
 import { getAllGames, getAllListings, getAllUsers, getGameOptions } from './client';
 
 const AppState = createContext(null);
@@ -7,7 +6,6 @@ const { Provider } = AppState;
 
 
 const StateProvider = ({ children }) => {
-  const [data, setData] = useState([]);
   const [games, setGames] = useState([]);
   const [listings, setListings] = useState([]);
   const [users, setUsers] = useState([]);
@@ -15,17 +13,10 @@ const StateProvider = ({ children }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
-    const handleData = snap => {
-      if (snap.val()) setData(snap.val());
-    }
-    db.on('value', handleData, error => alert(error));
     getAllListings(setListings);
     getAllGames(setGames);
     getAllUsers(setUsers);
     getGameOptions(setOptions);
-    console.log(options)
-    return () => { db.off('value', handleData); };
-
   }, []);
   
   const marketplaceListings = 
@@ -61,7 +52,7 @@ const StateProvider = ({ children }) => {
   console.log("this is mylistings for Silva91_^")
 console.log(Listitems)
 
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings, Listitems, games, options };
+  const api = { setMenuVisible, menuVisible, marketplaceListings, Listitems, games, options };
   return <Provider value={api}>{children}</Provider>;
 };
 
