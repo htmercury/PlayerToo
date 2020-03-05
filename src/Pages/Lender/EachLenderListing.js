@@ -21,11 +21,6 @@ const EachLenderListing = () => {
         <Grid columns={1}>
           <Grid.Row>
             <Grid.Column>
-            <Header dividing as="h2" color="yellow" content="Add Listing" />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
               <Button 
                 content="Back to Game List" 
                 icon='arrow left' 
@@ -43,45 +38,23 @@ const EachLenderListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-            <Header>
-              {listing.game}
+            <Header as={"h2"}>
+              {listing.name}
             </Header>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={8}>
-              <Header>
-              <Header.Subheader content="Players:" />
-              <Header.Subheader content={`${listing.min_players}-${listing.min_players} Players`} style={{ fontStyle: "italic", color: "black" }}/>
-                </Header>
-                
-              </Grid.Column>
-              <Grid.Column width={8}>
-              <Header>
-              <Header.Subheader content="Game Time:" />
-              <Header.Subheader content="15 minutes" style={{ fontStyle: "italic", color: "black" }} />
-                </Header>
-              </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-            <Header>
-              <Header.Subheader content="Ages:" />
-              <Header.Subheader content="7+" style={{ fontStyle: "italic", color: "black" }} />
-                </Header>
-                </Grid.Column>
-              </Grid.Row>
-          <Grid.Row>
           <Grid.Column>
-            <Header content="About"/>
-          <Header.Subheader content={listing.description} />
+            <Header content="Remarks"/>
+            {/* Take note that this needs to get information from when the listing is added */}
+            <Header.Subheader content={listing.description} />
           </Grid.Column>
           </Grid.Row>
             
 
           <Header size="medium">
-            What do borrowers need to know about your game?
-            </Header>
+            Current Booking Dates
+          </Header>
           <Grid.Column>
             <Input fluid placeholder="My game set is missing 3 cards etc." />
           </Grid.Column>
