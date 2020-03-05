@@ -132,16 +132,16 @@ app.post('/listings', async (req, res) => {
             return;
         }
 
+        const listingRef = db.collection(listingsCollection).doc();
+
         // post to db
-        await db
-            .collection(listingsCollection)
-            .doc()
-            .set({
-                borrowed: false,
-                game_id: game_id,
-                lender_id: user_id,
-                additional_details: additional_details,
-            });
+        await listingRef.set({
+            id: listingRef.id,
+            borrowed: false,
+            game_id: game_id,
+            lender_id: user_id,
+            additional_details: additional_details,
+        });
 
         res.status(201).send({ message: 'listing was added.', success: true });
     } catch (error) {
