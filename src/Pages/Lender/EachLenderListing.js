@@ -2,6 +2,7 @@ import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
 import { Grid, Image, Button, Header, Container, Input } from 'semantic-ui-react';
+import Bookings from './Borrowers';
 
 const EachLenderListing = () => {
   const appState = useContext(AppState);
@@ -54,10 +55,9 @@ const EachLenderListing = () => {
 
           <Grid.Column>
             <Header>
-              Current Booking Dates
+              Current Bookings
             </Header>
-            <Header.Subheader>James Smith: 13 March - 17 March</Header.Subheader>
-            <Header.Subheader>Angie Tan: 21 March - 28 March</Header.Subheader>
+            <Bookings />
           </Grid.Column>
           <Grid.Row style={{
             display: "flex",
