@@ -8,6 +8,7 @@ import FireStoreUsersPage from './Pages/FireStoreExamples/FireStoreUsersPage';
 import FireStoreGamesPage from './Pages/FireStoreExamples/FireStoreGamesPage';
 import FireStoreListingsPage from './Pages/FireStoreExamples/FireStoreListingsPage';
 import AddListing from './Pages/AddListing/AddListing';
+import EachLenderListing from './Pages/Lender/EachLenderListing'
 import { AppState } from './context';
 import { BrowserRouter, Route } from 'react-router-dom';
 import PageHeader from './Components/PageHeader';
@@ -45,6 +46,7 @@ function App() {
       <Route path="/confirm/:id" render={() => withHeader(<ConfirmationPage />)} />
       <Route path="/lender/addListing1" render={() => withHeader(<AddListing/>)} />
       <Route path="/lender/myListings" render={() => withHeader(<HomePageLender />)} />
+      <Route path="/lender/myListing/:id" render={() => withHeader(<EachLenderListing />)} />
       <Route path="/addListing/:id" render={() => withHeader(<EachListing />)} />
       <Route path="/firestore/users" render={() => <FireStoreUsersPage /> } />
       <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } />
