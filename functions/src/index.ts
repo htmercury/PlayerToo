@@ -88,7 +88,7 @@ app.post('/listings', async (req, res) => {
         const additional_details = req.body.additional_details;
 
         if (game_id === undefined || user_id === undefined) {
-            res.status(500).send({message: 'game_id or user_id was undefined.', success: false});
+            res.status(400).send({message: 'game_id or user_id was undefined.', success: false});
             return;
         }
 
@@ -97,7 +97,7 @@ app.post('/listings', async (req, res) => {
         const gameRef = await db.collection(gamesCollection).doc(game_id).get();
 
         if (!userRef.exists || !gameRef.exists) {
-            res.status(500).send({message: 'game_id or user_id was invalid.', success: false});
+            res.status(400).send({message: 'game_id or user_id was invalid.', success: false});
             return;
         }
 
@@ -109,7 +109,7 @@ app.post('/listings', async (req, res) => {
             additional_details: additional_details
         });
 
-        res.status(200).send({message: 'listing was added.', success: true});
+        res.status(201).send({message: 'listing was added.', success: true});
     } catch (error) {
         res.status(400).send(`Cannot add listing: ${error}`);
     }
@@ -149,7 +149,7 @@ app.get('/listings', async (req, res) => {
         };
 
         const listings = await joinAndReturnData();
-        res.status(200).send(listings);
+        res.status(1).send(listings);
     } catch (error) {
         res.status(400).send(`Cannot get listings: ${error}`);
     }
