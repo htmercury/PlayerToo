@@ -27,5 +27,8 @@ Get a specific user.
 Get all listings.
 * [Listings](listing/get_listings.md) : `GET /api/v1/listings/`
 
+Add a listing.
+* [Listings](listing/post_listings.md) : `POST /api/v1/listings/`
+
 Get a specific listing.
 * [Listing](listing/get_listing.md) : `GET /api/v1/listings/:listingId`
