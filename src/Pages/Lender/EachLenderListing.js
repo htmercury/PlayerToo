@@ -33,8 +33,14 @@ const Status = ({ available }) => (
   </Label>
 );
 
+// TODO: make these changes actually affect the DB. Right now they're just front end
+
+const saveEdits = (input) => {
+  description = input.target.value;
+}
+
 const Remarks= ({isEditing}) => {   
-  return(isEditing ? (<Input></Input>) : (
+  return(isEditing ? (<Input defaultValue={description} fluid onChange={saveEdits.bind(this)}></Input>) : (
     <Header.Subheader content={description} />
   ))
 }
