@@ -82,6 +82,20 @@ app.get('/listings/:listingId', async (req, res) => {
 // Remove a listing
 app.delete('/listings/:listingId', async (req, res) => {
     try {
+        // check if listing exists first
+        const listingRef = await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .get();
+
+        if (!listingRef.exists) {
+            res.status(400).send({
+                message: 'listing_id does not exist.',
+                success: false,
+            });
+            return;
+        }
+
         await db
             .collection(listingsCollection)
             .doc(req.params.listingId)
