@@ -1,4 +1,4 @@
-# Users
+# Retrieve Users
 
 Used to retrieve a specific user from the database.
 
