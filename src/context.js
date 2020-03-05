@@ -62,7 +62,7 @@ const StateProvider = ({ children }) => {
 
   console.log(marketplaceListings);
 
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings, myListings, games, options, editingLenderRemarks, toggleEditingLenderRemarks, users };
+  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, games, options, editingLenderRemarks, toggleEditingLenderRemarks, users };
   return <Provider value={api}>{children}</Provider>;
 };
 
