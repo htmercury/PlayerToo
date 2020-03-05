@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Card,
-    Icon,
-    Header,
-    Button,
-    Image,
-    Segment,
-    Rating,
-} from 'semantic-ui-react';
+import { Card, Icon, Button, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const Borrowers = ({ data }) => {
@@ -28,11 +20,13 @@ const Borrowers = ({ data }) => {
                         <Card.Description>13 March - 17 March</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                        <Button.Group >
-                            <Button basic color="yellow">
+                        <Button.Group fluid>
+                            <Button color="yellow" labelPosition="left" icon>
+                                <Icon name="check" />
                                 Approve
                             </Button>
-                            <Button basic color="grey">
+                            <Button color="grey" labelPosition="right" icon>
+                                <Icon name="close" />
                                 Decline
                             </Button>
                         </Button.Group>
