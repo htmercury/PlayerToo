@@ -9,13 +9,13 @@ const Listings = () => {
   const [isModalOpen, setIsModalOpen] = useState(null);
 
   const state = useContext(AppState);
-  const { Listitems } = state;
-  const {games}= state;
+  const { myListings, games } = state;
+
   console.log("this is in Listings.js file");
 
     return (
     <Card.Group itemsPerRow={1}>
-      {Listitems.map(listing => 
+      {myListings.map(listing => 
         <Card key={listing.id}>
           <Card.Content as={Link} to={`/lender/myListing/${listing.game_id}`}>
             <Card.Header> {games[games.findIndex(g => g.id === listing.game_id)].name} <LoanStatusLabel available={true} /></ Card.Header>

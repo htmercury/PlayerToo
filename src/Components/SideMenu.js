@@ -36,8 +36,8 @@ const SideMenuWrapper = ({ user, content }) => {
                         </Grid.Row>
                         <Grid.Row>
                             <Header as={'h1'} color="yellow">
-                                {user.firstName + ' ' + user.lastName}
-                                <Header.Subheader content={user.userName} />
+                                {user.name.split(" ")[0] + ' ' + user.name.split(" ")[1]}
+                                <Header.Subheader content={user.id.slice(0, -2)} />
                             </Header>
                         </Grid.Row>
                         <Grid.Row>

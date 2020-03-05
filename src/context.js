@@ -1,5 +1,4 @@
 import React, { useEffect, createContext, useState } from 'react';
-import { db } from './firebase';
 import { getAllGames, getAllListings, getAllUsers, getGameOptions } from './client';
 
 const AppState = createContext(null);
@@ -7,7 +6,6 @@ const { Provider } = AppState;
 
 
 const StateProvider = ({ children }) => {
-  const [data, setData] = useState([]);
   const [games, setGames] = useState([]);
   const [listings, setListings] = useState([]);
   const [users, setUsers] = useState([]);
@@ -15,17 +13,11 @@ const StateProvider = ({ children }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
-    const handleData = snap => {
-      if (snap.val()) setData(snap.val());
-    }
-    db.on('value', handleData, error => alert(error));
     getAllListings(setListings);
     getAllGames(setGames);
     getAllUsers(setUsers);
     getGameOptions(setOptions);
-    console.log(options)
-    return () => { db.off('value', handleData); };
-
+    //postListing();
   }, []);
   
   const marketplaceListings = 
@@ -54,12 +46,13 @@ const StateProvider = ({ children }) => {
       }
     ) : [];
 
-    const Listitems = 
+
+  const myListings = 
     listings.length > 0 && users.length > 0 && games.length > 0 ? 
     listings.filter(
-      listing => { return listing.lender_id=="Silva91_^" }) : [];
-  console.log("this is mylistings for Silva91_^")
-console.log(Listitems)
+    listing => { return listing.lender_id=="Silva91_^" }) : [];
+    console.log("this is mylistings for Silva91_^")
+    console.log(myListings)
 
   const [editingLenderRemarks, setEditingLenderRemarks] = useState(false);
 
@@ -69,7 +62,7 @@ console.log(Listitems)
 
   console.log(marketplaceListings);
 
-  const api = { data, setMenuVisible, menuVisible, marketplaceListings, Listitems, games, options, editingLenderRemarks, toggleEditingLenderRemarks };
+  const api = { data, setMenuVisible, menuVisible, marketplaceListings, myListings, games, options, editingLenderRemarks, toggleEditingLenderRemarks, users };
   return <Provider value={api}>{children}</Provider>;
 };
 

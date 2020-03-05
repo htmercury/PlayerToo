@@ -25,7 +25,6 @@ function handleMessage(input) {
       }
   const state = useContext(AppState);
   const { data } = state;
-  const contextRef = createRef();
   const [relevantGames, setRelevantGames]= useState(data);
   const [searched, setSearched]=useState("");
 
@@ -55,19 +54,5 @@ function handleMessage(input) {
   );
 };
 
-const PageFooter = () => {
-    return (
-      <div 
-      basic
-      attached='bottom'
-      style={{ textAlign: "center" }}
-      fluid="true"
-      >
-
-        <Icon name="add" bordered circular outline size="huge" style={{ color: "orange", outline:"true" }} >
-        </Icon>
-       </div>
-    );
-  };
-  export default HomePageLender;
+export default HomePageLender;
 

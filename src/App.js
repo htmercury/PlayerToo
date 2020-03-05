@@ -11,35 +11,25 @@ import AddListing from './Pages/AddListing/AddListing';
 import EachLenderListing from './Pages/Lender/EachLenderListing'
 import { AppState } from './context';
 import { BrowserRouter, Route } from 'react-router-dom';
-import PageHeader from './Components/PageHeader';
-import { Sticky, Ref } from 'semantic-ui-react';
 import SideMenuWrapper from './Components/SideMenu';
-
-const user = {
-  userName: "johnsmith53",
-  firstName: "John",
-  lastName: "Smith",
-  rating: "3.6",
-  profilePic: "https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png",
-}
+import { Loader, Container } from 'semantic-ui-react';
 
 function App() {
   const appState = useContext(AppState);
-  const { data, setMenuVisible, menuVisible } = appState;
+  const { marketplaceListings, users } = appState;
   
 
   const withHeader = (page) => {
     return (
       <SideMenuWrapper
         content={page}
-        user={user}
+        user={users[0]}
       />
     );
   };
-  console.log(menuVisible)
 
   return (
-    data.length !== 0 ? 
+    marketplaceListings.length !== 0 ? 
     <BrowserRouter>
       <Route exact path="/" render={() => withHeader(<HomePage />)} />
       <Route exact path="/:id" render={() => withHeader(<ListingPage />) } />
@@ -52,7 +42,7 @@ function App() {
       <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } />
       <Route path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
     </BrowserRouter>
-    : null
+    : <Container><Loader /></Container>
   );
 };
 
