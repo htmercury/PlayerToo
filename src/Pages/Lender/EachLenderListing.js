@@ -52,11 +52,12 @@ const EachLenderListing = () => {
           </Grid.Row>
             
 
-          <Header size="medium">
-            Current Booking Dates
-          </Header>
           <Grid.Column>
-            <Input fluid placeholder="My game set is missing 3 cards etc." />
+            <Header>
+              Current Booking Dates
+            </Header>
+            <Header.Subheader>James Smith: 13 March - 17 March</Header.Subheader>
+            <Header.Subheader>Angie Tan: 21 March - 28 March</Header.Subheader>
           </Grid.Column>
           <Grid.Row style={{
             display: "flex",
