@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useState } from 'react';
-import { getAllGames, getAllListings, getAllUsers, getGameOptions } from './client';
+import { getAllGames, getAllListings, getAllUsers, getGameOptions, postListing } from './client';
 
 const AppState = createContext(null);
 const { Provider } = AppState; 
@@ -17,6 +17,7 @@ const StateProvider = ({ children }) => {
     getAllGames(setGames);
     getAllUsers(setUsers);
     getGameOptions(setOptions);
+    //postListing();
   }, []);
   
   const marketplaceListings = 
@@ -45,14 +46,14 @@ const StateProvider = ({ children }) => {
       }
     ) : [];
 
-    const Listitems = 
+  const Listitems = 
     listings.length > 0 && users.length > 0 && games.length > 0 ? 
     listings.filter(
-      listing => { return listing.lender_id=="Silva91_^" }) : [];
-  console.log("this is mylistings for Silva91_^")
-console.log(Listitems)
+    listing => { return listing.lender_id=="Silva91_^" }) : [];
+    console.log("this is mylistings for Silva91_^")
+    console.log(Listitems)
 
-  const api = { setMenuVisible, menuVisible, marketplaceListings, Listitems, games, options };
+  const api = { setMenuVisible, menuVisible, marketplaceListings, Listitems, games, options, users };
   return <Provider value={api}>{children}</Provider>;
 };
 

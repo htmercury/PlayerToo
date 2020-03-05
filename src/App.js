@@ -14,24 +14,16 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import SideMenuWrapper from './Components/SideMenu';
 import { Loader, Container } from 'semantic-ui-react';
 
-const user = {
-  userName: "johnsmith53",
-  firstName: "John",
-  lastName: "Smith",
-  rating: "3.6",
-  profilePic: "https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png",
-}
-
 function App() {
   const appState = useContext(AppState);
-  const { marketplaceListings } = appState;
+  const { marketplaceListings, users } = appState;
   
 
   const withHeader = (page) => {
     return (
       <SideMenuWrapper
         content={page}
-        user={user}
+        user={users[0]}
       />
     );
   };
