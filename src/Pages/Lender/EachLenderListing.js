@@ -8,6 +8,7 @@ import {
   Header,
   Container,
   Label,
+  Icon,
 } from 'semantic-ui-react';
 import Bookings from './Borrowers';
 
@@ -21,9 +22,15 @@ const borrowers = [
   },
 ];
 
-const Status =({available}) => (
-  <Label horizontal circular color={available ? "yellow" : "grey"}> {available ? "Available" : "On Loan"} </Label>
-)
+let description =
+  'This boardgame set is missing 2 green pieces. Otherwise, it is in good condition!';
+
+const Status = ({ available }) => (
+  <Label horizontal circular color={available ? 'yellow' : 'grey'}>
+    {' '}
+    {available ? 'Available' : 'On Loan'}{' '}
+  </Label>
+);
 
 const EachLenderListing = () => {
   const appState = useContext(AppState);
@@ -60,29 +67,39 @@ const EachLenderListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Header as={'h2'}>{listing.name}<Status available={true}/></Header>
+              <Header as={'h2'}>
+                {listing.name}
+                <Status available={true} />
+              </Header>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
               <Header>
-              <Header.Subheader content="Return Date" />
-              <Header.Subheader content="10 March" style={{ fontStyle: "italic", color: "black" }}/>
-                </Header>
-                
-              </Grid.Column>
-              <Grid.Column width={8}>
+                <Header.Subheader content="Return Date" />
+                <Header.Subheader
+                  content="10 March"
+                  style={{ fontStyle: 'italic', color: 'black' }}
+                />
+              </Header>
+            </Grid.Column>
+            <Grid.Column width={8}>
               <Header>
-              <Header.Subheader content="Next Lending:" />
-              <Header.Subheader content="None yet" style={{ fontStyle: "italic", color: "black" }} />
-                </Header>
-              </Grid.Column>
+                <Header.Subheader content="Next Lending:" />
+                <Header.Subheader
+                  content="None yet"
+                  style={{ fontStyle: 'italic', color: 'black' }}
+                />
+              </Header>
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Header content="Remarks" />
-              {/* Take note that this needs to get information from when the listing is added */}
-              <Header.Subheader content={listing.description} />
+              <Header>
+                My Remarks
+                <Icon style={{float:"right"}} name="edit outline" size="small"/>
+              </Header>
+              <Header.Subheader content={description} />
             </Grid.Column>
           </Grid.Row>
 
