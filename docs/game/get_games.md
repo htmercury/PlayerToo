@@ -1,4 +1,4 @@
-# Games
+# Retrieve Games
 
 Used to retrieve board games from the database.
 

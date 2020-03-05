@@ -7,9 +7,13 @@ import {
   Button,
   Header,
   Container,
-  Label,
+  Icon,
+  Input,
 } from 'semantic-ui-react';
 import Bookings from './Borrowers';
+import { LoanStatusLabel } from './LoanStatusLabel';
+
+// TODO: pull borrower data from the DB
 
 const borrowers = [
   {
@@ -21,19 +25,29 @@ const borrowers = [
   },
 ];
 
-const Status =({available}) => (
-  <Label horizontal circular color={available ? "yellow" : "grey"}> {available ? "Available" : "On Loan"} </Label>
-)
+let description =
+  'This boardgame set is missing 2 green pieces. Otherwise, it is in good condition!';
+
+// TODO: make these changes actually affect the DB. Right now they're just front end
+
+const saveEdits = (input) => {
+  description = input.target.value;
+}
+
+const Remarks= ({isEditing}) => {   
+  return(isEditing ? (<Input defaultValue={description} fluid onChange={saveEdits.bind(this)}></Input>) : (
+    <Header.Subheader content={description} />
+  ))
+}
 
 const EachLenderListing = () => {
   const appState = useContext(AppState);
 
   // Just using the each listing database. Need to change when integrating backend.
 
-  const { games } = appState;
+  const { games, editingLenderRemarks, toggleEditingLenderRemarks } = appState;
   const contextRef = createRef();
   const { id } = useParams();
-  console.log('Open EachLenderListing ', id);
   const listing = games[games.findIndex(g => g.id === id)];
 
   return (
@@ -60,29 +74,44 @@ const EachLenderListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Header as={'h2'}>{listing.name}<Status available={true}/></Header>
+              <Header as={'h2'}>
+                {listing.name}
+                <LoanStatusLabel available={true} />
+              </Header>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
               <Header>
-              <Header.Subheader content="Return Date" />
-              <Header.Subheader content="10 March" style={{ fontStyle: "italic", color: "black" }}/>
-                </Header>
-                
-              </Grid.Column>
-              <Grid.Column width={8}>
+                <Header.Subheader content="Return Date" />
+                <Header.Subheader
+                  content="10 March"
+                  style={{ fontStyle: 'italic', color: 'black' }}
+                />
+              </Header>
+            </Grid.Column>
+            <Grid.Column width={8}>
               <Header>
-              <Header.Subheader content="Next Lending:" />
-              <Header.Subheader content="None yet" style={{ fontStyle: "italic", color: "black" }} />
-                </Header>
-              </Grid.Column>
+                <Header.Subheader content="Next Lending:" />
+                <Header.Subheader
+                  content="None yet"
+                  style={{ fontStyle: 'italic', color: 'black' }}
+                />
+              </Header>
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Header content="Remarks" />
-              {/* Take note that this needs to get information from when the listing is added */}
-              <Header.Subheader content={listing.description} />
+              <Header>
+                My Remarks
+                <Icon
+                  style={{ float: 'right' }}
+                  name={editingLenderRemarks ? 'close' : 'edit outline'}
+                  size="small"
+                  onClick={() => toggleEditingLenderRemarks()}
+                />
+              </Header>
+              <Remarks isEditing={editingLenderRemarks} />
             </Grid.Column>
           </Grid.Row>
 

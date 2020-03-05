@@ -1,4 +1,4 @@
-# Listing
+# Retrieve Listing
 
 Used to retrieve a specific listing from the database.
 
