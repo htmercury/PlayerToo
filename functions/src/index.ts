@@ -19,7 +19,6 @@ const usersCollection = 'Users';
 const listingsCollection = 'Listings';
 const gamesCollection = 'BoardGames';
 
-
 app.use(cors({ origin: true }));
 main.use(cors({ origin: true }));
 main.use('/api/v1', app);
@@ -44,7 +43,7 @@ app.get('/users/:userId', (req, res) => {
 app.get('/users', (req, res) => {
     firebaseHelper.firestore
         .backup(db, usersCollection)
-        .then((data : any) => res.status(200).send(Object.values(data['Users'])))
+        .then((data: any) => res.status(200).send(Object.values(data['Users'])))
         .catch(error => res.status(400).send(`Cannot get users: ${error}`));
 });
 
@@ -80,6 +79,26 @@ app.get('/listings/:listingId', async (req, res) => {
     }
 });
 
+// Remove a listing
+app.delete('/listings/:listingId', async (req, res) => {
+    try {
+        await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .delete();
+
+        res.status(200).send({
+            message: 'listing successfully deleted.',
+            success: true,
+        });
+    } catch (error) {
+        res.status(400).send({
+            message: `Failed to delete listing: ${error}`,
+            success: false,
+        });
+    }
+});
+
 // Add a listing
 app.post('/listings', async (req, res) => {
     try {
@@ -88,28 +107,43 @@ app.post('/listings', async (req, res) => {
         const additional_details = req.body.additional_details;
 
         if (game_id === undefined || user_id === undefined) {
-            res.status(400).send({message: 'game_id or user_id was undefined.', success: false});
+            res.status(400).send({
+                message: 'game_id or user_id was undefined.',
+                success: false,
+            });
             return;
         }
 
         // check if id exists
-        const userRef = await db.collection(usersCollection).doc(user_id).get();
-        const gameRef = await db.collection(gamesCollection).doc(game_id).get();
+        const userRef = await db
+            .collection(usersCollection)
+            .doc(user_id)
+            .get();
+        const gameRef = await db
+            .collection(gamesCollection)
+            .doc(game_id)
+            .get();
 
         if (!userRef.exists || !gameRef.exists) {
-            res.status(400).send({message: 'game_id or user_id was invalid.', success: false});
+            res.status(400).send({
+                message: 'game_id or user_id was invalid.',
+                success: false,
+            });
             return;
         }
 
         // post to db
-        await db.collection(listingsCollection).doc().set({
-            borrowed: false,
-            game_id: game_id,
-            lender_id: user_id,
-            additional_details: additional_details
-        });
+        await db
+            .collection(listingsCollection)
+            .doc()
+            .set({
+                borrowed: false,
+                game_id: game_id,
+                lender_id: user_id,
+                additional_details: additional_details,
+            });
 
-        res.status(201).send({message: 'listing was added.', success: true});
+        res.status(201).send({ message: 'listing was added.', success: true });
     } catch (error) {
         res.status(400).send(`Cannot add listing: ${error}`);
     }
@@ -149,7 +183,7 @@ app.get('/listings', async (req, res) => {
         };
 
         const listings = await joinAndReturnData();
-        res.status(1).send(listings);
+        res.status(200).send(listings);
     } catch (error) {
         res.status(400).send(`Cannot get listings: ${error}`);
     }
