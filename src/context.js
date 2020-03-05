@@ -54,15 +54,9 @@ const StateProvider = ({ children }) => {
     console.log("this is mylistings for Silva91_^")
     console.log(myListings)
 
-  const [editingLenderRemarks, setEditingLenderRemarks] = useState(false);
-
-  const toggleEditingLenderRemarks = () => {    
-    setEditingLenderRemarks(!editingLenderRemarks);
-  }
-
   console.log(marketplaceListings);
 
-  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, games, options, editingLenderRemarks, toggleEditingLenderRemarks, users };
+  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, games, options, users };
   return <Provider value={api}>{children}</Provider>;
 };
 

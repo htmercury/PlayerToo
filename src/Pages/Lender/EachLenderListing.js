@@ -45,7 +45,11 @@ const EachLenderListing = () => {
 
   // Just using the each listing database. Need to change when integrating backend.
 
-  const { games, editingLenderRemarks, toggleEditingLenderRemarks } = appState;
+  const { games } = appState;
+  const [editingLenderRemarks, setEditingLenderRemarks] = useState(false); 
+  const toggleEditingLenderRemarks = () => {    
+    setEditingLenderRemarks(!editingLenderRemarks);
+  }
   const contextRef = createRef();
   const { id } = useParams();
   const listing = games[games.findIndex(g => g.id === id)];
