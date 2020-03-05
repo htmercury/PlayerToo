@@ -7,11 +7,13 @@ import {
   Button,
   Header,
   Container,
-  Label,
   Icon,
   Input,
 } from 'semantic-ui-react';
 import Bookings from './Borrowers';
+import { LoanStatusLabel } from './LoanStatusLabel';
+
+// TODO: pull borrower data from the DB
 
 const borrowers = [
   {
@@ -25,13 +27,6 @@ const borrowers = [
 
 let description =
   'This boardgame set is missing 2 green pieces. Otherwise, it is in good condition!';
-
-const Status = ({ available }) => (
-  <Label horizontal circular color={available ? 'yellow' : 'grey'}>
-    {' '}
-    {available ? 'Available' : 'On Loan'}{' '}
-  </Label>
-);
 
 // TODO: make these changes actually affect the DB. Right now they're just front end
 
@@ -81,7 +76,7 @@ const EachLenderListing = () => {
             <Grid.Column>
               <Header as={'h2'}>
                 {listing.name}
-                <Status available={true} />
+                <LoanStatusLabel available={true} />
               </Header>
             </Grid.Column>
           </Grid.Row>
