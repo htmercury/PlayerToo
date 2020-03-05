@@ -7,7 +7,7 @@ import {
   Button,
   Header,
   Container,
-  Input,
+  Label,
 } from 'semantic-ui-react';
 import Bookings from './Borrowers';
 
@@ -20,6 +20,10 @@ const borrowers = [
       'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
   },
 ];
+
+const Status =({available}) => (
+  <Label horizontal circular color={available ? "yellow" : "grey"}> {available ? "Available" : "On Loan"} </Label>
+)
 
 const EachLenderListing = () => {
   const appState = useContext(AppState);
@@ -56,8 +60,23 @@ const EachLenderListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Header as={'h2'}>{listing.name}</Header>
+              <Header as={'h2'}>{listing.name}<Status available={true}/></Header>
             </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <Header>
+              <Header.Subheader content="Return Date" />
+              <Header.Subheader content="10 March" style={{ fontStyle: "italic", color: "black" }}/>
+                </Header>
+                
+              </Grid.Column>
+              <Grid.Column width={8}>
+              <Header>
+              <Header.Subheader content="Next Lending:" />
+              <Header.Subheader content="None yet" style={{ fontStyle: "italic", color: "black" }} />
+                </Header>
+              </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
@@ -68,7 +87,7 @@ const EachLenderListing = () => {
           </Grid.Row>
 
           <Grid.Column>
-            <Header>Current Bookings</Header>
+            <Header>Loan Requests</Header>
             <Bookings data={borrowers} />
           </Grid.Column>
           <Grid.Row
