@@ -1,32 +1,39 @@
 import React, { useContext, useState, createRef } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
-import { Grid, Image, Button, Header, Container, Input, Modal, PopupContent } from 'semantic-ui-react';
-import AddListing from './AddListing';
+import { Grid, Image, Button, Header, Container, Input, Modal } from 'semantic-ui-react';
+import { postListing } from '../../client';
 
 const EachListing = () => {
   const appState = useContext(AppState);
 
   // Just using the each listing database. Need to change when integrating backend.
 
-  const { games, Listitems } = appState;
+  const { games, myListings } = appState;
   const contextRef = createRef();
   const { id } = useParams();
-  console.log(id)
   const listing = games[games.findIndex(g => g.id === id)];
-  const [isModalOpen, setIsModalOpen] = useState(null);
 
+  const [isModalOpen, setIsModalOpen] = useState(null);
+  const [details, setDetails] = useState("");
+  console.log(details)
   function Add() {
     setIsModalOpen(true);
-    const game = games.findIndex(g => g.id === listing.id);
-    Listitems.push({
-      "id": game,
+    const body = {
+      game_id: listing.id,
+      user_id: "Silva91_^",
+      additional_details: details
+    };
+    myListings.push({
       "lender_id": "Silva91_^",
       "game_id": listing.id,
       "borrowed": false
     });
-    console.log(Listitems)
-  }
+    postListing(body)
+    console.log(myListings)
+  };
+
+
   return (
     <div ref={contextRef}>
 
@@ -82,7 +89,7 @@ const EachListing = () => {
           <Grid.Row>
             <Grid.Column>
               <Header>
-                {listing.game}
+                {listing.name}
               </Header>
             </Grid.Column>
           </Grid.Row>
@@ -121,7 +128,11 @@ const EachListing = () => {
             What do borrowers need to know about your game?
             </Header>
           <Grid.Column>
-            <Input fluid placeholder="My game set is missing 3 cards etc." />
+            <Input 
+              fluid 
+              placeholder="My game set is missing 3 cards etc."  
+              onChange={e  => setDetails(e.target.value)}
+            />
           </Grid.Column>
           <Grid.Row style={{
             display: "flex",
