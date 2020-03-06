@@ -30,7 +30,6 @@ const Games = ({ data }) => {
           <Card.Content extra>
             <Button
               onClick={() => setIsModalOpen(game.id)} 
-              basic
               color="yellow" 
               content="Borrow Now" 
               fluid 
