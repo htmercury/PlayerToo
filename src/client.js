@@ -42,3 +42,17 @@ export const postListing = async (body) => {
   const json = await response.json() 
   console.log(json)
 };
+
+export const deleteListing = async (id) => {
+  const response = await fetch(`https://playertoo-43706.firebaseapp.com/api/v1/listings/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
+  const json = await response.json()
+  console.log(json)
+  console.log('deleted')
+}
