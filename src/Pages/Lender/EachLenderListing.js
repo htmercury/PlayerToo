@@ -9,9 +9,9 @@ import {
   Container,
   Icon,
   Input,
+  Label
 } from 'semantic-ui-react';
 import Bookings from './Borrowers';
-import { LoanStatusLabel } from './LoanStatusLabel';
 
 // TODO: pull borrower data from the DB
 
@@ -80,7 +80,9 @@ const EachLenderListing = () => {
             <Grid.Column>
               <Header as={'h2'}>
                 {listing.name}
-                <LoanStatusLabel available={true} />
+                <Label horizontal circular size='mini' style={{ marginLeft: "6px" }}color={!listing.borrowed ? 'yellow' : 'grey'}>
+                {!listing.borrowed ? 'Available' : 'On Loan'}
+              </Label>
               </Header>
             </Grid.Column>
           </Grid.Row>
