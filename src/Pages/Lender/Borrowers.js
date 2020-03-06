@@ -17,22 +17,17 @@ const BorrowerCard = ({ item }) => {
         <Button.Group fluid>
           <Button
             color="yellow"
-            labelPosition="left"
-            icon
             as={Link}
             to="/lender/myListings"
           >
-            <Icon name="check" />
             Approve
           </Button>
           <Button
-            color="grey"
-            labelPosition="right"
-            icon
+            color="yellow"
+            basic
             as={Link}
             to="/lender/myListings"
           >
-            <Icon name="close" />
             Decline
           </Button>
         </Button.Group>
