@@ -60,6 +60,8 @@ const EachLenderListing = () => {
       <Container>
         <br />
         <Grid columns={1}>
+
+          {/* Back Button */}
           <Grid.Row>
             <Grid.Column>
               <Button
@@ -72,6 +74,8 @@ const EachLenderListing = () => {
               />
             </Grid.Column>
           </Grid.Row>
+
+          {/* Title */}
           <Grid.Row>
             <Image.Group size="small" style={{ marginLeft: '90px' }}>
               <Image src={Object.values(listing.images)[3]} />
@@ -87,6 +91,8 @@ const EachLenderListing = () => {
               </Header>
             </Grid.Column>
           </Grid.Row>
+
+          {/* Status */}
           <Grid.Row>
             <Grid.Column width={8}>
               <Header>
@@ -107,10 +113,12 @@ const EachLenderListing = () => {
               </Header>
             </Grid.Column>
           </Grid.Row>
+
+          {/* Additional Details */}
           <Grid.Row>
             <Grid.Column>
               <Header>
-                My Remarks
+                Additional Details
                 <Icon
                   style={{ float: 'right' }}
                   name={editingLenderRemarks ? 'close' : 'edit outline'}
@@ -122,6 +130,7 @@ const EachLenderListing = () => {
             </Grid.Column>
           </Grid.Row>
 
+          {/* Loan Requests */}
           <Grid.Column>
             <Header>Loan Requests</Header>
             <Bookings data={borrowers} />
