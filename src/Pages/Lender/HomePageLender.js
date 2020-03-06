@@ -30,7 +30,7 @@ const HomePageLender= () => {
   };
 
   return(
-    <Container>
+    <Container style={{ marginBottom: "600px" }}>
       <Grid padded>
         <Grid.Row>
           <Grid.Column width={16}>
