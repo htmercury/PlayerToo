@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Icon, Button, Image } from 'semantic-ui-react';
+import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const BorrowerCard = ({ item }) => {
@@ -11,7 +11,10 @@ const BorrowerCard = ({ item }) => {
         <Card.Meta>
           <Icon name="star" /> {item.borrowerRating}
         </Card.Meta>
-        <Card.Description>{item.duration}</Card.Description>
+        <Card.Description>Duration:</Card.Description>
+        <Card.Description as={Header.Subheader}>{item.duration}</Card.Description>
+        <Card.Description>Proposed Meeting Location:</Card.Description>
+        <Card.Description as={Header.Subheader}>{item.meetingLoc}</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <Button.Group fluid>
@@ -41,7 +44,7 @@ const Borrowers = ({ data }) => {
     <div>
       <Card.Group centered itemsPerRow='1'>
         {data.map(i => 
-            <BorrowerCard item={i} />)}
+            <BorrowerCard key={i.borrower} item={i} />)}
       </Card.Group>
     </div>
   );

@@ -22,6 +22,7 @@ const borrowers = [
     duration: '13 March - 17 March',
     image:
       'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
+    meetingLoc: "1560 Maple Avenue"
   },
 ];
 
