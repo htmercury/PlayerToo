@@ -30,6 +30,9 @@ Get all listings.
 Add a listing.
 * [Listings](listing/post_listings.md) : `POST /api/v1/listings/`
 
+Edit a listing.
+* [Listings](listing/put_listing.md) : `PUT /api/v1/listings/`
+
 Remove a listing.
 * [Listing](listing/delete_listing.md) : `DELETE /api/v1/listings/:listingId`
 
