@@ -36,6 +36,7 @@ const StateProvider = ({ children }) => {
           minPlayers: game.min_players,
           maxPlayers: game.max_players,
           distance: user.distance, 
+          borrowed: listing.borrowed,
           lender: {
             username: user.id.slice(0, -2),
             firstname: user.name.split(" ")[0],
