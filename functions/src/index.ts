@@ -113,6 +113,44 @@ app.delete('/listings/:listingId', async (req, res) => {
     }
 });
 
+// Edit a listing
+app.put('/listings/:listingId', async (req, res) => {
+    try {
+        // check if listing exists first
+        const listingRef = await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .get();
+
+        if (!listingRef.exists) {
+            res.status(400).send({
+                message: 'listing_id does not exist.',
+                success: false,
+            });
+            return;
+        }
+        // grab update body params
+        const new_body = req.body;
+
+        // update
+        await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .update(new_body);
+
+
+        res.status(200).send({
+            message: 'listing successfully updated.',
+            success: true,
+        });
+    } catch (error) {
+        res.status(400).send({
+            message: `Failed to update listing: ${error}`,
+            success: false,
+        });
+    }
+});
+
 // Add a listing
 app.post('/listings', async (req, res) => {
     try {
