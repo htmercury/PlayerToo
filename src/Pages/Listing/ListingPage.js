@@ -8,9 +8,7 @@ const ListingPage = () => {
   const appState = useContext(AppState);
   const { marketplaceListings } = appState;
   const { id } = useParams();
-  console.log(id);
-  const listing = marketplaceListings[id];
-
+  const listing = marketplaceListings[marketplaceListings.findIndex(x => x.id == id)];
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   return (

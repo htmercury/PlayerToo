@@ -17,7 +17,7 @@ export const getAllListings = async (callback) => {
   const response = await fetch('https://playertoo-43706.firebaseapp.com/api/v1/listings')
   const data = await response.json();
   const values = Object.values(data);
-  //console.log(data)
+  console.log(data)
   return callback(values);
 }
 
