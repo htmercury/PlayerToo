@@ -59,19 +59,7 @@ const StateProvider = ({ children }) => {
   const myRequests = myListings.length > 0 && users.length > 0 && games.length > 0 ?
     myListings.filter(listings => { return listings.requests.length > 0 }) : [];
 
-
-  console.log("This is the requests page!")
-  console.log(myRequests)
-  const permittedValues = [];
-  for (let i = 0; i < myRequests.length; i++) {
-    let temp = myRequests[i]["requests"]
-    console.log("here's temp", temp)
-    for (let j = 0; j< temp.length ; j++) {
-      permittedValues.push(temp[j]);
-    }
-  }
-  console.log(permittedValues);
-  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, myRequests, permittedValues, games, options, users };
+  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, myRequests, games, options, users };
   return <Provider value={api}>{children}</Provider>;
 };
 
