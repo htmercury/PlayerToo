@@ -9,7 +9,7 @@ import {
   Container,
   Icon,
   Input,
-  Label
+  Label,
 } from 'semantic-ui-react';
 import Bookings from './Borrowers';
 
@@ -22,7 +22,7 @@ const borrowers = [
     duration: '13 March - 17 March',
     image:
       'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
-    meetingLoc: "1560 Maple Avenue"
+    meetingLoc: '1560 Maple Avenue',
   },
 ];
 
@@ -31,15 +31,21 @@ let description =
 
 // TODO: make these changes actually affect the DB. Right now they're just front end
 
-const saveEdits = (input) => {
+const saveEdits = input => {
   description = input.target.value;
-}
+};
 
-const Remarks= ({isEditing}) => {   
-  return(isEditing ? (<Input defaultValue={description} fluid onChange={saveEdits.bind(this)}></Input>) : (
+const Remarks = ({ isEditing }) => {
+  return isEditing ? (
+    <Input
+      defaultValue={description}
+      fluid
+      onChange={saveEdits.bind(this)}
+    ></Input>
+  ) : (
     <Header.Subheader content={description} />
-  ))
-}
+  );
+};
 
 const EachLenderListing = () => {
   const appState = useContext(AppState);
@@ -47,10 +53,10 @@ const EachLenderListing = () => {
   // Just using the each listing database. Need to change when integrating backend.
 
   const { games } = appState;
-  const [editingLenderRemarks, setEditingLenderRemarks] = useState(false); 
-  const toggleEditingLenderRemarks = () => {    
+  const [editingLenderRemarks, setEditingLenderRemarks] = useState(false);
+  const toggleEditingLenderRemarks = () => {
     setEditingLenderRemarks(!editingLenderRemarks);
-  }
+  };
   const contextRef = createRef();
   const { id } = useParams();
   const listing = games[games.findIndex(g => g.id === id)];
@@ -60,7 +66,6 @@ const EachLenderListing = () => {
       <Container>
         <br />
         <Grid columns={1}>
-
           {/* Back Button */}
           <Grid.Row>
             <Grid.Column>
@@ -85,10 +90,22 @@ const EachLenderListing = () => {
             <Grid.Column>
               <Header as={'h2'}>
                 {listing.name}
-                <Label horizontal circular size='mini' style={{ marginLeft: "6px" }}color={!listing.borrowed ? 'yellow' : 'grey'}>
-                {!listing.borrowed ? 'Available' : 'On Loan'}
-              </Label>
+                <Label
+                  horizontal
+                  circular
+                  size="mini"
+                  style={{ marginLeft: '6px' }}
+                  color={!listing.borrowed ? 'yellow' : 'grey'}
+                >
+                  {!listing.borrowed ? 'Available' : 'On Loan'}
+                </Label>
               </Header>
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column>
+              <Header>Status</Header>
             </Grid.Column>
           </Grid.Row>
 
@@ -131,10 +148,13 @@ const EachLenderListing = () => {
           </Grid.Row>
 
           {/* Loan Requests */}
-          <Grid.Column>
-            <Header>Loan Requests</Header>
-            <Bookings data={borrowers} />
-          </Grid.Column>
+          <Grid.Row>
+            <Grid.Column>
+              <Header>Loan Requests</Header>
+              <Bookings data={borrowers} />
+            </Grid.Column>
+          </Grid.Row>
+          
           <Grid.Row
             style={{
               display: 'flex',
