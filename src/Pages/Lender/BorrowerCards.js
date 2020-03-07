@@ -2,7 +2,12 @@ import React from 'react';
 import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const BorrowerCard = ({ item }) => {
+const approve = (item, isApproved) => {
+  item.approved = true;
+  return item;
+};
+
+const BorrowerCard = ({ item, state }) => {
   return (
     <Card>
       <Card.Content>
@@ -12,24 +17,38 @@ const BorrowerCard = ({ item }) => {
           <Icon name="star" /> {item.borrowerRating}
         </Card.Meta>
         <Card.Description>Duration:</Card.Description>
-        <Card.Description as={Header.Subheader}>{item.duration}</Card.Description>
+        <Card.Description as={Header.Subheader}>
+          {item.duration}
+        </Card.Description>
         <Card.Description>Proposed Meeting Location:</Card.Description>
-        <Card.Description as={Header.Subheader}>{item.meetingLoc}</Card.Description>
+        <Card.Description as={Header.Subheader}>
+          {item.meetingLoc}
+        </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <Button.Group fluid>
           <Button
             color="yellow"
-            as={Link}
-            to="/lender/myListings"
+            onClick={() =>
+              state.setBorrowers(
+                state.borrowers.map(x =>
+                  x.borrower === item.borrower ? approve(x, true) : x
+                )
+              )
+            }
           >
             Approve
           </Button>
           <Button
             color="yellow"
             basic
-            as={Link}
-            to="/lender/myListings"
+            onClick={() =>
+              state.setBorrowers(
+                state.borrowers.map(x =>
+                  x.borrower === item.borrower ? approve(x, false) : x
+                )
+              )
+            }
           >
             Decline
           </Button>
@@ -39,12 +58,13 @@ const BorrowerCard = ({ item }) => {
   );
 };
 
-const BorrowerCards = ({ data }) => {
+const BorrowerCards = ({ state }) => {
   return (
-      <Card.Group centered itemsPerRow='1'>
-        {data.map(i => 
-            <BorrowerCard key={i.borrower} item={i} />)}
-      </Card.Group>
+    <Card.Group centered itemsPerRow="1">
+      {state.borrowers.map(i => (
+        <BorrowerCard key={i.borrower} item={i} state={state} />
+      ))}
+    </Card.Group>
   );
 };
 

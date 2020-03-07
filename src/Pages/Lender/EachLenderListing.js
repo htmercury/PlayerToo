@@ -16,7 +16,7 @@ import StatusCard from './StatusCard';
 
 // TODO: pull borrower data from the DB
 
-const borrowers = [
+const borrowerTemp = [
   {
     borrower: 'James Smith',
     borrowerRating: '3.6',
@@ -24,6 +24,16 @@ const borrowers = [
     image:
       'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
     meetingLoc: '1560 Maple Avenue',
+    approved: null,
+  },
+  {
+    borrower: 'Angelina Jolie',
+    borrowerRating: '2.6',
+    duration: '11 March - 17 March',
+    image:
+      'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
+    meetingLoc: '17 Maple Avenue',
+    approved: null,
   },
 ];
 
@@ -58,6 +68,10 @@ const EachLenderListing = () => {
   const toggleEditingLenderRemarks = () => {
     setEditingLenderRemarks(!editingLenderRemarks);
   };
+
+  const [statusCard, setStatusCard] = useState(null);
+  const [borrowers, setBorrowers] = useState(borrowerTemp)
+
   const contextRef = createRef();
   const { id } = useParams();
   const listing = games[games.findIndex(g => g.id === id)];
@@ -158,7 +172,7 @@ const EachLenderListing = () => {
           <Grid.Row>
             <Grid.Column>
               <Header>Loan Requests</Header>
-              <BorrowerCards data={borrowers} />
+              <BorrowerCards state={{borrowers, setBorrowers}} />
             </Grid.Column>
           </Grid.Row>
 
