@@ -13,6 +13,7 @@ import { AppState } from './context';
 import { BrowserRouter, Route } from 'react-router-dom';
 import SideMenuWrapper from './Components/SideMenu';
 import { Loader, Container } from 'semantic-ui-react';
+import Request from './Pages/Requests/Requests';
 
 function App() {
   const appState = useContext(AppState);
@@ -41,6 +42,7 @@ function App() {
       <Route path="/firestore/users" render={() => <FireStoreUsersPage /> } />
       <Route path="/firestore/games" render={() => <FireStoreGamesPage /> } />
       <Route path="/firestore/listings" render={() => <FireStoreListingsPage /> } />
+      <Route path="/firestore/requests" render={() => withHeader(<Request />) } />
     </BrowserRouter>
     : <Container><Loader /></Container>
   );
