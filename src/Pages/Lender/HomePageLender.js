@@ -1,8 +1,8 @@
-import React, { useState, useContext, createRef } from 'react';
+import React, { useState, useContext } from 'react';
 import { AppState } from '../../context';
 import Listings from './Listings';
 import { Link } from 'react-router-dom';
-import { Button, Header, Container, Segment, Sticky, Grid, Input, Icon, IconGroup } from 'semantic-ui-react';
+import { Button, Header, Container, Grid } from 'semantic-ui-react';
 import DeleteModal from './DeleteModal';
 import { deleteListing } from '../../client';
 
