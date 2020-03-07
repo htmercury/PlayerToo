@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
@@ -39,15 +39,13 @@ const BorrowerCard = ({ item }) => {
   );
 };
 
-const Borrowers = ({ data }) => {
+const BorrowerCards = ({ data }) => {
   return (
-    <div>
       <Card.Group centered itemsPerRow='1'>
         {data.map(i => 
             <BorrowerCard key={i.borrower} item={i} />)}
       </Card.Group>
-    </div>
   );
 };
 
-export default Borrowers;
+export default BorrowerCards;

@@ -11,7 +11,8 @@ import {
   Input,
   Label,
 } from 'semantic-ui-react';
-import Borrowers from './Borrowers';
+import BorrowerCards from './BorrowerCards';
+import StatusCard from './StatusCard';
 
 // TODO: pull borrower data from the DB
 
@@ -131,6 +132,12 @@ const EachLenderListing = () => {
             </Grid.Column>
           </Grid.Row>
 
+          <Grid.Row>
+            <Grid.Column>
+              <StatusCard item={borrowers[0]} />
+            </Grid.Column>
+          </Grid.Row>
+
           {/* Additional Details */}
           <Grid.Row>
             <Grid.Column>
@@ -151,10 +158,10 @@ const EachLenderListing = () => {
           <Grid.Row>
             <Grid.Column>
               <Header>Loan Requests</Header>
-              <Borrowers data={borrowers} />
+              <BorrowerCards data={borrowers} />
             </Grid.Column>
           </Grid.Row>
-          
+
           <Grid.Row
             style={{
               display: 'flex',
