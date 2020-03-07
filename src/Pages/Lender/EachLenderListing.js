@@ -117,34 +117,12 @@ const EachLenderListing = () => {
             </Grid.Column>
           </Grid.Row>
 
+          {/* Approved Requests */}
           <Grid.Row>
             <Grid.Column>
-              <Header>Status</Header>
+              <Header>Approved Requests</Header>
             </Grid.Column>
           </Grid.Row>
-
-          {/* Status */}
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <Header>
-                <Header.Subheader content="Return Date" />
-                <Header.Subheader
-                  content="10 March"
-                  style={{ fontStyle: 'italic', color: 'black' }}
-                />
-              </Header>
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <Header>
-                <Header.Subheader content="Next Lending:" />
-                <Header.Subheader
-                  content="None yet"
-                  style={{ fontStyle: 'italic', color: 'black' }}
-                />
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
-
           <Grid.Row>
             <Grid.Column>
               <StatusCard state={{borrowers, setBorrowers}} />
