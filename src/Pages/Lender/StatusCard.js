@@ -35,10 +35,18 @@ const AvailableCard = ({ item }) => {
   );
 };
 
-const StatusCard = ({ item }) => {
-  return (
+const StatusCard = ({ state }) => {
+  const approved = state.borrowers.filter(x => x.approved === true);
+
+  return approved.length > 0 ? (
     <Card.Group centered itemsPerRow="1">
-      <OnLoanCard item={item} />
+      {approved.map(i => (
+        <OnLoanCard key ={i.borrower} item={i} />
+      ))}
+    </Card.Group>
+  ) : (
+    <Card.Group centered itemsPerRow="1">
+      <AvailableCard />
     </Card.Group>
   );
 };

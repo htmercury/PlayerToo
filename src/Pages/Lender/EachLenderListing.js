@@ -69,7 +69,6 @@ const EachLenderListing = () => {
     setEditingLenderRemarks(!editingLenderRemarks);
   };
 
-  const [statusCard, setStatusCard] = useState(null);
   const [borrowers, setBorrowers] = useState(borrowerTemp)
 
   const contextRef = createRef();
@@ -148,7 +147,7 @@ const EachLenderListing = () => {
 
           <Grid.Row>
             <Grid.Column>
-              <StatusCard item={borrowers[0]} />
+              <StatusCard state={{borrowers, setBorrowers}} />
             </Grid.Column>
           </Grid.Row>
 

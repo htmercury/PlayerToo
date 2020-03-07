@@ -61,7 +61,7 @@ const BorrowerCard = ({ item, state }) => {
 const BorrowerCards = ({ state }) => {
   return (
     <Card.Group centered itemsPerRow="1">
-      {state.borrowers.map(i => (
+      {state.borrowers.filter(x => x.approved === null).map(i => (
         <BorrowerCard key={i.borrower} item={i} state={state} />
       ))}
     </Card.Group>
