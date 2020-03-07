@@ -11,7 +11,7 @@ import {
   Input,
   Label,
 } from 'semantic-ui-react';
-import Bookings from './Borrowers';
+import Borrowers from './Borrowers';
 
 // TODO: pull borrower data from the DB
 
@@ -151,7 +151,7 @@ const EachLenderListing = () => {
           <Grid.Row>
             <Grid.Column>
               <Header>Loan Requests</Header>
-              <Bookings data={borrowers} />
+              <Borrowers data={borrowers} />
             </Grid.Column>
           </Grid.Row>
           
