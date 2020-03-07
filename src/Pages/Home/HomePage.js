@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AppState } from '../../context';
 import Games from './Games';
-import { Container, Grid, Input } from 'semantic-ui-react';
+import { Header, Container, Grid, Input } from 'semantic-ui-react';
 
 const HomePage = () => {
   const state = useContext(AppState);
@@ -27,6 +27,7 @@ const HomePage = () => {
   
   return (
     <Container>
+      <Header dividing as="h2" color="yellow" content="Marketplace" style={{margin: "15px 0"}} />
       <Grid columns={1} padded>
         <Grid.Row>
           <Grid.Column>

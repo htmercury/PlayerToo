@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Header, Segment, Grid, Icon, Menu } from 'semantic-ui-react';
 import { AppState } from '../context';
 
@@ -21,11 +22,14 @@ const PageHeader = () => {
           />
         </Grid.Column>
         <Grid.Column width='10'>
-          <Header 
+          <Header
+            as={Link}
+            to="/"
             inverted 
             content="Player, Too" 
             size="large" 
             color="black"
+            style={{cursor: "default"}}
           />
         </Grid.Column>
         <Grid.Column width='3'/>
