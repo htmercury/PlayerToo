@@ -55,9 +55,15 @@ const StateProvider = ({ children }) => {
     console.log("this is mylistings for Silva91_^")
     console.log(myListings)
 
-  console.log(marketplaceListings);
+  
+  const myRequests = myListings.length > 0 && users.length > 0 && games.length > 0 ?
+  myListings.filter(listings => {return listings.requests.length > 0}) : [];
 
-  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, games, options, users };
+
+  console.log("This is the requests page!")
+  console.log(myRequests)
+
+  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, myRequests, games, options, users };
   return <Provider value={api}>{children}</Provider>;
 };
 
