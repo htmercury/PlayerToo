@@ -71,6 +71,13 @@ const SideMenuWrapper = ({ user, content }) => {
                   to="/lender/myListings" 
                   onClick={closeMenu}
                 />
+                 <Menu.Item 
+                  icon="chess bishop" 
+                  name="Rental Requests" 
+                  as={Link} 
+                  to="/firestore/requests" 
+                  onClick={closeMenu}
+                />
                 <Menu.Item icon="arrow alternate circle down" name="My Loans" />
                 <Menu.Item icon="setting" name="Settings" />
             </Sidebar>
