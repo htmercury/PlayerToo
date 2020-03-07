@@ -8,11 +8,11 @@ const Request = () => {
   const { games, myRequests, users } = appState;
   console.log(myRequests)
   return (
-    <Container>
+    <Container style={{marginBottom:"600px"}}>
       <Grid columns={1} padded>
         <Grid.Row>
           <Grid.Column width={16}>
-            <Header as="h2" color="yellow" content="Requests" dividing />
+            <Header as="h2" color="yellow" content="Rental Requests" dividing />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>

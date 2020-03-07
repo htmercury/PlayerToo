@@ -157,6 +157,7 @@ app.post('/listings', async (req, res) => {
         const game_id = req.body.game_id;
         const user_id = req.body.user_id;
         const additional_details = req.body.additional_details;
+        const requests = req.body.requests;
 
         if (game_id === undefined || user_id === undefined) {
             res.status(400).send({
@@ -193,6 +194,7 @@ app.post('/listings', async (req, res) => {
             game_id: game_id,
             lender_id: user_id,
             additional_details: additional_details,
+            requests: requests,
         });
 
         res.status(201).send({ message: 'listing was added.', success: true });

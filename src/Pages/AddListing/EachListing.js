@@ -22,12 +22,14 @@ const EachListing = () => {
     const body = {
       game_id: listing.id,
       user_id: "Silva91_^",
-      additional_details: details
+      additional_details: details,
+      requests: []
     };
     myListings.push({
       "lender_id": "Silva91_^",
       "game_id": listing.id,
-      "borrowed": false
+      "borrowed": false,
+      "requests": []
     });
     postListing(body)
     console.log(myListings)
