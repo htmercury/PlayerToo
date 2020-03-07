@@ -3,7 +3,7 @@ import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const approve = (item, isApproved) => {
-  item.approved = true;
+  item.approved = isApproved;
   return item;
 };
 
