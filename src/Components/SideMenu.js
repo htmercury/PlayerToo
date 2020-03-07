@@ -42,7 +42,7 @@ const SideMenuWrapper = ({ user, content }) => {
                         </Grid.Row>
                         <Grid.Row>
                             <Rating
-                                defaultRating={user.rating}
+                                defaultRating={Math.round(user.rating)}
                                 maxRating="5"
                                 disabled
                                 style={{ marginTop: -20 }}
