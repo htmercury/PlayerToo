@@ -61,7 +61,7 @@ const ListingPage = () => {
             Owner:
           </Header>
           <Feed.Event>
-            <Feed.Label image='./assets/images/default.jpg' />
+            <Feed.Label image={listing.lender.profile} />
             <Feed.Content>
               <Feed.Summary>
                 {listing.lender.firstname} {listing.lender.lastname}<br />

@@ -32,7 +32,7 @@ const SideMenuWrapper = ({ user, content }) => {
                 <Menu.Header style={{ marginBottom: 50 }}>
                     <Grid centered>
                         <Grid.Row style={{ marginTop: 50 }}>
-                            <Icon size="huge" name='user circle' />
+                            <Image circular size="small" src={user.display_pic} />
                         </Grid.Row>
                         <Grid.Row>
                             <Header as={'h1'} color="yellow">

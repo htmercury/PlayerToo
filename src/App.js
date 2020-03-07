@@ -24,7 +24,7 @@ function App() {
     return (
       <SideMenuWrapper
         content={page}
-        user={users[0]}
+        user={users[24]}
       />
     );
   };

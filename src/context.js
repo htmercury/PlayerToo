@@ -42,6 +42,7 @@ const StateProvider = ({ children }) => {
               firstname: user.name.split(" ")[0],
               lastname: user.name.split(" ")[1],
               email: user.email,
+              profile: user.display_pic
             }
           }
         }
