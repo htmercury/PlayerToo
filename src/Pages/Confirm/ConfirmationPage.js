@@ -7,7 +7,7 @@ const ConfirmationPage = () => {
   const state = useContext(AppState);
   const { marketplaceListings } = state;
   const { id } = useParams(); 
-  const listing = marketplaceListings[id];
+  const listing = marketplaceListings[marketplaceListings.findIndex(x => x.id == id)];
 
   return (
     <Container style={{ marginTop: "15px"}}>
