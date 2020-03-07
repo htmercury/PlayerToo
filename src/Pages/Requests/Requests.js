@@ -18,7 +18,7 @@ const Request = () => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-              <Each_request data={myRequests} />
+              <Each_request data={myRequests} games={games} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
