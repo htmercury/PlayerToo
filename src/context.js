@@ -2,7 +2,7 @@ import React, { useEffect, createContext, useState } from 'react';
 import { getAllGames, getAllListings, getAllUsers, getGameOptions } from './client';
 
 const AppState = createContext(null);
-const { Provider } = AppState; 
+const { Provider } = AppState;
 
 
 const StateProvider = ({ children }) => {
@@ -19,51 +19,59 @@ const StateProvider = ({ children }) => {
     getGameOptions(setOptions);
     //postListing();
   }, []);
-  
-  const marketplaceListings = 
-    listings.length > 0 && users.length > 0 && games.length > 0 ? 
-    listings.map(
-      listing => {
-        const user = users[users.findIndex(u => u.id === listing.lender_id)];
-        const game = games[games.findIndex(g => g.id === listing.game_id)];
-        return { 
-          game: game.name, 
-          description: game.description,
-          images: Object.values(game.images),
-          id: listing.id, 
-          rating: Math.round(user.rating),
-          tags: game.tags,
-          minPlayers: game.min_players,
-          maxPlayers: game.max_players,
-          distance: user.distance, 
-          borrowed: listing.borrowed,
-          lender: {
-            username: user.id.slice(0, -2),
-            firstname: user.name.split(" ")[0],
-            lastname: user.name.split(" ")[1],
-            email: user.email,
+
+  const marketplaceListings =
+    listings.length > 0 && users.length > 0 && games.length > 0 ?
+      listings.map(
+        listing => {
+          const user = users[users.findIndex(u => u.id === listing.lender_id)];
+          const game = games[games.findIndex(g => g.id === listing.game_id)];
+          return {
+            game: game.name,
+            description: game.description,
+            images: Object.values(game.images),
+            id: listing.id,
+            rating: Math.round(user.rating),
+            tags: game.tags,
+            minPlayers: game.min_players,
+            maxPlayers: game.max_players,
+            distance: user.distance,
+            borrowed: listing.borrowed,
+            lender: {
+              username: user.id.slice(0, -2),
+              firstname: user.name.split(" ")[0],
+              lastname: user.name.split(" ")[1],
+              email: user.email,
+            }
           }
         }
-      }
-    ) : [];
+      ) : [];
 
 
-  const myListings = 
-    listings.length > 0 && users.length > 0 && games.length > 0 ? 
-    listings.filter(
-    listing => { return listing.lender_id=="Silva91_^" }) : [];
-    console.log("this is mylistings for Silva91_^")
-    console.log(myListings)
+  const myListings =
+    listings.length > 0 && users.length > 0 && games.length > 0 ?
+      listings.filter(
+        listing => { return listing.lender_id === "Silva91_^" }) : [];
+  console.log("this is mylistings for Silva91_^")
+  console.log(myListings)
 
-  
+
   const myRequests = myListings.length > 0 && users.length > 0 && games.length > 0 ?
-  myListings.filter(listings => {return listings.requests.length > 0}) : [];
+    myListings.filter(listings => { return listings.requests.length > 0 }) : [];
 
 
   console.log("This is the requests page!")
   console.log(myRequests)
-
-  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, myRequests, games, options, users };
+  const permittedValues = [];
+  for (let i = 0; i < myRequests.length; i++) {
+    let temp = myRequests[i]["requests"]
+    console.log("here's temp", temp)
+    for (let j = 0; j< temp.length ; j++) {
+      permittedValues.push(temp[j]);
+    }
+  }
+  console.log(permittedValues);
+  const api = { setMenuVisible, menuVisible, marketplaceListings, myListings, myRequests, permittedValues, games, options, users };
   return <Provider value={api}>{children}</Provider>;
 };
 
