@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import DeclineModal from './DeclineModal';
 
 const approve = (item, isApproved) => {
   item.approved = isApproved;
   return item;
 };
 
+// TODO: error checking for double booking of dates
+
 const BorrowerCard = ({ item, state }) => {
+
   return (
     <Card>
       <Card.Content>
@@ -59,12 +63,18 @@ const BorrowerCard = ({ item, state }) => {
 };
 
 const BorrowerCards = ({ state }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
-    <Card.Group centered itemsPerRow="1">
-      {state.borrowers.filter(x => x.approved === null).map(i => (
-        <BorrowerCard key={i.borrower} item={i} state={state} />
-      ))}
-    </Card.Group>
+    <div>
+      <DeclineModal open={modalOpen} setModalOpen={setModalOpen} />
+      <Card.Group centered itemsPerRow="1">
+        {state.borrowers
+          .filter(x => x.approved === null)
+          .map(i => (
+            <BorrowerCard key={i.borrower} item={i} state={state} />
+          ))}
+      </Card.Group>
+    </div>
   );
 };
 
