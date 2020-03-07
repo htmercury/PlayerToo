@@ -99,14 +99,14 @@ const EachListing = () => {
             <Grid.Column width={8}>
               <Header>
                 <Header.Subheader content="Players:" />
-                <Header.Subheader content={`${listing.min_players}-${listing.min_players} Players`} style={{ fontStyle: "italic", color: "black" }} />
+                <Header.Subheader content={`${listing.min_players}-${listing.max_players} Players`} style={{ fontStyle: "italic", color: "black" }} />
               </Header>
 
             </Grid.Column>
             <Grid.Column width={8}>
               <Header>
-                <Header.Subheader content="Game Time:" />
-                <Header.Subheader content="15 minutes" style={{ fontStyle: "italic", color: "black" }} />
+                <Header.Subheader content="Estimated Game Time:" />
+                <Header.Subheader content="At least 15 minutes" style={{ fontStyle: "italic", color: "black" }} />
               </Header>
             </Grid.Column>
           </Grid.Row>

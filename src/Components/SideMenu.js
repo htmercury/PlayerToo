@@ -73,7 +73,7 @@ const SideMenuWrapper = ({ user, content }) => {
                 />
                  <Menu.Item 
                   icon="chess bishop" 
-                  name="Rental Requests" 
+                  name="Loan Requests" 
                   as={Link} 
                   to="/firestore/requests" 
                   onClick={closeMenu}

@@ -12,7 +12,7 @@ const Request = () => {
       <Grid columns={1} padded>
         <Grid.Row>
           <Grid.Column width={16}>
-            <Header as="h2" color="yellow" content="Rental Requests" dividing />
+            <Header as="h2" color="yellow" content="Loan Requests" dividing />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>

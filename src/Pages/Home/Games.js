@@ -14,7 +14,11 @@ const Games = ({ data }) => {
             <Header style={{fontWeight: "lighter", fontSize: "12px"}} floated='right' content={game.distance} />
             <Card.Header content={game.game} />
             <Card.Meta style={{ fontStyle: "italic", fontSize: "13px" }}>
-              {game.minPlayers}-{game.maxPlayers} Players
+              {game.minPlayers === game.maxPlayers ? (
+                `${game.minPlayers} Players`
+              ) : (
+                `${game.minPlayers}-${game.maxPlayers} Players`
+              )}
             </Card.Meta> 
             <Card.Description style={{ color: "grey", fontWeight: "bold", fontSize: "12px" }}>
               {game.lender.username} {<Icon style={{marginRight: "0px", marginLeft: "10px"}} name="star" />}{game.rating}
