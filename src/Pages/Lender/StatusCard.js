@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import AcceptModal from './AcceptModal';
 
-const OnLoanCard = ({ item, action }) => {
+const OnLoanCard = ({ item, action, setLocation }) => {
+
+  function launchModal() {
+    action(true);
+    setLocation(item.meetingLoc);
+  }
  
   return (
     <Card>
@@ -19,7 +24,7 @@ const OnLoanCard = ({ item, action }) => {
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Button fluid color="yellow" onClick={() => action(true)} >
+        <Button fluid color="yellow" onClick={() => launchModal()} >
           Additional Details
         </Button>
       </Card.Content>
@@ -43,12 +48,13 @@ const AvailableCard = ({ item }) => {
 const StatusCard = ({ state }) => {
   const approved = state.borrowers.filter(x => x.approved === true);
   const [modalOpen, setModalOpen] = useState(false);
+  const [meetUplocation,setmeetUpLocation]=useState(0);
   return approved.length > 0 ? (
     <div>
-    <AcceptModal open={modalOpen} setModalOpen={setModalOpen} />
+    <AcceptModal open={modalOpen} setModalOpen={setModalOpen} meetUpLocation={meetUplocation} />
     <Card.Group centered itemsPerRow="1">
       {approved.map(i => (
-        <OnLoanCard key={i.borrower} item={i} action={setModalOpen} />
+        <OnLoanCard key={i.borrower} item={i} action={setModalOpen} setLocation = {setmeetUpLocation}/>
       ))}
     </Card.Group>
     </div>
