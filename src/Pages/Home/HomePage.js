@@ -26,7 +26,7 @@ const HomePage = () => {
   }
   
   return (
-    <Container>
+    <Container style={{marginBottom:"600px"}}>
       <Header dividing as="h2" color="yellow" content="Marketplace" style={{margin: "15px 0"}} />
       <Grid columns={1} padded>
         <Grid.Row>

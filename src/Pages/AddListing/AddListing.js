@@ -29,7 +29,7 @@ const AddListing = () => {
   }
 
   return (
-      <Container>
+      <Container style={{marginBottom:"600px"}}>
         <br />
         <Grid columns={1}>
           <Grid.Row>
