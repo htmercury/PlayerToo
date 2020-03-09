@@ -63,13 +63,13 @@ const EachLenderListing = () => {
 
   // Just using the each listing database. Need to change when integrating backend.
 
-  const { games } = appState;
+  const { games, myRequests, users } = appState;
   const [editingLenderRemarks, setEditingLenderRemarks] = useState(false);
   const toggleEditingLenderRemarks = () => {
     setEditingLenderRemarks(!editingLenderRemarks);
   };
 
-  const [borrowers, setBorrowers] = useState(borrowerTemp)
+  const [requests, setRequests] = useState(borrowerTemp);
 
   const contextRef = createRef();
   const { id } = useParams();
@@ -125,7 +125,7 @@ const EachLenderListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <StatusCard state={{borrowers, setBorrowers}} />
+              <StatusCard state={{ borrowers: requests, setBorrowers: setRequests }} />
             </Grid.Column>
           </Grid.Row>
 
@@ -149,7 +149,7 @@ const EachLenderListing = () => {
           <Grid.Row>
             <Grid.Column>
               <Header>Loan Requests</Header>
-              <BorrowerCards state={{borrowers, setBorrowers}} />
+              <BorrowerCards state={{ borrowers: requests, setBorrowers: setRequests, myRequests, users }} />
             </Grid.Column>
           </Grid.Row>
 
