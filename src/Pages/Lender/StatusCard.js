@@ -1,6 +1,5 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import AcceptModal from './AcceptModal';
 
 const OnLoanCard = ({ item, action, setLocation }) => {

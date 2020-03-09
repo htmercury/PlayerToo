@@ -51,7 +51,7 @@ const SideMenuWrapper = ({ user, content }) => {
             </Grid.Row>
           </Grid>
         </Menu.Header>
-        <Menu.Item icon="cloud" as={Link} to="/" onClick={closeMenu}>
+        <Menu.Item as={Link} to="/" onClick={closeMenu}>
           <Icon name="cloud"/>Marketplace
         </Menu.Item>
         <Menu.Item
