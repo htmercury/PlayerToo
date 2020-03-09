@@ -2,27 +2,15 @@ import React, { useState } from 'react';
 import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import DeclineModal from './DeclineModal';
+import {getDuration} from '../../utils/TimeFunctions'
 
-// function to handle approval of requests. interim until backend for requests is done
-const approve = (item, approveBool) => {
-  item.isApproved = approveBool;
-  return item;
-};
-
-// MONTH ENUM
-const MONTH = {
-  0: 'Jan',
-  1: 'Feb',
-  2: 'Mar',
-  3: 'Apr',
-  4: 'May',
-  5: 'Jun',
-  6: 'Jul',
-  7: 'Aug',
-  8: 'Sep',
-  9: 'Oct',
-  10: 'Nov',
-  11: 'Dec',
+// function to handle approval of requests.frontend interim until backend for requests is done
+// TODO: post actual db change
+const approve = (request, approveBool) => {
+  
+  request.isApproved = approveBool;
+  console.log(request);
+  return request;
 };
 
 // TODO: error checking for double booking of dates
@@ -83,20 +71,8 @@ const MONTH = {
 // individual requests from borrowers
 const BorrowerCard = ({ request, state }) => {
   const user = state.users.filter(u => request.borrower === u.id)[0];
-  console.log(user);
 
-  const start = new Date(request.startDate._seconds / 1000);
-  const end = new Date(
-    request.startDate._seconds / 1000 + request.duration * 86400000
-  );
-  const duration =
-    start.getDate().toString() +
-    ' ' +
-    MONTH[start.getMonth().toString()] +
-    ' - ' +
-    end.getDate().toString() +
-    ' ' +
-    MONTH[end.getMonth().toString()];
+  const duration = getDuration(request.startDate, request.duration)
 
   return (
     <Card>
@@ -121,8 +97,8 @@ const BorrowerCard = ({ request, state }) => {
             color="yellow"
             onClick={() =>
               state.setRequests(
-                state.requests.map(x =>
-                  x.borrower === request.borrower ? approve(x, true) : x
+                state.requests.map(r =>
+                  r.borrower === request.borrower ? approve(r, true) : r
                 )
               )
             }
@@ -134,8 +110,8 @@ const BorrowerCard = ({ request, state }) => {
             basic
             onClick={() =>
               state.setRequests(
-                state.requests.map(x =>
-                  x.borrower === request.borrower ? approve(x, false) : x
+                state.requests.map(r =>
+                  r.borrower === request.borrower ? approve(r, false) : r
                 )
               )
             }

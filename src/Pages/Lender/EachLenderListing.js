@@ -76,11 +76,10 @@ const EachLenderListing = () => {
   // get requests for this particular game
   const gameRequests = myRequests.filter(x => x.game_id === id)[0].requests;
 
-  // workaround: setting isApproved to null
-  gameRequests.forEach(gr => (gr.isApproved = null));
+  // // workaround: setting isApproved to null
+  // gameRequests.forEach(gr => (gr.isApproved = null));
 
   const [requests, setRequests] = useState(gameRequests);
-  console.log(requests);
 
   return (
     <div ref={contextRef}>
@@ -133,7 +132,7 @@ const EachLenderListing = () => {
           <Grid.Row>
             <Grid.Column>
               <StatusCard
-                state={{ borrowers: requests, setBorrowers: setRequests }}
+                state={{ requests, setRequests, users }}
               />
             </Grid.Column>
           </Grid.Row>
