@@ -74,12 +74,19 @@ const EachLenderListing = () => {
   const listing = games[games.findIndex(g => g.id === id)];
 
   // get requests for this particular game
-  const gameRequests = myRequests.filter(x => x.game_id === id)[0].requests;
+  const gameRef = myRequests.filter(x => x.game_id === id)[0];
+  console.log("reqs", myRequests.filter(x => x.game_id === id));
+  
+  const gameRequests = ('requests' in gameRef) ? gameRef.requests : [];
 
-  // // workaround: setting isApproved to null
-  // gameRequests.forEach(gr => (gr.isApproved = null));
+  // workaround: setting isApproved to null
+  gameRequests.forEach(gr => (gr.isApproved = null));
+
+  // need to hook this up to backend
+  description = gameRef.additional_details;
 
   const [requests, setRequests] = useState(gameRequests);
+  
 
   return (
     <div ref={contextRef}>
