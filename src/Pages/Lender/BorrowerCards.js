@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import DeclineModal from './DeclineModal';
 
 // function to handle approval of requests. interim until backend for requests is done
-const approve = (item, isApproved) => {
-  item.approved = isApproved;
+const approve = (item, approveBool) => {
+  item.isApproved = approveBool;
   return item;
 };
 
@@ -24,7 +24,6 @@ const MONTH = {
   10: 'Nov',
   11: 'Dec',
 };
-
 
 // TODO: error checking for double booking of dates
 
@@ -105,13 +104,15 @@ const BorrowerCard = ({ request, state }) => {
         <Image circular floated="right" size="mini" src={user.display_pic} />
         <Card.Header>{user.name}</Card.Header>
         <Card.Meta>
-          <Icon name="star" /> {user.rating}
+          <Icon name="star" /> {user.rating.toFixed(2)}
         </Card.Meta>
         <Card.Description>Duration:</Card.Description>
         <Card.Description as={Header.Subheader}>{duration}</Card.Description>
         <Card.Description>Proposed Meeting Location:</Card.Description>
         <Card.Description as={Header.Subheader}>
-          {request.meetingLoc}
+          {request.meetingLoc
+            ? request.meetingLoc
+            : 'Starbucks, 1901 Dempster St'}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
@@ -119,7 +120,7 @@ const BorrowerCard = ({ request, state }) => {
           <Button
             color="yellow"
             onClick={() =>
-              state.setBorrowers(
+              state.setRequests(
                 state.requests.map(x =>
                   x.borrower === request.borrower ? approve(x, true) : x
                 )
@@ -132,7 +133,7 @@ const BorrowerCard = ({ request, state }) => {
             color="yellow"
             basic
             onClick={() =>
-              state.setBorrowers(
+              state.setRequests(
                 state.requests.map(x =>
                   x.borrower === request.borrower ? approve(x, false) : x
                 )
@@ -162,8 +163,8 @@ const BorrowerCards = ({ state }) => {
       </Card.Group> */}
 
       <Card.Group centered itemsPerRow="1">
-        {state.gameRequests
-          .filter(x => x.isApproved === true)
+        {state.requests
+          .filter(x => x.isApproved === null)
           .map(r => (
             <BorrowerCard key={r.borrower} request={r} state={state} />
           ))}

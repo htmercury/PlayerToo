@@ -14,28 +14,27 @@ import {
 import BorrowerCards from './BorrowerCards';
 import StatusCard from './StatusCard';
 
-// TODO: pull borrower data from the DB
-
-const borrowerTemp = [
-  {
-    borrower: 'James Smith',
-    borrowerRating: '3.6',
-    duration: '13 March - 17 March',
-    image:
-      'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
-    meetingLoc: '1560 Maple Avenue',
-    approved: null,
-  },
-  {
-    borrower: 'Angelina Jolie',
-    borrowerRating: '2.6',
-    duration: '11 March - 17 March',
-    image:
-      'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
-    meetingLoc: '17 Maple Avenue',
-    approved: null,
-  },
-];
+// OLD temp request data
+// const borrowerTemp = [
+//   {
+//     borrower: 'James Smith',
+//     borrowerRating: '3.6',
+//     duration: '13 March - 17 March',
+//     image:
+//       'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
+//     meetingLoc: '1560 Maple Avenue',
+//     approved: null,
+//   },
+//   {
+//     borrower: 'Angelina Jolie',
+//     borrowerRating: '2.6',
+//     duration: '11 March - 17 March',
+//     image:
+//       'https://www.theheadshotguy.co.uk/wp-content/uploads/2014/12/Screen-Shot-2014-12-02-at-11.14.42.png',
+//     meetingLoc: '17 Maple Avenue',
+//     approved: null,
+//   },
+// ];
 
 // temporary description data for listing
 let description =
@@ -70,17 +69,18 @@ const EachLenderListing = () => {
     setEditingLenderRemarks(!editingLenderRemarks);
   };
 
-
-  const [requests, setRequests] = useState(borrowerTemp);
-
   const contextRef = createRef();
   const { id } = useParams();
   const listing = games[games.findIndex(g => g.id === id)];
-  
+
   // get requests for this particular game
-  const gameRequests = myRequests.filter(x => x.game_id === id)[0].requests
-  console.log(gameRequests);
-  
+  const gameRequests = myRequests.filter(x => x.game_id === id)[0].requests;
+
+  // workaround: setting isApproved to null
+  gameRequests.forEach(gr => (gr.isApproved = null));
+
+  const [requests, setRequests] = useState(gameRequests);
+  console.log(requests);
 
   return (
     <div ref={contextRef}>
@@ -132,7 +132,9 @@ const EachLenderListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <StatusCard state={{ borrowers: requests, setBorrowers: setRequests }} />
+              <StatusCard
+                state={{ borrowers: requests, setBorrowers: setRequests }}
+              />
             </Grid.Column>
           </Grid.Row>
 
@@ -156,7 +158,7 @@ const EachLenderListing = () => {
           <Grid.Row>
             <Grid.Column>
               <Header>Loan Requests</Header>
-              <BorrowerCards state={{ requests, setRequests, gameRequests, users }} />
+              <BorrowerCards state={{ requests, setRequests, users }} />
             </Grid.Column>
           </Grid.Row>
 
