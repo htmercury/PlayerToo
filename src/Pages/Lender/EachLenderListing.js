@@ -1,4 +1,4 @@
-import React, { useContext, useState, createRef } from 'react';
+import React, { useContext, useState, createRef, useEffect } from 'react';
 import { AppState } from '../../context';
 import { useParams, Link } from 'react-router-dom';
 import {
@@ -70,11 +70,17 @@ const EachLenderListing = () => {
     setEditingLenderRemarks(!editingLenderRemarks);
   };
 
+
   const [requests, setRequests] = useState(borrowerTemp);
 
   const contextRef = createRef();
   const { id } = useParams();
   const listing = games[games.findIndex(g => g.id === id)];
+  
+  // get requests for this particular game
+  const gameRequests = myRequests.filter(x => x.game_id === id)[0].requests
+  console.log(gameRequests);
+  
 
   return (
     <div ref={contextRef}>
@@ -150,7 +156,7 @@ const EachLenderListing = () => {
           <Grid.Row>
             <Grid.Column>
               <Header>Loan Requests</Header>
-              <BorrowerCards state={{ borrowers: requests, setBorrowers: setRequests, myRequests, users }} />
+              <BorrowerCards state={{ requests, setRequests, gameRequests, users }} />
             </Grid.Column>
           </Grid.Row>
 
