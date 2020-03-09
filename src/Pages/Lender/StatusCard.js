@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import AcceptModal from './AcceptModal';
 
+// This card shows when on loan
 const OnLoanCard = ({ item, action, setLocation }) => {
 
   function launchModal() {
@@ -31,6 +32,7 @@ const OnLoanCard = ({ item, action, setLocation }) => {
   );
 };
 
+// This card shows when available
 const AvailableCard = ({ item }) => {
   return (
     <Card>
@@ -44,6 +46,7 @@ const AvailableCard = ({ item }) => {
   );
 };
 
+// Exported cardgroup holder
 const StatusCard = ({ state }) => {
   const approved = state.borrowers.filter(x => x.approved === true);
   const [modalOpen, setModalOpen] = useState(false);

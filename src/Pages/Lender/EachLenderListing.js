@@ -37,6 +37,7 @@ const borrowerTemp = [
   },
 ];
 
+// temporary description data for listing
 let description =
   'This boardgame set is missing 2 green pieces. Otherwise, it is in good condition!';
 

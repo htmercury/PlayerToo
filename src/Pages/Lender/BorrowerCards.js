@@ -3,6 +3,7 @@ import { Card, Icon, Button, Image, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import DeclineModal from './DeclineModal';
 
+// function to handle approval of requests. interim until backend for requests is done
 const approve = (item, isApproved) => {
   item.approved = isApproved;
   return item;
@@ -10,6 +11,7 @@ const approve = (item, isApproved) => {
 
 // TODO: error checking for double booking of dates
 
+// individual requests from borrowers
 const BorrowerCard = ({ item, state }) => {
 
   return (
@@ -62,6 +64,7 @@ const BorrowerCard = ({ item, state }) => {
   );
 };
 
+// Exported Card group and modal
 const BorrowerCards = ({ state }) => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
