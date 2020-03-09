@@ -36,12 +36,11 @@ import StatusCard from './StatusCard';
 //   },
 // ];
 
-// temporary description data for listing
 let description =
   'This boardgame set is missing 2 green pieces. Otherwise, it is in good condition!';
 
 // TODO: make these changes actually affect the DB. Right now they're just front end
-
+// As of now, the changes are not saved on front end because description is overwritten
 const saveEdits = input => {
   description = input.target.value;
 };
@@ -74,10 +73,19 @@ const EachLenderListing = () => {
   const listing = games[games.findIndex(g => g.id === id)];
 
   // get requests for this particular game
-  const gameRequests = myRequests.filter(x => x.game_id === id)[0].requests;
+  const gameRef = myRequests.filter(x => x.game_id === id)[0];
+  console.log(
+    'reqs',
+    myRequests.filter(x => x.game_id === id)
+  );
 
-  // // workaround: setting isApproved to null
-  // gameRequests.forEach(gr => (gr.isApproved = null));
+  const gameRequests = 'requests' in gameRef ? gameRef.requests : [];
+
+  // workaround: setting isApproved to null
+  gameRequests.forEach(gr => (gr.isApproved = null));
+
+  // need to hook this up to backend
+  description = gameRef.additional_details;
 
   const [requests, setRequests] = useState(gameRequests);
 
@@ -131,9 +139,7 @@ const EachLenderListing = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <StatusCard
-                state={{ requests, setRequests, users }}
-              />
+              <StatusCard state={{ requests, setRequests, users }} />
             </Grid.Column>
           </Grid.Row>
 
