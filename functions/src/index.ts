@@ -169,16 +169,16 @@ app.post('/listings', async (req, res) => {
         if (requests === undefined || requests.length === 0) {
             requests = [
                 {
-                    startDate: new Date(2020,3,16),
+                    startDate: new Date(2020, 3, 16),
                     duration: 2,
                     borrower: 'Collins88@',
-                    isApproved: true,
+                    isApproved: null,
                 },
                 {
-                    startDate: new Date(2020,3,16),
-                    duration: 2,
+                    startDate: new Date(2020, 3, 16),
+                    duration: 4,
                     borrower: 'Davidson98=(',
-                    isApproved: true,
+                    isApproved: null,
                 },
             ];
         }
