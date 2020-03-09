@@ -76,8 +76,8 @@ const SideMenuWrapper = ({ user, content }) => {
         >
           <Icon name="chess bishop"/>Loan Requests
         </Menu.Item>
-        <Menu.Item><Icon name="arrow alternate circle down"/>My Loans</Menu.Item>
-        <Menu.Item><Icon name="setting"/>Settings</Menu.Item>
+        {/* <Menu.Item><Icon name="arrow alternate circle down"/>My Loans</Menu.Item> */}
+        {/* <Menu.Item><Icon name="setting"/>Settings</Menu.Item> */}
       </Sidebar>
       <Sidebar.Pusher dimmed={menuVisible}>
         <PageHeader />
