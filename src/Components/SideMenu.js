@@ -16,7 +16,13 @@ import PageHeader from './PageHeader';
 
 const SideMenuWrapper = ({ user, content }) => {
   const appState = useContext(AppState);
-  const { menuVisible, setMenuVisible } = appState;
+  const { menuVisible, setMenuVisible, myRequests } = appState;
+
+  let totalRequests = 0;
+
+  myRequests.forEach(l => {
+    l.requests.forEach(r => totalRequests++);
+  });
 
   const closeMenu = () => setMenuVisible(false);
   return (
@@ -52,29 +58,21 @@ const SideMenuWrapper = ({ user, content }) => {
           </Grid>
         </Menu.Header>
         <Menu.Item as={Link} to="/" onClick={closeMenu}>
-          <Icon name="cloud"/>Marketplace
+          <Icon name="cloud" />
+          Marketplace
         </Menu.Item>
-        <Menu.Item
-          as={Link}
-          onClick={closeMenu}
-          to="/lender/addListing1"
-        >
-          <Icon name="add circle"/>Add New Listing
+        <Menu.Item as={Link} onClick={closeMenu} to="/lender/addListing1">
+          <Icon name="add circle" />
+          Add New Listing
         </Menu.Item>
-        <Menu.Item
-          as={Link}
-          to="/lender/myListings"
-          onClick={closeMenu}
-        >
-          <Icon name="chess knight"/>My Listings
-          <Label color="yellow">2</Label>
+        <Menu.Item as={Link} to="/lender/myListings" onClick={closeMenu}>
+          <Icon name="chess knight" />
+          My Listings
         </Menu.Item>
-        <Menu.Item
-          as={Link}
-          to="/firestore/requests"
-          onClick={closeMenu}
-        >
-          <Icon name="chess bishop"/>Loan Requests
+        <Menu.Item as={Link} to="/firestore/requests" onClick={closeMenu}>
+          <Icon name="chess bishop" />
+          Loan Requests
+          <Label color="yellow">{totalRequests}</Label>
         </Menu.Item>
         {/* <Menu.Item><Icon name="arrow alternate circle down"/>My Loans</Menu.Item> */}
         {/* <Menu.Item><Icon name="setting"/>Settings</Menu.Item> */}
