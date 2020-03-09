@@ -138,7 +138,6 @@ app.put('/listings/:listingId', async (req, res) => {
             .doc(req.params.listingId)
             .update(new_body);
 
-
         res.status(200).send({
             message: 'listing successfully updated.',
             success: true,
@@ -157,7 +156,7 @@ app.post('/listings', async (req, res) => {
         const game_id = req.body.game_id;
         const user_id = req.body.user_id;
         const additional_details = req.body.additional_details;
-        const requests = req.body.requests;
+        let requests = req.body.requests;
 
         if (game_id === undefined || user_id === undefined) {
             res.status(400).send({
@@ -165,6 +164,23 @@ app.post('/listings', async (req, res) => {
                 success: false,
             });
             return;
+        }
+
+        if (requests === undefined || requests.length === 0) {
+            requests = [
+                {
+                    startDate: new Date(2020,3,16),
+                    duration: 2,
+                    borrower: 'Collins88@',
+                    isApproved: true,
+                },
+                {
+                    startDate: new Date(2020,3,16),
+                    duration: 2,
+                    borrower: 'Davidson98=(',
+                    isApproved: true,
+                },
+            ];
         }
 
         // check if id exists
