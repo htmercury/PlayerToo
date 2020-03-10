@@ -1,9 +1,15 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 cache:
   directories:
   - node_modules
 script:
-  - npm test
-  - npm run build
+- npm test
+- CI=false npm run build
+after_success:
+- npm install -g firebase-tools
+- firebase deploy --token $FIREBASE_TOKEN --non-interactive
+env:
+  global:
+    secure: P8XjECZw6aCIBKzD6sSFtwlDhXSTXpbYxr+Txe/jWAUpo0DXvxFBdJjdGyDLib+nsdiSrBn31nmJ4FkNfCmZa2wWpHteiqKwWnDhGLllgddHpszJnZpHw08b31ECpgN32lqJUMTCqplxDgYVk2oGLTlFb2gaLqVEUJkXWKZfF+rrq+u2yu4vMIHrojIBNOpPyKq/lfB3L6wmmBmmwt2pM3IjeIXDwlgh8hLR9wVTkScuPbx0yOHXekeqAUzhHhz1s8Lpa+958aFx3RP9vS9V5On2SPTuczrg7/YQpoA9fjqHw7eyzk+enRhVPjHHSjQ2jsdJ/LKY9n0xttz1zNDSPFW94LZ7xSUvrPFrM9IIn2Lj8YqBChxbYTEQI9aiwkzqvFd6yw+rkZeolMdUxPQedz8wWSHKe27zZHYe6+EnnNCONhBXxhqI6L6iexnGdFr+hafOS1Sd7NnLj3Yy0cMX1obAZc9COJu1UHF2puTZpBgOkwMCJsQMW+7U/6Gj5KL+YeEXo2WPUHQsEsxllK9FoebSVHL4IUsTcFd+tGwAc0F0BFRs2KSFdHM5ShgxuuAUlZciT99zIgrTJzuvps2EIHxLqFd8fMUqy0jYBvTWQ88cAOZU03S0nQeI2xH4L5KqCF1fZzTdb80CCpwuryokQG0ndZ6O94z2FyagKD760ag=
