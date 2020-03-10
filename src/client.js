@@ -11,7 +11,7 @@ export const getAllGames = async (callback) => {
 export const getGameOptions = async (callback) => {
   const data = games;
   const values = Object.values(data);
-  console.log(values.slice(0,5));
+  // console.log(values.slice(0,5));
   return callback(values.slice(0,250));
 };
 

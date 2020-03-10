@@ -53,8 +53,8 @@ const StateProvider = ({ children }) => {
     listings.length > 0 && users.length > 0 && games.length > 0 ?
       listings.filter(
         listing => { return listing.lender_id === "Silva91_^" }) : [];
-  console.log("this is mylistings for Silva91_^")
-  console.log(myListings)
+  // console.log("this is mylistings for Silva91_^")
+  // console.log(myListings)
 
 
   const myRequests = myListings.length > 0 && users.length > 0 && games.length > 0 ?

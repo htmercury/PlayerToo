@@ -14,9 +14,16 @@ const EachListing = () => {
   const { id } = useParams();
   const listing = games[games.findIndex(g => g.id === id)];
 
+  
   const [isModalOpen, setIsModalOpen] = useState(null);
   const [details, setDetails] = useState("");
-  console.log(details)
+  if (listing === undefined) {
+    return (<p>undefined listing</p>)
+  }
+  else {
+    console.log('changed DOM')
+  }
+  // console.log(details)
   function Add() {
     setIsModalOpen(true);
     const body = {
@@ -32,7 +39,7 @@ const EachListing = () => {
       "requests": []
     });
     postListing(body)
-    console.log(myListings)
+    // console.log(myListings)
   };
 
 
