@@ -4,7 +4,25 @@ import { useParams, Link } from 'react-router-dom';
 import { Grid, Image, Button, Header, Container, Input, Modal } from 'semantic-ui-react';
 import { postListing } from '../../client';
 
-const EachListing = () => {
+const Add = (setIsModalOpen, myListings, listing, details) => {
+  setIsModalOpen(true);
+  const body = {
+    game_id: listing.id,
+    user_id: "Silva91_^",
+    additional_details: details,
+    requests: []
+  };
+  myListings.push({
+    "lender_id": "Silva91_^",
+    "game_id": listing.id,
+    "borrowed": false,
+    "requests": []
+  });
+  postListing(body)
+  // console.log(myListings)
+};
+
+const EachListing = ({ onClick=Add }) => {
   const appState = useContext(AppState);
 
   // Just using the each listing database. Need to change when integrating backend.
@@ -24,24 +42,6 @@ const EachListing = () => {
     console.log('changed DOM')
   }
   // console.log(details)
-  function Add() {
-    setIsModalOpen(true);
-    const body = {
-      game_id: listing.id,
-      user_id: "Silva91_^",
-      additional_details: details,
-      requests: []
-    };
-    myListings.push({
-      "lender_id": "Silva91_^",
-      "game_id": listing.id,
-      "borrowed": false,
-      "requests": []
-    });
-    postListing(body)
-    // console.log(myListings)
-  };
-
 
   return (
     <div ref={contextRef}>
@@ -58,7 +58,7 @@ const EachListing = () => {
           <Header.Subheader content={"Added the Listing to your Listings Page"} />
             </Header>
           </Modal.Header>
-          <Modal.Actions centered>
+          <Modal.Actions centered="true">
             <Grid.Column>
         <Button 
           as={Link}
@@ -150,7 +150,7 @@ const EachListing = () => {
           }}>
             <Grid.Column>
               {/*as={Link} to={"/lender/addListing1"}*/}
-              <Button fluid color='yellow' onClick={() => Add()}>Add listing</Button>
+              <Button data-testid='button' fluid color='yellow' onClick={() => onClick(setIsModalOpen, myListings, listing, details)}>Add listing</Button>
               <br />
             </Grid.Column>
           </Grid.Row>
