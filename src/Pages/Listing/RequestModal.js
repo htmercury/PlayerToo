@@ -1,6 +1,7 @@
 import React from 'react';
-import { Modal, Grid, Button, Image, Icon, Dropdown, Header } from 'semantic-ui-react';
+import { Modal, Grid, Button, Image, Icon, Dropdown, Header, Rating } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+
 
 const RequestModal = ({ open, setIsModalOpen, game }) => {
   
@@ -30,18 +31,13 @@ const RequestModal = ({ open, setIsModalOpen, game }) => {
                   {game.lender.username}
               </Grid.Row>
               <Grid.Row>
-                <Icon name="star" />{game.rating}
+                <Rating defaultRating={game.rating} maxRating={5} disabled />
               </Grid.Row>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column style={{paddingTop:"10", paddingBottom:"10"}}>
-              <Icon name="home"/> Evanston, IL {/* TODO: GET FROM DATABASE */}
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row style={{paddingTop:"10", paddingBottom:"10"}}>
-            <Grid.Column>
-              <Icon name="envelope"/> {game.lender.email}
+              <Icon name="home"/> {game.distance} {/* TODO: GET FROM DATABASE */}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

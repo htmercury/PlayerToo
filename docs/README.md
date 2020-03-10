@@ -27,5 +27,14 @@ Get a specific user.
 Get all listings.
 * [Listings](listing/get_listings.md) : `GET /api/v1/listings/`
 
+Add a listing.
+* [Listings](listing/post_listings.md) : `POST /api/v1/listings/`
+
+Edit a listing.
+* [Listings](listing/put_listing.md) : `PUT /api/v1/listings/`
+
+Remove a listing.
+* [Listing](listing/delete_listing.md) : `DELETE /api/v1/listings/:listingId`
+
 Get a specific listing.
 * [Listing](listing/get_listing.md) : `GET /api/v1/listings/:listingId`

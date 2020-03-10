@@ -5,6 +5,8 @@ import * as firebaseHelper from 'firebase-functions-helper';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
+import * as cors from 'cors';
+
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -16,6 +18,9 @@ const main = express();
 const usersCollection = 'Users';
 const listingsCollection = 'Listings';
 const gamesCollection = 'BoardGames';
+
+app.use(cors({ origin: true }));
+main.use(cors({ origin: true }));
 main.use('/api/v1', app);
 main.use(bodyParser.json());
 main.use(bodyParser.urlencoded({ extended: false }));
@@ -38,7 +43,7 @@ app.get('/users/:userId', (req, res) => {
 app.get('/users', (req, res) => {
     firebaseHelper.firestore
         .backup(db, usersCollection)
-        .then((data : any) => res.status(200).send(Object.values(data['Users'])))
+        .then((data: any) => res.status(200).send(Object.values(data['Users'])))
         .catch(error => res.status(400).send(`Cannot get users: ${error}`));
 });
 
@@ -71,6 +76,146 @@ app.get('/listings/:listingId', async (req, res) => {
         res.status(200).send(listing);
     } catch (error) {
         res.status(400).send(`Cannot get listing: ${error}`);
+    }
+});
+
+// Remove a listing
+app.delete('/listings/:listingId', async (req, res) => {
+    try {
+        // check if listing exists first
+        const listingRef = await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .get();
+
+        if (!listingRef.exists) {
+            res.status(400).send({
+                message: 'listing_id does not exist.',
+                success: false,
+            });
+            return;
+        }
+
+        await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .delete();
+
+        res.status(200).send({
+            message: 'listing successfully deleted.',
+            success: true,
+        });
+    } catch (error) {
+        res.status(400).send({
+            message: `Failed to delete listing: ${error}`,
+            success: false,
+        });
+    }
+});
+
+// Edit a listing
+app.put('/listings/:listingId', async (req, res) => {
+    try {
+        // check if listing exists first
+        const listingRef = await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .get();
+
+        if (!listingRef.exists) {
+            res.status(400).send({
+                message: 'listing_id does not exist.',
+                success: false,
+            });
+            return;
+        }
+        // grab update body params
+        const new_body = req.body;
+
+        // update
+        await db
+            .collection(listingsCollection)
+            .doc(req.params.listingId)
+            .update(new_body);
+
+        res.status(200).send({
+            message: 'listing successfully updated.',
+            success: true,
+        });
+    } catch (error) {
+        res.status(400).send({
+            message: `Failed to update listing: ${error}`,
+            success: false,
+        });
+    }
+});
+
+// Add a listing
+app.post('/listings', async (req, res) => {
+    try {
+        const game_id = req.body.game_id;
+        const user_id = req.body.user_id;
+        const additional_details = req.body.additional_details;
+        let requests = req.body.requests;
+
+        if (game_id === undefined || user_id === undefined) {
+            res.status(400).send({
+                message: 'game_id or user_id was undefined.',
+                success: false,
+            });
+            return;
+        }
+
+        if (requests === undefined || requests.length === 0) {
+            requests = [
+                {
+                    startDate: new Date(2020, 3, 16),
+                    duration: 2,
+                    borrower: 'Collins88@',
+                    isApproved: null,
+                },
+                {
+                    startDate: new Date(2020, 3, 16),
+                    duration: 4,
+                    borrower: 'Davidson98=(',
+                    isApproved: null,
+                },
+            ];
+        }
+
+        // check if id exists
+        const userRef = await db
+            .collection(usersCollection)
+            .doc(user_id)
+            .get();
+        const gameRef = await db
+            .collection(gamesCollection)
+            .doc(game_id)
+            .get();
+
+        if (!userRef.exists || !gameRef.exists) {
+            res.status(400).send({
+                message: 'game_id or user_id was invalid.',
+                success: false,
+            });
+            return;
+        }
+
+        const listingRef = db.collection(listingsCollection).doc();
+
+        // post to db
+        await listingRef.set({
+            id: listingRef.id,
+            borrowed: false,
+            game_id: game_id,
+            lender_id: user_id,
+            additional_details: additional_details,
+            requests: requests,
+        });
+
+        res.status(201).send({ message: 'listing was added.', success: true });
+    } catch (error) {
+        res.status(400).send(`Cannot add listing: ${error}`);
     }
 });
 

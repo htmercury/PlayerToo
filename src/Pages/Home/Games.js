@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Icon, Header, Button, Image } from 'semantic-ui-react';
 import RequestModal from '../Listing/RequestModal';
 import { Link } from 'react-router-dom';
-
+import { Rating } from 'semantic-ui-react';
 const Games = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(null);
 
@@ -14,21 +14,26 @@ const Games = ({ data }) => {
             <Header style={{fontWeight: "lighter", fontSize: "12px"}} floated='right' content={game.distance} />
             <Card.Header content={game.game} />
             <Card.Meta style={{ fontStyle: "italic", fontSize: "13px" }}>
-              {game.minPlayers}-{game.maxPlayers} Players
+              {game.minPlayers === game.maxPlayers ? (
+                `${game.minPlayers} Players`
+              ) : (
+                `${game.minPlayers}-${game.maxPlayers} Players`
+              )}
             </Card.Meta> 
             <Card.Description style={{ color: "grey", fontWeight: "bold", fontSize: "12px" }}>
-              {game.lender.username} {<Icon style={{marginRight: "0px", marginLeft: "10px"}} name="star" />}{game.rating}
+              {game.lender.username} <Rating defaultRating={game.rating} maxRating={5} disabled />
             </Card.Description>
           </Card.Content>
-          <Image.Group size="tiny" style={{marginLeft:"10px"}}>
-            <Image src={game.images[0]} />
-            <Image src={game.images[1]} />
-            <Image src={game.images[2]} />
-          </Image.Group>
+          <Image 
+            as={Link} 
+            to={`/${game.id}`} 
+            size="tiny" style={{marginLeft:"100px"}}
+            src={game.images[3]}
+          >
+          </Image>
           <Card.Content extra>
             <Button
               onClick={() => setIsModalOpen(game.id)} 
-              basic
               color="yellow" 
               content="Borrow Now" 
               fluid 
