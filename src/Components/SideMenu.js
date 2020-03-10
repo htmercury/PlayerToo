@@ -42,7 +42,7 @@ const SideMenuWrapper = ({ user, content }) => {
               <Image circular size="small" src={user.display_pic} />
             </Grid.Row>
             <Grid.Row>
-              <Header as={'h1'} color="yellow">
+              <Header as={'h1'} color="yellow" data-cy="userName">
                 {user.name.split(' ')[0] + ' ' + user.name.split(' ')[1]}
                 <Header.Subheader content={user.id.slice(0, -2)} />
               </Header>

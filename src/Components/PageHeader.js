@@ -15,6 +15,7 @@ const PageHeader = () => {
       <Grid columns={2}>
         <Grid.Column width='3'> 
           <Icon 
+            data-cy="sideButton"
             inverted 
             size='large' 
             name='list' 
@@ -23,6 +24,7 @@ const PageHeader = () => {
         </Grid.Column>
         <Grid.Column width='10'>
           <Header
+            data-cy="appTitle"
             as={Link}
             to="/"
             inverted 
