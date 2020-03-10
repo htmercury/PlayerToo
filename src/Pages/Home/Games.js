@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Icon, Header, Button, Image } from 'semantic-ui-react';
 import RequestModal from '../Listing/RequestModal';
 import { Link } from 'react-router-dom';
-
+import { Rating } from 'semantic-ui-react';
 const Games = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(null);
 
@@ -21,7 +21,7 @@ const Games = ({ data }) => {
               )}
             </Card.Meta> 
             <Card.Description style={{ color: "grey", fontWeight: "bold", fontSize: "12px" }}>
-              {game.lender.username} {<Icon style={{marginRight: "0px", marginLeft: "10px"}} name="star" />}{game.rating}
+              {game.lender.username} <Rating defaultRating={game.rating} maxRating={5} disabled />
             </Card.Description>
           </Card.Content>
           <Image 
