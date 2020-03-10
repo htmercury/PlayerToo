@@ -68,7 +68,7 @@ const EachListing = () => {
         <Grid columns={1}>
           <Grid.Row>
             <Grid.Column>
-              <Header dividing as="h2" color="yellow" content="Add Listing" />
+              <Header data-testid="display" dividing as="h2" color="yellow" content="Add Listing" />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
